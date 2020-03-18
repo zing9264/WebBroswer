@@ -1,0 +1,120 @@
+2020-03-18 20:26 DEBUG Hello debug!
+2020-03-18 20:26 INFO Hello info!
+2020-03-18 20:26 WARNING Hello warning!
+2020-03-18 20:26 ERROR Hello error!
+2020-03-18 20:26 CRITICAL Hello critical!
+2020-03-18 20:26 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:26 DEBUG https://www.ccu.edu.tw:443 "GET / HTTP/1.1" 200 None
+2020-03-18 20:26 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:26 DEBUG https://www.ccu.edu.tw:443 "GET / HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET / HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET / HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /about_ccu.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /about_ccu.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /about_us.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /academic.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /academic.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /admin/ HTTP/1.1" 302 0
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /system_index.php HTTP/1.1" 302 None
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /login.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /administrative.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /administrative.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /administrative_service.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /administrative_service.php HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /bullentin_list.php?id=1 HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /bullentin_list.php?id=2 HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /bullentin_list.php?id=3 HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /bullentin_list.php?id=4 HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /bullentin_list.php?id=5 HTTP/1.1" 200 None
+2020-03-18 20:27 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:27 DEBUG https://www.ccu.edu.tw:443 "GET /bullentin_list.php?id=6 HTTP/1.1" 200 None
+2020-03-18 20:28 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:28 DEBUG https://www.ccu.edu.tw:443 "GET /calender.php HTTP/1.1" 200 None
+2020-03-18 20:28 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:28 DEBUG https://www.ccu.edu.tw:443 "GET /customer.php HTTP/1.1" 200 None
+2020-03-18 20:28 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:28 DEBUG https://www.ccu.edu.tw:443 "GET /eng/index.php HTTP/1.1" 200 None
+2020-03-18 20:28 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:28 DEBUG https://www.ccu.edu.tw:443 "GET /eng/index.php HTTP/1.1" 200 None
+2020-03-18 20:28 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:28 DEBUG https://www.ccu.edu.tw:443 "GET /evaluation_and_plan.php HTTP/1.1" 200 None
+2020-03-18 20:28 DEBUG Starting new HTTPS connection (1): www.ccu.edu.tw:443
+2020-03-18 20:28 DEBUG https://www.ccu.edu.tw:443 "GET /file/index/CCU-PIMS-A-001_%E5%80%8B%E4%BA%BA%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E7%AE%A1%E7%90%86%E6%94%BF%E7%AD%96_v1.4_108.11.07.pdf HTTP/1.1" 200 569581
+2020-03-18 20:28 DEBUG SHIFT_JIS Japanese prober hit error at byte 643
+2020-03-18 20:28 DEBUG EUC-JP Japanese prober hit error at byte 631
+2020-03-18 20:28 DEBUG GB2312 Chinese prober hit error at byte 638
+2020-03-18 20:28 DEBUG EUC-KR Korean prober hit error at byte 631
+2020-03-18 20:28 DEBUG CP949 Korean prober hit error at byte 637
+2020-03-18 20:28 DEBUG Big5 Chinese prober hit error at byte 631
+2020-03-18 20:28 DEBUG EUC-TW Taiwan prober hit error at byte 11
+2020-03-18 20:28 DEBUG windows-1251 confidence = 0.04287208544097128, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG KOI8-R confidence = 0.04267168933257345, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG ISO-8859-5 confidence = 0.04115638241913234, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG MacCyrillic confidence = 0.043053736770758314, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG IBM866 confidence = 0.041618888271000076, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG IBM855 confidence = 0.042937660011323514, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG ISO-8859-5 confidence = 0.04058125617271866, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG windows-1251 confidence = 0.04203734959610601, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG TIS-620 confidence = 0.04388330001408446, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG windows-1255 confidence = 0.04710689178918433, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG windows-1255 confidence = 0.0475399820248699, below negative shortcut threshhold 0.05
+2020-03-18 20:28 DEBUG windows-1251 not active
+2020-03-18 20:28 DEBUG KOI8-R not active
+2020-03-18 20:28 DEBUG ISO-8859-5 not active
+2020-03-18 20:28 DEBUG MacCyrillic not active
+2020-03-18 20:28 DEBUG IBM866 not active
+2020-03-18 20:28 DEBUG IBM855 not active
+2020-03-18 20:28 DEBUG ISO-8859-7 Greek confidence = 0.07596669588599164
+2020-03-18 20:28 DEBUG windows-1253 Greek confidence = 0.07736056120819493
+2020-03-18 20:28 DEBUG ISO-8859-5 not active
+2020-03-18 20:28 DEBUG windows-1251 not active
+2020-03-18 20:28 DEBUG TIS-620 not active
+2020-03-18 20:28 DEBUG ISO-8859-9 Turkish confidence = 0.058954517443924354
+2020-03-18 20:28 DEBUG windows-1255 Hebrew confidence = 0.0
+2020-03-18 20:28 DEBUG windows-1255 not active
+2020-03-18 20:28 DEBUG windows-1255 not active
+2020-03-18 20:28 DEBUG no probers hit minimum threshold
+2020-03-18 20:28 DEBUG utf-8  confidence = 0.010000000000000009
+2020-03-18 20:28 DEBUG SHIFT_JIS Japanese confidence = 0.01
+2020-03-18 20:28 DEBUG EUC-JP Japanese confidence = 0.01
+2020-03-18 20:28 DEBUG GB2312 Chinese confidence = 0.01
+2020-03-18 20:28 DEBUG EUC-KR Korean confidence = 0.01
+2020-03-18 20:28 DEBUG CP949 Korean confidence = 0.01
+2020-03-18 20:28 DEBUG Big5 Chinese confidence = 0.01
+2020-03-18 20:28 DEBUG EUC-TW Taiwan confidence = 0.01
+2020-03-18 20:28 DEBUG windows-1251 Russian confidence = 0.04287208544097128
+2020-03-18 20:28 DEBUG KOI8-R Russian confidence = 0.04267168933257345
+2020-03-18 20:28 DEBUG ISO-8859-5 Russian confidence = 0.04115638241913234
+2020-03-18 20:28 DEBUG MacCyrillic Russian confidence = 0.043053736770758314
+2020-03-18 20:28 DEBUG IBM866 Russian confidence = 0.041618888271000076
+2020-03-18 20:28 DEBUG IBM855 Russian confidence = 0.042937660011323514
+2020-03-18 20:28 DEBUG ISO-8859-7 Greek confidence = 0.07596669588599164
+2020-03-18 20:28 DEBUG windows-1253 Greek confidence = 0.07736056120819493
+2020-03-18 20:28 DEBUG ISO-8859-5 Bulgairan confidence = 0.04058125617271866
+2020-03-18 20:28 DEBUG windows-1251 Bulgarian confidence = 0.04203734959610601
+2020-03-18 20:28 DEBUG TIS-620 Thai confidence = 0.04388330001408446
+2020-03-18 20:28 DEBUG ISO-8859-9 Turkish confidence = 0.058954517443924354
+2020-03-18 20:28 DEBUG windows-1255 Hebrew confidence = 0.0
+2020-03-18 20:28 DEBUG windows-1255 Hebrew confidence = 0.04710689178918433
+2020-03-18 20:28 DEBUG windows-1255 Hebrew confidence = 0.0475399820248699
+2020-03-18 20:28 DEBUG windows-1255 Hebrew confidence = 0.0475399820248699
+2020-03-18 20:28 ERROR url:https://www.ccu.edu.tw/file/index/CCU-PIMS-A-001_%E5%80%8B%E4%BA%BA%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E7%AE%A1%E7%90%86%E6%94%BF%E7%AD%96_v1.4_108.11.07.pdf
+2020-03-18 20:28 ERROR idx:907791
+2020-03-18 20:28 ERROR encoding:None
