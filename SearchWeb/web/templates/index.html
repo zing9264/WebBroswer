@@ -4,10 +4,15 @@
         <title>who am i</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/index-style.css' %}"/>
-        <script src="{% static 'js/index.js' %}"></script>
+        <script src="{% static 'js/index.js' %}" defer></script>
     </head>
     <body>
         <h1>Hello world!</h1>
         <h3>{{ now }}</h3>
+
+        <input type="text" name="search" value="">
+        <input type="button" name="searchBtn" value="search">
+
+        <div id="resultHtml"></div>
     </body>
 </html>
