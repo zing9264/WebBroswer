@@ -5,7 +5,23 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
 
-def hello_world(request):
+import pandas as pd
+import csv
+
+def Search(request):
     return render(request, 'index.html', {
         'now': str(datetime.today()),
+    })
+
+def ReadDB(request):
+	contentDB = pd.read_csv('E:/github/WebBroswer/SearchWeb/web/crawler/contentDB.csv',index_col=0)
+	print(contentDB);
+
+	for row in contentDB.iterrows():
+		print(row[1].URL)
+		print(row[1].content)
+		print(row[1].title)
+
+	return render(request, 'null.html', {
+        'data': contentDB,
     })

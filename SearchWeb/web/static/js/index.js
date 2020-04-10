@@ -66,12 +66,16 @@ function _onJsonReady(json) {
     result = json['hits']['hits']
 
     var element = document.querySelector('#resultHtml');
+    document.querySelectorAll('.resultHtmlList').forEach(e => e.remove());;
+
+
     for (var i=0; i<result.length; i++){
     	//console.log(result[i]['_source']['title'])
     	//console.log(result[i]['_source']['content'])
     	//console.log(result[i]['_source']['url'])
 
     	var para = document.createElement("div");
+    	para.classList.add("resultHtmlList");
     	var br = document.createElement("br");
 
     	var link = document.createElement("a");

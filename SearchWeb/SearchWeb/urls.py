@@ -19,11 +19,14 @@ from django.urls import path
 from django.conf.urls import include
 from django.urls import path
 
-from web.views import hello_world
+from web.views import Search
+from web.views import ReadDB
 
-from proxy.views import proxy_view
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello_world),
+    path('search/', Search),
+    path('readDB/', ReadDB),
+    path('', RedirectView.as_view(url='/search/'))
 ]
