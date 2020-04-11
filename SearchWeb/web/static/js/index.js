@@ -40,10 +40,10 @@ function searchFn(){
 function fetchData(searchText){
 
 	data = {
-	  "query" : { "match" : { "title" : "" }}
+	  "query" : { "query_string" : { "query" : "",  "fields" : ["title", "content"]}}
 	}
 
-	data['query']['match']['title'] = searchText
+	data['query']['query_string']['query'] = searchText
 	//console.log(data)
 
 	fetch("http://172.16.217.132:9200/test/instance/_search", {

@@ -54,9 +54,27 @@ curl -X POST 'localhost:9200/test/instance' -d '
   "url": "https://www.cs.ccu.edu.tw/"
 }'
 
+curl -X POST 'localhost:9200/test/instance' -d '
+{
+  "title": "測試內容",
+  "content": "資料內容，測試資料",
+  "url": "https://www.cs.ccu.edu.tw/"
+}'
+
 
 
 curl -X POST 'localhost:9200/test/instance/_search'  -d '
 {
   "query" : { "match" : { "content" : "測試" }}
+}'
+
+
+curl -X POST 'localhost:9200/test/instance/_search'  -d '
+{
+    "query": {
+        "query_string" : {
+            "query" : "測試",
+	    "fields" : ["title", "content"]
+        }
+    }
 }'
