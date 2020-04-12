@@ -4,11 +4,11 @@ curl -X GET 'http://localhost:9200/_cat/indices?v'
 
 curl 'localhost:9200/_mapping?pretty=true'
 
-curl 'localhost:9200/test/instance/_search'
+curl 'localhost:9200/sitedb/instance/_search'
 
-curl -X DELETE 'localhost:9200/test'
+curl -X DELETE 'localhost:9200/sitedb'
 
-curl -X PUT 'localhost:9200/test' -d '
+curl -X PUT 'localhost:9200/sitedb' -d '
 {
   "mappings": {
     "instance": {
@@ -41,7 +41,7 @@ curl -X PUT 'localhost:9200/test' -d '
 }'
 
 
-curl -X POST 'localhost:9200/test/instance' -d '
+curl -X POST 'localhost:9200/sitedb/instance' -d '
 {
   "title": "谷歌",
   "ip_addr": "8.8.8.8",
@@ -50,7 +50,7 @@ curl -X POST 'localhost:9200/test/instance' -d '
   "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
-curl -X POST 'localhost:9200/test/instance' -d '
+curl -X POST 'localhost:9200/sitedb/instance' -d '
 {
   "title": "中正大學",
   "ip_addr": "8.8.8.8",
@@ -59,7 +59,7 @@ curl -X POST 'localhost:9200/test/instance' -d '
   "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
-curl -X POST 'localhost:9200/test/instance' -d '
+curl -X POST 'localhost:9200/sitedb/instance' -d '
 {
   "title": "中正資工",
   "ip_addr": "8.8.8.8",
@@ -68,7 +68,7 @@ curl -X POST 'localhost:9200/test/instance' -d '
   "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
-curl -X POST 'localhost:9200/test/instance' -d '
+curl -X POST 'localhost:9200/sitedb/instance' -d '
 {
   "title": "測試內容",
   "ip_addr": "8.8.8.8",
@@ -79,23 +79,13 @@ curl -X POST 'localhost:9200/test/instance' -d '
 
 
 
-curl -X POST 'localhost:9200/test/instance/_search'  -d '
+curl -X POST 'localhost:9200/sitedb/instance/_search'  -d '
 {
   "query" : { "match" : { "content" : "測試" }}
 }'
 
 
-curl -X POST 'localhost:9200/test/instance/_search'  -d '
-{
-    "query": {
-        "query_string" : {
-          "query" : "測試",
-          "fields" : ["title", "content"]
-        }
-    }
-}'
-
-curl -X POST 'localhost:9200/test/instance/_search'  -d '
+curl -X POST 'localhost:9200/sitedb/instance/_search'  -d '
 {
     "query": {
         "query_string" : {

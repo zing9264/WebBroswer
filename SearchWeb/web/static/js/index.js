@@ -1,6 +1,10 @@
 
 console.log("test")
 
+//URL = "http://172.16.217.132:9200/sitedb/instance/_search"
+URL = "http://127.0.0.1:9200/sitedb/_search"
+
+searchTextValue = ''
 
 searchBtn = document.querySelector('input[name="searchBtn"]');
 searchBtn.addEventListener("click", searchFn);
@@ -9,6 +13,7 @@ function searchFn(){
 	searchText = document.querySelector('input[name="search"]');
 	console.log(searchText.value)
 
+	searchTextValue = searchText.value
 	fetchData(searchText.value)
 }
 
@@ -18,7 +23,7 @@ function fetchData(searchText){
 	data ={
 	    "query": {
 	        "query_string" : {
-	          "query" : "測試",
+	          "query" : "",
 	          "fields" : ["title", "content"],
 	          "analyzer": "ik_max_word"
 	        }
@@ -39,8 +44,10 @@ function fetchData(searchText){
 	data['query']['query_string']['query'] = searchText
 	//console.log(data)
 
-	fetch("http://172.16.217.132:9200/test/instance/_search", {
-			contentType: 'application/json',
+	fetch(URL, {
+			headers: {
+		      'content-type': 'application/json'
+		    },
 			method: 'POST',
 			body: JSON.stringify(data)
 			})
@@ -80,9 +87,9 @@ function _onJsonReady(json) {
     	para.appendChild(br);
 
     	var p = document.createElement("p");
+    	node = document.createTextNode(result[i]['_source']['title']);
     	link = document.createElement("a");
     	link.href = result[i]['_source']['URL'];
-    	node = document.createTextNode(result[i]['_source']['title']);
     	link.classList.add("titleStyle");
     	link.appendChild(node);
     	p.appendChild(link);
@@ -90,18 +97,16 @@ function _onJsonReady(json) {
 
 		//console.log(result[i]['highlight']['content'][0])
 		p = document.createElement("p");
-		if(typeof(result[i]['highlight']['content']) == 'undefined'){
+		if(typeof(result[i]['highlight']['content']) == 'undefined')
 			p.innerHTML = (result[i]['_source']['content']);
-
-		}
-		else{
+		else
 			p.innerHTML = result[i]['highlight']['content'][0];
 
-			
-		}
 		para.appendChild(p);
 
 		element.appendChild(para);
     }
+
+    window.history.pushState(null, null, '?text='+searchTextValue);
 }
 
