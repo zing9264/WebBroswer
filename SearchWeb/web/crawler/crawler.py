@@ -14,15 +14,15 @@ from urllib.parse import urlparse
 import datetime
 ISOTIMEFORMAT = '%Y-%m-%d %H:%M:%S'
 import logging
-import DataStruct 
-
+import DataStruct
+import ElasticSearchDB_ctrl as dbc
 
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M',
                     handlers=[logging.FileHandler('error.log', 'w', 'utf-8'),])
-                    
+
 logging.debug('Hello debug!')
 logging.info('Hello info!')
 logging.warning('Hello warning!')
@@ -59,7 +59,7 @@ def fetcher(url="https://www.ccu.edu.tw/"):
     print("response.status_code :"+ str(response.status_code))
     print("response.url :" + str(response.url))
     print("IP:" + str(ip))
-    resultData=fetchData(theTime,response.status_code,response.url,ip,response.text)
+    resultData=DataStruct.fetchData(theTime,response.status_code,response.url,ip,response.text)
 
     return resultData
     
@@ -79,8 +79,6 @@ def UrlQueueFilter(currentUrl):
         url = currentUrl + url
     return url
 
-
-
 if __name__ == "__main__":
     currentUrl = 'https://www.ccu.edu.tw/'
     fetchData = fetcher(currentUrl)
@@ -90,10 +88,15 @@ if __name__ == "__main__":
     print(fetchData.url)
     print(fetchData.ip)
     print(fetchData.content)
+    print('------------------------------')
+    fetchData.title, contextpool, links = ps.parser(fetchData.content)
+    fetchData.content="".join(contextpool)
+    siteDB = dbc.Elasticsearch_siteDB()
+    siteDB.deleteDB()
+    siteDB.newSiteDB()
+    siteDB.insertDataToDB(fetchData)
     #SiteDbInsert(fetchData)
-    title, contextpool, links = ps.parser(fetchData.content)
-
-
+    #title, contextpool, links = ps.parser(fetchData.content)
     '''
     print(url)
     print(title)

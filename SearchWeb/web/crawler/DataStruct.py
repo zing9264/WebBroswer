@@ -4,4 +4,5 @@ class fetchData():
         self.status_code = status_code
         self.url = url
         self.ip = ip
+        self.title=''
         self.content = content

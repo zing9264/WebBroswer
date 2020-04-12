@@ -78,3 +78,63 @@ curl -X POST 'localhost:9200/test/instance/_search'  -d '
         }
     }
 }'
+
+-------------------------------
+
+kibana:7.6.2
+
+
+DELETE /sitedb
+
+PUT /sitedb
+{
+  "mappings": {
+    "properties":{
+      "title":{ 
+        "type": "text",
+        "analyzer": "ik_max_word", 
+        "search_analyzer": "ik_max_word"
+      },  
+      "ip_addr":{ 
+        "type": "ip"
+      },  
+      "URL":{ 
+        "type": "text",
+        "analyzer": "ik_max_word", 
+        "search_analyzer": "ik_max_word"
+      }, 
+      "content":{ 
+        "type": "text",
+        "analyzer": "ik_max_word", 
+        "search_analyzer": "ik_max_word"
+      }, 
+      "lastFetchTime":{ 
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss"
+      }
+    }
+  }
+}
+
+POST  /sitedb/_doc/
+{ 
+  "title":"國立中正大學　National Chung Cheng University",
+  "ip_addr":"140.123.5.6",
+  "URL":"https://www.ccu.edu.tw/",
+  "content":"保證責任台灣農業合作社聯合社檢送「第98屆國際合作社節合作事業微電影徵選及繪畫比賽(含四格漫畫)參賽辦法」乙份，歡迎師生踴躍參加投稿。",
+  "lastFetchTime":"2020-04-12 11:29:25"
+}
+
+POST  /sitedb/_doc/
+{ 
+  "title":"國立中正大學　National Chung Cheng University",
+  "ip_addr":"140.123.5.6",
+  "URL":"https://www.ccu.edu.tw/",
+  "content":"",
+  "lastFetchTime":"2020-04-12 11:29:25"
+}
+
+GET /sitedb/_search
+{
+  "query" : { "match" : { "title": "中正" }}
+}
