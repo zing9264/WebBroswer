@@ -4,7 +4,26 @@ console.log("test")
 //URL = "http://172.16.217.132:9200/sitedb/instance/_search"
 URL = "http://127.0.0.1:9200/sitedb/_search"
 
-searchTextValue = ''
+page = 1
+pageSize = 5;
+var searchTextValue = ''
+
+pageContent = document.querySelector('.NonDisplay-Page').textContent;
+if(pageContent != '')
+	page = pageContent
+console.log(page)
+
+
+divText = document.querySelector('.NonDisplay');
+textContent = decodeURIComponent(divText.textContent)
+//console.log(divText.textContent)
+
+if(divText.textContent != ''){
+	document.querySelector('input[name="search"]').value = textContent;
+	searchTextValue = textContent;
+	fetchData(searchTextValue)
+}
+
 
 searchBtn = document.querySelector('input[name="searchBtn"]');
 searchBtn.addEventListener("click", searchFn);
@@ -13,6 +32,10 @@ function searchFn(){
 	searchText = document.querySelector('input[name="search"]');
 	console.log(searchText.value)
 
+	page = 1;
+	pageContent = ''
+	document.querySelector('.NonDisplay-Page').textContent = '';
+	document.querySelector('.NonDisplay').textContent = '';
 	searchTextValue = searchText.value
 	fetchData(searchText.value)
 }
@@ -70,7 +93,25 @@ function _onJsonReady(json) {
     document.querySelectorAll('.resultHtmlList').forEach(e => e.remove());;
 
 
-    for (var i=0; i<result.length; i++){
+    pagecount = Math.ceil(result.length / pageSize)
+    start = (page - 1) * pageSize
+
+    document.querySelectorAll('.page > a').forEach(e => e.remove());;
+    var pageDiv = document.querySelector('.page');
+    for(var i=0; i<pagecount; i++){
+	    var link = document.createElement("a")
+	    link.href = window.location.origin + "/search/" + encodeURIComponent(searchTextValue) + "/" + (i+1)
+	    node = document.createTextNode(i+1);
+		link.appendChild(node);
+	    
+	    if(page == i+1){
+	    	link.href = "javascript:return false;";
+	    	link.classList.add("currentPage");
+	    }
+	    pageDiv.appendChild(link);
+	}
+
+    for (var i=start; i<result.length && i<start+pageSize; i++){
     	//console.log(result[i]['_source']['title'])
     	//console.log(result[i]['_source']['content'])
     	//console.log(result[i]['_source']['URL'])
@@ -104,9 +145,13 @@ function _onJsonReady(json) {
 
 		para.appendChild(p);
 
+		para.classList.add("fadeInUp");
 		element.appendChild(para);
     }
 
-    window.history.pushState(null, null, '?text='+searchTextValue);
+    if(pageContent == '')
+    	window.history.pushState(null, null, window.location.origin + "/search/" + encodeURIComponent(searchTextValue) + "/" + 1);
+    else
+    	window.history.pushState(null, null, window.location.origin + "/search/" + encodeURIComponent(searchTextValue) + "/" + pageContent);
 }
 

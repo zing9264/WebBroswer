@@ -9,8 +9,12 @@ import pandas as pd
 import csv
 
 def Search(request):
-    return render(request, 'index.html', {
-        'now': str(datetime.today()),
+    return render(request, 'index.html')
+
+def Page(request, searchText, page):
+	return render(request, 'index.html', {
+        'searchText': searchText,
+        'page': page
     })
 
 def ReadDB(request):
@@ -25,3 +29,4 @@ def ReadDB(request):
 	return render(request, 'null.html', {
         'data': contentDB,
     })
+

@@ -7,11 +7,14 @@
         <script src="{% static 'js/index.js' %}" defer></script>
     </head>
     <body>
+        <div class="NonDisplay">{{searchText}}</div>
+        <div class="NonDisplay-Page">{{page}}</div>
         <div class="center">
             <input type="text" name="search" value="">
             <input type="button" name="searchBtn" value="search" >
         </div>
 
         <div class="flex" id="resultHtml"></div>
+        <div class="page flipInX"></div>
     </body>
 </html>

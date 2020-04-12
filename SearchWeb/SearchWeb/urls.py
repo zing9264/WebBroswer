@@ -26,7 +26,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search/', Search),
+    path('search/', include('web.urls')),
     path('readDB/', ReadDB),
     path('', RedirectView.as_view(url='/search/'))
 ]
