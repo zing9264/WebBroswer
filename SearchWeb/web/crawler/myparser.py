@@ -7,14 +7,18 @@ from bs4 import BeautifulSoup
 import os
 from functools import cmp_to_key
 
-def parser(idx):
+def parser(page):
     contextpool = []
-    links=[]
+    links = []
+
+    '''
     opth = os.getcwd()
     path = opth+r'\htmldb\\'+idx+r".html"
     print(path)
     with open(path, 'r', encoding='UTF-8', newline='') as f:
         page=f.read()
+    '''
+
     soup = BeautifulSoup(page, 'html.parser')
    # print(soup.prettify())
     title_tag = soup.title

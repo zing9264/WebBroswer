@@ -14,8 +14,8 @@ def Search(request):
     })
 
 def ReadDB(request):
-	contentDB = pd.read_csv('E:/github/WebBroswer/SearchWeb/web/crawler/contentDB.csv',index_col=0)
-	print(contentDB);
+	contentDB = pd.read_csv('web\crawler\contentDB.csv',index_col=0)
+	print(contentDB)
 
 	for row in contentDB.iterrows():
 		print(row[1].URL)

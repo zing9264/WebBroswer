@@ -9,8 +9,15 @@ import myparser as ps
 from queue import Queue
 from functools import cmp_to_key
 import time
-
+import socket
+from urllib.parse import urlparse
+import datetime
+ISOTIMEFORMAT = '%Y-%m-%d %H:%M:%S'
 import logging
+import DataStruct 
+
+
+
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M',
@@ -25,35 +32,36 @@ logging.critical('Hello critical!')
 maxarray = 1000000
 Urlqueue = Queue(10000)
 
+def DomaintoIp(url):
+    res = urlparse(url)
+    try:
+        ip=socket.getaddrinfo(res.netloc, res.port, proto=socket.SOL_TCP)[0][4][0]
+    except:
+        print("dns2ip:Error")
+    return ip
+
+
 def fetcher(url="https://www.ccu.edu.tw/"):
     #1.向伺服器傳送get請求
-    time.sleep(3)
+    theTime = datetime.datetime.now().strftime(ISOTIMEFORMAT)
     response=requests.get(url, timeout = 3)
+    #checkinDB() 
+    time.sleep(1)
+
     #2.使用response處理伺服器的響應內容
     if (response.status_code != 200):
         print("response.status_code :"+response.status_code)
-        return -1, response.url
-        
-    print(response.url)
-    result,seendb,idx=DBCtrl.checkinSeenDB(response.url) #檢查資料是否存在
-    print(result)
-    if (result == 0):
-        pass
-    elif (result == -1):
-        pass
-    else: #若都沒出現在資料庫中，將其網頁送至HTML的資料庫，待文本分析處理
-        with open('htmldb/' + idx + ".html", 'w', encoding=response.encoding, newline='') as f:
-            try:
-                f.write(response.text)
-            except:
-                print('寫入網頁發生錯誤')
-                logging.error('url:'+response.url)
-                logging.error('idx:'+idx)
-                logging.error('encoding:'+str(response.encoding))
+        return - 1, response.url
 
-        DBCtrl.updateSeenDB(seendb)#更新已看過的資料庫
-    print("checkfin-------------")
-    return idx, response.url
+    ip= DomaintoIp(response.url)
+    print("----Fetch Data Detail-----")
+    print("Fetch Time :"+theTime)
+    print("response.status_code :"+ str(response.status_code))
+    print("response.url :" + str(response.url))
+    print("IP:" + str(ip))
+    resultData=fetchData(theTime,response.status_code,response.url,ip,response.text)
+
+    return resultData
     
 def UrlQueueFilter(currentUrl):
     url = Urlqueue.get()
@@ -75,8 +83,18 @@ def UrlQueueFilter(currentUrl):
 
 if __name__ == "__main__":
     currentUrl = 'https://www.ccu.edu.tw/'
-    idx, url = fetcher(currentUrl)
-    title, contextpool, links = ps.parser(idx)
+    fetchData = fetcher(currentUrl)
+    print('------------------------------')
+    print(fetchData.time)
+    print(fetchData.status_code)
+    print(fetchData.url)
+    print(fetchData.ip)
+    print(fetchData.content)
+    #SiteDbInsert(fetchData)
+    title, contextpool, links = ps.parser(fetchData.content)
+
+
+    '''
     print(url)
     print(title)
     print(contextpool)
@@ -97,5 +115,4 @@ if __name__ == "__main__":
             continue
         title, contextpool, links = ps.parser(idx)
         DBCtrl.contentDBinsert(url, "[s=p=l=i=t]".join(contextpool), title)
-
-
+    '''
