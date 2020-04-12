@@ -1,4 +1,5 @@
 
+
 curl -X GET 'http://localhost:9200/_cat/indices?v'
 
 curl 'localhost:9200/_mapping?pretty=true'
@@ -17,15 +18,22 @@ curl -X PUT 'localhost:9200/test' -d '
           "analyzer": "ik_max_word",
           "search_analyzer": "ik_max_word"
         },
+        "ip_addr":{
+          "type": "ip"
+        },
+        "URL": {
+          "type": "text",
+          "analyzer": "ik_max_word",
+          "search_analyzer": "ik_max_word"
+        },
         "content": {
           "type": "text",
           "analyzer": "ik_max_word",
           "search_analyzer": "ik_max_word"
         },
-        "url": {
-          "type": "text",
-          "analyzer": "ik_max_word",
-          "search_analyzer": "ik_max_word"
+        "lastFetchTime":{
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
         }
       }
     }
@@ -36,29 +44,37 @@ curl -X PUT 'localhost:9200/test' -d '
 curl -X POST 'localhost:9200/test/instance' -d '
 {
   "title": "谷歌",
+  "ip_addr": "8.8.8.8",
+  "URL": "https://www.google.com",
   "content": "測試內容",
-  "url": "https://www.google.com"
+  "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
 curl -X POST 'localhost:9200/test/instance' -d '
 {
   "title": "中正大學",
+  "ip_addr": "8.8.8.8",
+  "URL": "https://www.ccu.edu.tw",
   "content": "測試資料",
-  "url": "https://www.ccu.edu.tw"
+  "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
 curl -X POST 'localhost:9200/test/instance' -d '
 {
   "title": "中正資工",
+  "ip_addr": "8.8.8.8",
+  "URL": "https://www.cs.ccu.edu.tw/",
   "content": "資料內容",
-  "url": "https://www.cs.ccu.edu.tw/"
+  "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
 curl -X POST 'localhost:9200/test/instance' -d '
 {
   "title": "測試內容",
+  "ip_addr": "8.8.8.8",
+  "URL": "https://www.cs.ccu.edu.tw/",
   "content": "資料內容，測試資料",
-  "url": "https://www.cs.ccu.edu.tw/"
+  "lastFetchTime": "2020-01-01 00:00:00"
 }'
 
 
@@ -73,9 +89,31 @@ curl -X POST 'localhost:9200/test/instance/_search'  -d '
 {
     "query": {
         "query_string" : {
-            "query" : "測試",
-	    "fields" : ["title", "content"]
+          "query" : "測試",
+          "fields" : ["title", "content"]
         }
+    }
+}'
+
+curl -X POST 'localhost:9200/test/instance/_search'  -d '
+{
+    "query": {
+        "query_string" : {
+          "query" : "測試",
+          "fields" : ["title", "content"],
+          "analyzer": "ik_max_word"
+        }
+    },
+    "size": 1000,
+    "from": 0,
+    "highlight": {
+      "pre_tags": ["<tag1>", "<tag2>"],
+      "post_tags": ["</tag1>", "</tag2>"],
+      "fields": {
+        "title": {},
+        "content": {},
+        "URL": {}
+      }
     }
 }'
 

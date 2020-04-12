@@ -7,12 +7,10 @@
         <script src="{% static 'js/index.js' %}" defer></script>
     </head>
     <body>
-        <h1>Search!</h1>
-        <h3>{{ now }}</h3>
-
-        <input type="text" name="search" value="">
-        <input type="button" name="searchBtn" value="search">
-
-        <div id="resultHtml"></div>
+        <div class="center">
+        <input type="text" name="search" value="" style="float:middle">
+        <input type="button" name="searchBtn" value="search" >
+        </div>
+        <div class="flex" id="resultHtml"></div>
     </body>
 </html>

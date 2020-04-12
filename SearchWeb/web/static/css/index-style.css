@@ -1,3 +1,68 @@
+
 body {
-   background-color: gray;
+	background-color: white;
+}
+
+a {
+	text-decoration: none;
+	color: grey;
+	cursor: default;
+	font-size: 10px;
+}
+
+.flex {
+	display: flex;
+	padding: 15px;
+	flex-direction: column;
+	flex-wrap: wrap
+}
+
+.resultHtmlList {
+	margin:0px auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 50%
+}
+
+input[type="text"] {
+	padding:5px 15px; 
+	border:2px black solid;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+}
+
+input[type="button"] {
+	padding:5px 15px; 
+	background:#ccc; 
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; 
+	margin-left: 10px;
+}
+
+.center {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+ 
+.titleStyle {
+	color: blue;
+	cursor: pointer;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+span {
+	color: #FF4500;
+}
+
+p {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
