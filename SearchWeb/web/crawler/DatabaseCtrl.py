@@ -6,20 +6,22 @@ import csv
 maxarray = 1000000
 def urlqueueDBget():
     urlqueueDB=[]
-    with open('urlqueueDB.csv', newline='') as csvfile:
+    with open('urlqueueDB.csv','r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         for row in reader:
-            urlqueueDB.extend(row)
+            print("reader:")
+            print(row)
+            urlqueueDB.append(row)
     return urlqueueDB
 
 
 def urlqueueDBinsert(datas):
-    with open('urlqueueDB.csv', 'w', newline='') as csvfile:
+    with open('urlqueueDB.csv', 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         for row in datas:
             print(row)
-            writer.writerow([row])
+            writer.writerow(row)
 
 '''
 def contentDBget():

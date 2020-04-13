@@ -12,8 +12,10 @@ import time
 import socket
 from urllib.parse import urlparse
 from urllib.parse import urljoin
+from urllib.parse import urldefrag
 import requests.packages.urllib3
 requests.packages.urllib3.disable_warnings()
+#coding=utf-8
 
 
 import datetime
@@ -50,7 +52,13 @@ def fetcher(url="https://www.ccu.edu.tw/"):
     time.sleep(1)
     #1.向伺服器傳送get請求
     theTime = datetime.datetime.now().strftime(ISOTIMEFORMAT)
-    response=requests.get(url, timeout = 3, verify=False)
+    try:
+        response = requests.get(url, timeout=3, verify=False)
+        print('success')
+    except requests.exceptions.RequestException as e:
+        print(e)
+        return DataStruct.fetchData(time=theTime,status_code=504,url=url)
+
     #checkinDB() 
     time.sleep(1)
     ip= DomaintoIp(response.url)
@@ -66,6 +74,7 @@ def fetcher(url="https://www.ccu.edu.tw/"):
     print("response.url :" + str(response.url))
     print("IP:" + str(ip))
     resultData = DataStruct.fetchData(time=theTime, status_code=response.status_code, url=response.url, ip=ip, content=response.text)
+
     return resultData
     
 def UrlQueueFilter(url, currentUrl):
@@ -80,9 +89,10 @@ def UrlQueueFilter(url, currentUrl):
         pass
     else:
         url=urljoin(currentUrl,url)
-    newurl = urlparse(url,allow_fragments=False)
+    newurl, dummy_frag = urldefrag(url)
     print(newurl)
-    return newurl.geturl()
+    print(dummy_frag)
+    return newurl
 
 def insertDB(url,data):
     checkID=siteDB.CheckDBUrl(url)
@@ -97,6 +107,7 @@ def saveQueue():
     urlqueueDB = []
     while (Urlqueue.empty() == False):
         item = Urlqueue.get()
+        print("item=",str(item))
         urlqueueDB.append(item)
         tmpqueue.put(item)
     DBCtrl.urlqueueDBinsert(urlqueueDB)
@@ -108,8 +119,11 @@ def loadQueue():
 
 
 
-def startFetch(currentUrl= 'https://www.ccu.edu.tw/'):
+def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=7):
+    currentLevel = inputLevel
+    currentUrl= inputurl
     fetchData = fetcher(currentUrl)
+    
     print('------------------------------')
     print(fetchData.time)
     print(fetchData.status_code)
@@ -131,13 +145,20 @@ def startFetch(currentUrl= 'https://www.ccu.edu.tw/'):
         print(tmpUrl)
         if (tmpUrl == False):
             continue
-        Urlqueue.put(tmpUrl)
+        Urlqueue.put([tmpUrl,str(int(currentLevel)-1)])
     saveQueue()
     loadQueue()
 
     while (Urlqueue.empty() == False):
-        currentUrl = Urlqueue.get()
-        print("currentUrl=" + currentUrl)
+        item = Urlqueue.get()
+        currentUrl = item[0]
+        currentLevel=item[1]
+        print("currentUrl=" + str(currentUrl))
+        print("currentLevel=" + str(currentLevel))
+        if (currentLevel == 0):
+            continue
+
+        
         urlIDcheck = siteDB.CheckDBUrl(currentUrl)
         if (urlIDcheck == 'NotInDB'):
             fetchData = fetcher(currentUrl)
@@ -153,7 +174,7 @@ def startFetch(currentUrl= 'https://www.ccu.edu.tw/'):
                 print(tmpUrl)
                 if (tmpUrl == False):
                     continue
-                Urlqueue.put(tmpUrl)
+                Urlqueue.put([tmpUrl,str(int(currentLevel)-1)])
             saveQueue()
             loadQueue()
         else:
@@ -163,4 +184,4 @@ def startFetch(currentUrl= 'https://www.ccu.edu.tw/'):
 
 
 if __name__ == "__main__":
-    startFetch()
+    startFetch(inputLevel=7)

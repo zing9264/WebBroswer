@@ -103,6 +103,7 @@ class Elasticsearch_siteDB():
     def getIDdata(self, ID):
         url = 'http://' + self.serverIP + '/sitedb/_doc/'+ID
         headers = {'Content-Type': 'application/json'}
+        print(url)
         x = requests.get(url, headers=headers)
         a = x.json()
         res = DataStruct.fetchData(a['_source']['lastFetchTime'],000,
