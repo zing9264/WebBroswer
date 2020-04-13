@@ -96,22 +96,46 @@ function _onJsonReady(json) {
     pagecount = Math.ceil(result.length / pageSize)
     start = (page - 1) * pageSize
 
+	page = parseInt(page)
+	if(page-2 > 0)
+		i = page-2;
+	else
+		i = 1;
+	if(page+2 <= pagecount)
+		end = page+2;
+	else
+		end = pagecount;
+
+	if(i==1){
+		if(pagecount>=5)
+			end = 5;
+		else
+			end = pagecount;
+	}
+	if(end==pagecount && i!=1){
+		if( (end-4)>0 )
+			i = end-4;
+		else
+			i = 1;
+	}
+
     document.querySelectorAll('.page > a').forEach(e => e.remove());;
     var pageDiv = document.querySelector('.page');
-    for(var i=0; i<pagecount; i++){
+    for(var i; i<=end; i++){
 	    var link = document.createElement("a")
-	    link.href = window.location.origin + "/search/" + encodeURIComponent(searchTextValue) + "/" + (i+1)
-	    node = document.createTextNode(i+1);
+	    link.href = window.location.origin + "/search/" + encodeURIComponent(searchTextValue) + "/" + (i)
+	    node = document.createTextNode(i);
 		link.appendChild(node);
 	    
-	    if(page == i+1){
+	    if(page == i){
 	    	link.href = "javascript:return false;";
 	    	link.classList.add("currentPage");
 	    }
 	    pageDiv.appendChild(link);
 	}
 
-    for (var i=start; i<result.length && i<start+pageSize; i++){
+
+    for (i=start; i<result.length && i<start+pageSize; i++){
     	//console.log(result[i]['_source']['title'])
     	//console.log(result[i]['_source']['content'])
     	//console.log(result[i]['_source']['URL'])
