@@ -1,0 +1,1022 @@
+﻿<html lang="zh-TW">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+            <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>國立中正大學　National Chung Cheng University</title>
+
+        <script src="/lib/js/tether.min.js"  crossorigin="anonymous"></script>
+        <script src="/lib/bootstrap/js/bootstrap.js"  crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
+        
+        <script src="/lib/js/popper.js"  crossorigin="anonymous"></script>
+        <script src="/lib/js/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="/css/index.css" crossorigin="anonymous">
+        <script src="/lib/bootstrap/js/bootstrap.bundle.js"  crossorigin="anonymous"></script>
+        <script type="application/javascript" src="/lib/js/top_list.js"></script>
+        <link rel="icon" href="/image/short_icon.png" type="image/x-icon">
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150745955-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150745955-1');
+</script>
+
+
+            <script type="application/javascript">
+        $('.carousel').carousel('cycle', {
+            interval: 2000
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="/css/footer.css?20191022">
+    <link rel="stylesheet" type="text/css" href="/css/index.css?20200228">
+    <link rel="stylesheet" type="text/css" href="/css/marquee.css?20200312">
+    <script type="application/javascript" src="/lib/js/hyperlink.js"></script>
+    <script type="application/javascript" src="/lib/js/marquee.js?20200201"></script>
+    <script type="application/javascript" src="/lib/js/index.js"></script>
+
+</head>
+
+<body onclick="hide_top_list()">
+    <h1 style="display: none">國立中正大學首頁</h1>
+<div id="common" class="d-md-block d-none" style="width: 8rem;position: fixed;right: 0; bottom: 1rem; z-index: 9999;">
+    <div class=" pl-4 pr-2 text-center bar-cursor"  onclick="show_useful_system();">
+        <img src="/image/useful_system.png" style="width: 5rem" alt="常用系統"><br/>
+    </div>
+    <div class=" pl-4 pr-2 text-center bar-cursor" onclick="show_useful_link();">
+        <img src="/image/useful_link.png" style="width: 5rem" alt="常用連結"><br/>
+    </div>
+</div>
+<div id="common" class="d-md-none d-block" style="width: 6rem;position: fixed;right: 0; bottom: 1rem; z-index: 9999;">
+    <div class=" pl-4 pr-2 text-center bar-cursor"  onclick="show_useful_system();">
+        <img src="/image/useful_system.png" style="width: 4rem" alt="常用系統"><br/>
+    </div>
+    <div class=" pl-4 pr-2 text-center bar-cursor" onclick="show_useful_link();">
+        <img src="/image/useful_link.png" style="width: 4rem" alt="常用連結"><br/>
+    </div>
+</div>
+<div id="bar">
+    <div id="bar-up" class="bg-bar-up">
+        <div class="container bar-max">
+            <div class="row no-gutters  justify-content-between no-gutters">
+                <a href="/index.php" class="d-block col-auto p-2" id="bar-LOGO">
+                    <img src="/image/ccu_logo.png" style="width: 16vw;min-width: 140px;cursor: pointer;" alt="國立中正大學">
+                </a>
+                <div class="col container d-flex align-items-center justify-content-end flex-wrap pr-2">
+                    <div class="row m-0 mt-1 mb-1 h6">
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="/student.php"><span class="bar-cursor" >學生</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="/staff.php"><span class="bar-cursor">教職員</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="/customer.php"><span class="bar-cursor">訪客</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://140.123.13.16/welcome.php" target="_blank"><span class="bar-cursor">新生</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://www.alumni.ccu.edu.tw/wpnew/" target="_blank"><span class="bar-cursor">校友</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://deptrdc.ccu.edu.tw/neweb/" target="_blank"><span class="bar-cursor">中正之友</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://secretary.ccu.edu.tw/donate/" target="_blank"><span class="bar-cursor">捐款中正</span></a>
+                        <div class="col-auto rounded d-sm-flex d-none">
+                            <label for="keyword" style="display: none">搜尋</label>
+                            <input type="text" size="10" value="" name="keyword" id="keyword" class="rounded-left border-0" style="height:1.5rem" title="站內搜尋">
+                            <img src="/image/search_icon.png" class="rounded-right" style="background-color: #9cc1e6; height: 1.5rem;width: 1.5rem;padding: 0.3rem 0.3rem 0.3rem 0.3rem;cursor: pointer" alt="開始搜尋"
+                                 onclick="window.open('https://www.google.com/search?&q=site%3Awww.ccu.edu.tw+'+ document.getElementById('keyword').value +'&oq=site%3Awww.ccu.edu.tw+administrative')">
+                        </div>
+                        <div class="col-sm-auto mt-sm-0 mt-2 col-12 rounded d-sm-flex d-none">
+                            <div class="rounded-left px-2 align-items-center d-flex" unselectable="on" onselectstart="return false;" style="background-color: #ffffff; color: #217fc0;font-size:0.8rem; -moz-user-select: none;-webkit-user-select:none;">中文</div>
+                            <div class="rounded-right px-2 point_baseline align-items-center d-flex" style="background-color: #9cc1e6; color: #FFFFFF;font-size: 0.8rem"><a href="/eng/index.php">ENG</a></div>
+                        </div>
+                        <a class="btn mr-3 p-0 d-flex d-lg-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <img src="/image/bar_menu_icon.png"  style=" height: 1.2rem;width: 1.2rem;" alt="選單"></a>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 collapse text-white text-nowrap justify-content-center bg-bar-menu py-3 d-lg-none" id="collapseExample" >
+                    <div class="col-auto rounded d-flex d-sm-none mb-2">
+                        <label for="keyword" style="display: none">搜尋</label>
+                        <input type="text" size="10" value="" name="keyword" id="keyword" class="rounded-left border-0" style="height:1.5rem" title="站內搜尋">
+                        <img src="/image/search_icon.png" class="rounded-right" style="background-color: #9cc1e6; height: 1.5rem;width: 1.5rem;padding: 0.3rem 0.3rem 0.3rem 0.3rem;cursor: pointer" alt="開始搜尋">
+                    </div>
+                    <div class="col-auto rounded d-flex d-sm-none mb-2">
+                        <div class="rounded-left pl-2 pr-2 point_baseline d-flex align-items-center" style="background-color: #ffffff; color: #217fc0;font-size:0.8rem">中文</div>
+                        <div class="rounded-right pl-2 pr-2 point_baseline d-flex align-items-center" style="background-color: #9cc1e6; color: #FFFFFF;font-size: 0.8rem"><a href="/eng/index.php">ENG</a></div>
+                    </div>
+                    <div class="col-10 row m-0 align-items-center justify-content-start p-3" style="border-top: white 1px solid;">
+                        <a class="d-block col-auto bar_identity_but" href="student.php">學生</a>
+                        <a class="d-block col-auto bar_identity_but" href="staff.php">教職員</a>
+                        <a class="d-block col-auto bar_identity_but" href="customer.php">訪客</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://140.123.13.16/welcome.php" target="_blank">新生</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://www.alumni.ccu.edu.tw/wpnew/" target="_blank">校友</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://deptrdc.ccu.edu.tw/neweb/" target="_blank">中正之友</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://secretary.ccu.edu.tw/donate/" target="_blank">捐款中正</a>
+                    </div>
+                    <div class="col-10 row m-0  align-items-center justify-content-start p-3" style="border-top: white 1px solid;">
+                        <a class="d-block col-auto bar_identity_but" href="/about_ccu.php">關於中正</a>
+                        <a class="d-block col-auto bar_identity_but" href="/academic.php">學術單位</a>
+                        <a class="d-block col-auto bar_identity_but" href="/administrative.php">行政單位</a>
+                        <a class="d-block col-auto bar_identity_but" href="/research_list.php">學術研究</a>
+                        <a class="d-block col-auto bar_identity_but" href="/administrative_service.php">行政服務</a>
+                    </div>
+                    <div class="col-10 row m-0 align-items-center justify-content-start p-3" style="border-top: white 1px solid;border-bottom: white 1px solid;">
+                        <a class="d-block col-auto bar_identity_but" href="https://portal.ccu.edu.tw/" target="_blank"><span>單一入口</span></a>
+                        <!--<a class="d-block col-auto bar_identity_but" href="https://ecourse.ccu.edu.tw/"  target="_blank"><span>教學課程平台</span></a>-->
+                        <a class="d-block col-auto bar_identity_but" href="https://ecourse2.ccu.edu.tw/autologin.php"  target="_blank"><span>教學課程平台</span></a>
+                        <a class="d-block col-auto bar_identity_but" href="https://my.edoc.ccu.edu.tw/edocsys/index.jsp"  target="_blank"><span>電子公文</span></a>
+                        <a class="d-block col-auto bar_identity_but" href="/public_info.php" target="_blank"><span>公開資訊</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bar-down" class="d-none d-lg-flex align-items-center bg-bar-down">
+        <div class="container bar-max">
+            <div class="row no-gutters  justify-content-between no-gutters ">
+                <div class="col-auto">
+                    <div class="row m-0 d-flex align-items-center">
+                        <a href="/about_ccu.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">關於中正</a>
+                        <a href="/academic.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">學術單位</a>
+                        <a href="/administrative.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">行政單位</a>
+                        <a href="/research_list.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">學術研究</a>
+                        <a href="/administrative_service.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">行政服務</a>
+                    </div>
+                </div>
+                <div class="col-lg col-12 container d-flex align-items-center justify-content-lg-end justify-content-start pr-2">
+                    <div class="row m-0  d-flex align-items-center">
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://portal.ccu.edu.tw/" target="_blank">單一入口</a>
+                        <!--<a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://ecourse.ccu.edu.tw/" target="_blank">教學課程平台</a>-->
+                        <!--<a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://ecourse2.ccu.edu.tw/autologin.php" target="_blank">eCourse2</a>-->
+
+                        <div class="nav-item dropdown" id="ecourse_dropdown">
+                            <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教學課程平台</a>
+                                <div class="dropdown-menu dropdown_menu_overflow" aria-labelledby="dropdown01" style="overflow-y: auto;">
+                                    <a class="dropdown-item" href="https://ecourse2.ccu.edu.tw/autologin.php" target="_blank">eCourse2</a>
+                                    <a class="dropdown-item" href="https://ecourse.ccu.edu.tw/" target="_blank">教學課程平台</a>
+                                </div>
+                        </div>
+                        <script rel="script" type="text/javascript">
+                            document.getElementById("ecourse_dropdown").click();
+                        </script>
+
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://my.edoc.ccu.edu.tw/edocsys/index.jsp" target="_blank">電子公文</a>
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="http://exams.ccu.edu.tw/index.php" target="_blank">招生資訊</a>
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="/public_info.php" target="_blank">公開資訊</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="useful-system" class="p-md-5 p-2 rounded container-fluid no-gutters d-flex flex-wrap justify-content-center" style="display:none!important;">
+    <div class="row w-100 d-flex justify-content-center flex-wrap text-center container-fluid align-items-start" style=" max-width: 1100px!important;width: 100vw!important;">
+        <div class="row justify-content-around col-12 bg-white mt-md-0 mt-3 align-items-center" style="border-radius: 1rem;height: 3rem;align-items: center">
+            <div class="col h5 font-weight-bold align-items-center">常用系統</div>
+        </div>
+        <div class="row justify-content-around col-12 text-white">
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="/admin/">
+                    <div><img src="/image/useful_sysytem/02.png" class="useful_img mr-3 d-md-flex d-none" alt="公告系統"></div>
+                    <div class="h6 text-left">公告系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://oldw3.ccu.edu.tw/newssubmit/" target="_blank">
+                    <div><img src="/image/useful_sysytem/06.png" class="useful_img mr-3 d-md-flex d-none" alt="新聞投遞系統"></div>
+                    <div class="h6 text-left">新聞投遞系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://coursemap.ccu.edu.tw" target="_blank">
+                    <div><img src="/image/useful_sysytem/23.png" class="useful_img mr-3 d-md-flex d-none" alt="課程地圖"></div>
+                    <div class="h6 text-left">課程地圖</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://cyberccu.ccu.edu.tw/index_0.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/04.png" class="useful_img mr-3 d-md-flex d-none" alt="中正網路大學"></div>
+                    <div class="h6 text-left">中正網路大學</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www026197.ccu.edu.tw/salarysys01/" target="_blank">
+                    <div><img src="/image/useful_sysytem/16.png" class="useful_img mr-3 d-md-flex d-none" alt="員工薪資查詢"></div>
+                    <div class="h6 text-left">員工薪資查詢</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://affairs.ccu.edu.tw/student/login" target="_blank">
+                    <div><img src="/image/useful_sysytem/11.png" class="useful_img mr-3 d-md-flex d-none" alt="學位服借用管理系統"></div>
+                    <div class="h6 text-left">學位服借用管理系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://cloud.ccu.edu.tw/Register/" target="_blank">
+                    <div><img src="/image/useful_sysytem/20.png" class="useful_img mr-3 d-md-flex d-none" alt="NUCloud"></div>
+                    <div class="h6 text-left">NUCloud</div>
+                </a>
+
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <!--<a class="row align-items-center p-3 d-flex text-white" href="https://ecourse.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/useful_sysytem/15.png" class="useful_img mr-3 d-md-flex d-none" alt="教學課程平台"></div>
+                    <div class="h6 text-left">教學課程平台</div>
+                </a>-->
+                <a class="row align-items-center p-3 d-flex text-white" href="https://ecourse2.ccu.edu.tw/autologin.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/24.png" class="useful_img mr-3 d-md-flex d-none" alt="eCourse2教學課程系統"></div>
+                    <div class="h6 text-left">eCourse2教學課程系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://sslvpn.ccu.edu.tw/dana-na/auth/url_5/welcome.cgi" target="_blank">
+                    <div><img src="/image/useful_sysytem/04.png" class="useful_img mr-3 d-md-flex d-none" alt="電子公文(VPN)"></div>
+                    <div class="h6 text-left">電子公文(VPN)</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/parttime/index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/01.png" class="useful_img mr-3 d-md-flex d-none" alt="學習暨勞僱時數登錄"></div>
+                    <div class="h6 text-left">學習暨勞僱時數登錄</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/AMS/" target="_blank">
+                    <div><img src="/image/useful_sysytem/08.png" class="useful_img mr-3 d-md-flex d-none" alt="財產管理系統"></div>
+                    <div class="h6 text-left">財產管理系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/quitapply/Qa_index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/09.png" class="useful_img mr-3 d-md-flex d-none" alt="員工網路離校"></div>
+                    <div class="h6 text-left">員工網路離校</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/account/index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/14.png" class="useful_img mr-3 d-md-flex d-none" alt="會計WEB查詢系統"></div>
+                    <div class="h6 text-left">會計WEB查詢系統</div>
+                </a>
+
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/evaluation/001.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/21.png" class="useful_img mr-3 d-md-flex d-none" alt="線上教學意見系統"></div>
+                    <div class="h6 text-left">線上教學意見系統</div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www026197.ccu.edu.tw/dutysys01/" target="_blank">
+                    <div><img src="/image/useful_sysytem/13.png" class="useful_img mr-3 d-md-flex d-none" alt="差勤系統"></div>
+                    <div class="h6 text-left">差勤系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://kiki.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/useful_sysytem/03.png" class="useful_img mr-3 d-md-flex d-none" alt="教務系統"></div>
+                    <div class="h6 text-left">教務系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/pt_proj/index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/07.png" class="useful_img mr-3 d-md-flex d-none" alt="兼任助理、臨時工日誌"></div>
+                    <div class="h6 text-left">兼任助理、臨時工日誌</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www026197.ccu.edu.tw/gensys01/" target="_blank">
+                    <div><img src="/image/useful_sysytem/05.png" class="useful_img mr-3 d-md-flex d-none" alt="付款及所得查詢系統"></div>
+                    <div class="h6 text-left">付款及所得查詢系統</div>
+                </a>
+
+                <a class="row align-items-center p-3 d-flex text-white" href="https://ecard.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/useful_sysytem/10.png" class="useful_img mr-3 d-md-flex d-none" alt="電子賀卡系統"></div>
+                    <div class="h6 text-left">電子賀卡系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/consume/" target="_blank">
+                    <div><img src="/image/useful_sysytem/17.png" class="useful_img mr-3 d-md-flex d-none" alt="物品管理系統"></div>
+                    <div class="h6 text-left">物品管理系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://miswww1.ccu.edu.tw/tastuctrl/" target="_blank">
+                    <div><img src="/image/useful_sysytem/22.png" class="useful_img mr-3 d-md-flex d-none" alt="教學助理暨工讀生登錄系統"></div>
+                    <div class="h6 text-left">教學助理暨工讀生登錄系統</div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--
+<div id="useful-system1" class="p-5 rounded container-fluid no-gutters d-flex align-items-center flex-wrap" style="display:none!important;">
+    <div class="row w-100  d-flex justify-content-around flex-wrap text-center flex-wrap ">
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/11.png" class="useful_img"></div>
+            <div>學士服借用管理系統</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/12.png" class="useful_img"></div>
+            <div>電子公文(VPN)</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/13.png" class="useful_img"></div>
+            <div>差勤系統</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/14.png" class="useful_img"></div>
+            <div>會計WEB查詢系統</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/15.png" class="useful_img"></div>
+            <div>Ecourse教學課程平台</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/16.png" class="useful_img"></div>
+            <div>員工薪資查詢</div>
+        </div>
+    </div>
+</div>
+-->
+<div id="useful-link" class="p-md-5 p-2 rounded container-fluid no-gutters d-flex flex-wrap justify-content-center" style="display:none!important;">
+    <div class="row w-100  d-flex justify-content-center flex-wrap text-center container-fluid align-items-start" style=" max-width: 1100px!important;width: 100vw!important;">
+        <div class="row justify-content-around col-12 bg-white mt-md-0 mt-3 align-items-center" style="border-radius: 1rem;height: 3rem;align-items: center">
+            <div class="col h5 font-weight-bold align-items-center">常用連結</div>
+        </div>
+        <div class="row justify-content-around col-12 text-white">
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www.lib.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/library.png" class="useful_img mr-3 d-md-flex d-none" alt="圖書館"></div>
+                    <div class="h6 text-left">圖書館</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://www.ccunix.ccu.edu.tw/~cashier/ccuindex_tuition.htm" target="_blank">
+                    <div><img src="/image/important_link/10.png" class="useful_img mr-3 d-md-flex d-none" alt="學雜費繳費"></div>
+                    <div class="h6 text-left">學雜費繳費</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="webmail.php">
+                    <div><img src="/image/important_link/03.png" class="useful_img mr-3 d-md-flex d-none" alt="Webmail"></div>
+                    <div class="h6 text-left">Webmail</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://studaffbh.ccu.edu.tw/files/11-1002-271.php" target="_blank">
+                    <div><img src="/image/important_link/16.jpg" class="useful_img mr-3 d-md-flex d-none" alt="職涯發展中心"></div>
+                    <div class="h6 text-left">職涯發展中心</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://secretar.ccu.edu.tw/gender-equality/" target="_blank">
+                    <div><img src="/image/important_link/18.png" class="useful_img mr-3 d-md-flex d-none" alt="性別平等"></div>
+                    <div class="h6 text-left">性別平等</div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="http://cultural.lib.ccu.edu.tw/index.php/" target="_blank">
+                    <div><img src="/image/important_link/09.png" class="useful_img mr-3 d-md-flex d-none" alt="藝文中心"></div>
+                    <div class="h6 text-left">藝文中心</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www.pcc.gov.tw/Default.aspx" target="_blank">
+                    <div><img src="/image/important_link/08.png" class="useful_img mr-3 d-md-flex d-none" alt="電子採購網"></div>
+                    <div class="h6 text-left">電子採購網</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://alum.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/05.png" class="useful_img mr-3 d-md-flex d-none" alt="校友信箱"></div>
+                    <div class="h6 text-left">校友信箱</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/hostel/" target="_blank">
+                    <div><img src="/image/important_link/17.jpg" class="useful_img mr-3 d-md-flex d-none" alt="致遠樓線上客房申請"></div>
+                    <div class="h6 text-left">致遠樓線上客房申請</div>
+                </a>
+
+                <a class="row align-items-center p-3 d-flex text-white" href="https://affairs.ccu.edu.tw/cashier/epayment" target="_blank">
+                    <div><img src="/image/important_link/19_2.png" class="useful_img mr-3 d-md-flex d-none" alt="電子化收費系統專區"></div>
+                    <div class="h6 text-left">電子化收費系統專區</div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="http://ycrc.tanet.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/07.png" class="useful_img mr-3 d-md-flex d-none" alt="雲嘉區網"></div>
+                    <div class="h6 text-left">雲嘉區網</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://document.ccu.edu.tw/Document/filemanage/filemanager.php" target="_blank">
+                    <div><img src="/image/important_link/11.png" class="useful_img mr-3 d-md-flex d-none" alt="檔案E網通"></div>
+                    <div class="h6 text-left">檔案E網通</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://cjlc.ccu.edu.tw/main.php" target="_blank">
+                    <div><img src="/image/important_link/15.png" class="useful_img mr-3 d-md-flex d-none" alt="推廣教育"></div>
+                    <div class="h6 text-left">推廣教育</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://ethics.moe.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/aca_ethic.png" class="useful_img mr-3 d-md-flex d-none" alt="學術倫理教育資源"></div>
+                    <div class="h6 text-left">學術倫理教育資源</div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div id="center" class="d-flex justify-content-center flex-wrap">
+        <div class="text-right small_bg">
+            <img src="/image/ccu_bg_logo.png" style="max-width: 20vw" alt="">
+        </div>
+        <!--
+            <div id="poster" class="h2 mt-xl-4 mt-0 mx-xl-2 mx-0 d-flex justify-content-center align-items-center" style="background-color: rgba(206,0,0,0.83)!important; color: white!important;">
+                緊急公告：颱風天停課
+            </div>
+            -->
+                    <div id="marquee" class="mx-2 mb-2 mt-4 container no-gutters p-0 d-flex align-items-center">
+                <div class="row no-gutters w-100">
+                    <div class="col d-flex flex-nowrap w-100 align-items-center">
+                        <img class="ml-2" id="marquee_icon" src="/image/marquee/marquee_icon.png" alt="跑馬燈">
+                        <div id="marquee_content" class="text-white h5 m-0 ml-2 w-100">
+                                                            <a href="http://140.123.5.6/2019-nCoV.php" class="marquee_content_text marquee_content_text_select" target="_blank" data-bcolor="#ff0000" data-icon="158054621973890.png"><span style="color:#ffffff">嚴重特殊傳染性肺炎 (COVID-19) 防疫專區 -- COVID-19 Prevention News</span></a>
+                                                    </div>
+                        <script type="text/javascript" rel="script">document.getElementById("marquee").style="background-color:#ff0000;border-color:#ff0000;";document.getElementById("marquee_icon").src="/upload_file/marquee/158054621973890.png"</script>                    </div>
+                </div>
+            </div>
+                <div id="poster" class="bg-dark mt-xl-2 mt-0 mx-xl-2 mx-0">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li><li data-target="#carouselExampleIndicators" data-slide-to="2"></li><li data-target="#carouselExampleIndicators" data-slide-to="3"></li><li data-target="#carouselExampleIndicators" data-slide-to="4"></li>                    <!--
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        -->
+                    <!--<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>-->
+                    <!--<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>-->
+                </ol>
+                <div class="carousel-inner">
+                                            <a class="carousel-item active" style="cursor: pointer" href="https://www.ccu.edu.tw/new_content_demo.php?type=bulletin&amp;id=34005" target="_blank">
+                            <div class="d-block w-100 ">
+                                <img class="d-block w-100" style="max-height: 400px; height: auto!important" src="/upload_file/banner/158451472282303.jpg" alt="開學後有旅遊接觸史者:請主動聯繫防疫窗口填寫紙本回報表">
+                            </div>
+                            <div class="carousel-caption d-flex align-items-center">
+                                <span class="h5 mb-0 mr-2" style="white-space: nowrap; text-overflow:ellipsis;max-width: 100%;overflow: hidden">開學後有旅遊接觸史者</span><span class="d-md-inline d-none"> 請主動聯繫防疫窗口填寫紙本回報表</span>
+                            </div>
+                        </a>
+                                            <a class="carousel-item " style="cursor: pointer" href="https://www.ccu.edu.tw/new_content_demo.php?type=bulletin&amp;id=33914" target="_blank">
+                            <div class="d-block w-100 ">
+                                <img class="d-block w-100" style="max-height: 400px; height: auto!important" src="/upload_file/banner/158302981931073.jpg" alt="避免疫情在校園擴散:進出各大樓人員須實施體溫檢測">
+                            </div>
+                            <div class="carousel-caption d-flex align-items-center">
+                                <span class="h5 mb-0 mr-2" style="white-space: nowrap; text-overflow:ellipsis;max-width: 100%;overflow: hidden">避免疫情在校園擴散</span><span class="d-md-inline d-none"> 進出各大樓人員須實施體溫檢測</span>
+                            </div>
+                        </a>
+                                            <a class="carousel-item " style="cursor: pointer" href="http://cultural.lib.ccu.edu.tw/index.php/2015-08-22-17-30-57/item/42-156" target="_blank">
+                            <div class="d-block w-100 ">
+                                <img class="d-block w-100" style="max-height: 400px; height: auto!important" src="/upload_file/banner/158261254228398.jpg" alt="形色解構:蕭雯心百號油畫展">
+                            </div>
+                            <div class="carousel-caption d-flex align-items-center">
+                                <span class="h5 mb-0 mr-2" style="white-space: nowrap; text-overflow:ellipsis;max-width: 100%;overflow: hidden">形色解構</span><span class="d-md-inline d-none"> 蕭雯心百號油畫展</span>
+                            </div>
+                        </a>
+                                            <a class="carousel-item " style="cursor: pointer" href="http://cultural.lib.ccu.edu.tw/" target="_blank">
+                            <div class="d-block w-100 ">
+                                <img class="d-block w-100" style="max-height: 400px; height: auto!important" src="/upload_file/banner/158218740316705.jpg" alt="2020春季藝文:系列活動">
+                            </div>
+                            <div class="carousel-caption d-flex align-items-center">
+                                <span class="h5 mb-0 mr-2" style="white-space: nowrap; text-overflow:ellipsis;max-width: 100%;overflow: hidden">2020春季藝文</span><span class="d-md-inline d-none"> 系列活動</span>
+                            </div>
+                        </a>
+                                            <a class="carousel-item " style="cursor: pointer" href="https://pse.is/N2AZQ" target="_blank">
+                            <div class="d-block w-100 ">
+                                <img class="d-block w-100" style="max-height: 400px; height: auto!important" src="/upload_file/banner/157964327675535.png" alt="2020秋季交換計畫Ｘ暑期活動:申請開始(表單陸續更新)">
+                            </div>
+                            <div class="carousel-caption d-flex align-items-center">
+                                <span class="h5 mb-0 mr-2" style="white-space: nowrap; text-overflow:ellipsis;max-width: 100%;overflow: hidden">2020秋季交換計畫Ｘ暑期活動</span><span class="d-md-inline d-none"> 申請開始(表單陸續更新)</span>
+                            </div>
+                        </a>
+                                    </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="news" class="mx-xl-2 mx-2 container no-gutters p-0">
+            <div class="d-block row h5 no-gutters d-flex flex-wrap justify-content-start" style="border-bottom-color: #0053A5;border-bottom-style: solid;border-width: 0.1rem">
+                <div class="col-md col-sm-4 col-6 p-2 news-selector news-selector-selected"><a href="/news_list.php?id=1">焦點新聞</a></div>
+                <div class="col-md col-sm-4 col-6 p-2 news-selector"><a href="/news_list.php?id=5">媒體報導</a></div>
+                <div class="col-md col-sm-4 col-6 p-2 news-selector"><a href="/news_list.php?id=7">校園榮譽</a></div>
+                <div class="col-md col-sm-4 col-6 p-2 news-selector"><a href="/news_list.php?id=3">中正特輯</a></div>
+                <div class="col-md col-sm-4 col-6 p-2 news-selector"><a href="/news_list.php?id=4">中正校刊</a></div>
+                <div class="col-md col-sm-4 col-6 p-2 news-selector"><a href="/news_history_search.php">歷史新聞</a></div>
+                <!--<div class="col-md col-sm-3 col-6 p-2 news-selector"><a href="/news_list.php?id=6">毒品防制E報</a></div>-->
+
+            </div>
+        </div>
+
+        <div id="news_content" class="mt-0 pb-4 rounded row justify-content-around mx-xl-2 bar-max">
+            
+                <div class="col-md-3 col-6  py-2 px-2 news_content_line" style="cursor: pointer;" onclick="window.open('/new_content_demo.php?type=news&id=4029','_blank');">
+                    <img src="/upload_file/news/15844974824150.jpg" class="my-2 w-100 news_content_img p-1 border" alt="過度運動恐有免疫空窗？　中正大學何承訓：適度是關鍵">
+                    <div class="news_content_title point_baseline2">過度運動恐有免疫空窗？　中正大學何承訓：適度是關鍵</div>
+                    <div class="news_content_date">2020-03-18</div>
+                    <div class="text-justify d-md-flex d-none">　在新冠肺炎肆虐的當下，大家更加重視增強自身免疫力，但你知道運動過度會產生「免疫空窗」，讓免疫功能短暫失靈嗎？....</div>
+                    <div class="text-justify d-md-none d-flex">　在新冠肺炎肆虐的當下，大家更加重視增強自身免疫力，但你知道運動過度會產生「免疫....</div>
+                </div>
+            
+                <div class="col-md-3 col-6  py-2 px-2 news_content_line" style="cursor: pointer;" onclick="window.open('/new_content_demo.php?type=news&id=4027','_blank');">
+                    <img src="/upload_file/news/15831217019507.jpg" class="my-2 w-100 news_content_img p-1 border" alt="中正大學全校動員迎開學　防疫措施再升級">
+                    <div class="news_content_title point_baseline2">中正大學全校動員迎開學　防疫措施再升級</div>
+                    <div class="news_content_date">2020-03-02</div>
+                    <div class="text-justify d-md-flex d-none">　迎接開學日，中正大學校園防疫措施再升級！校方目前已全面清潔與消毒校園各處，更規劃各大樓管制單一出入口，並設置....</div>
+                    <div class="text-justify d-md-none d-flex">　迎接開學日，中正大學校園防疫措施再升級！校方目前已全面清潔與消毒校園各處，更規....</div>
+                </div>
+            
+                <div class="col-md-3 col-6  py-2 px-2 news_content_line" style="cursor: pointer;" onclick="window.open('/new_content_demo.php?type=news&id=4026','_blank');">
+                    <img src="/upload_file/news/15827088628784.jpg" class="my-2 w-100 news_content_img p-1 border" alt="中正大學春季藝文登場　解放女力、繽紛視覺">
+                    <div class="news_content_title point_baseline2">中正大學春季藝文登場　解放女力、繽紛視覺</div>
+                    <div class="news_content_date">2020-02-26</div>
+                    <div class="text-justify d-md-flex d-none">　迎接2020新一學期，中正大學藝文中心規劃一系列春季藝文活動，讓師生、民眾用藝文填滿春暖花開的季節。這次春季....</div>
+                    <div class="text-justify d-md-none d-flex">　迎接2020新一學期，中正大學藝文中心規劃一系列春季藝文活動，讓師生、民眾用藝....</div>
+                </div>
+            
+                <div class="col-md-3 col-6  py-2 px-2 news_content_line" style="cursor: pointer;" onclick="window.open('/new_content_demo.php?type=news&id=4025','_blank');">
+                    <img src="/upload_file/news/15821019662613.jpg" class="my-2 w-100 news_content_img p-1 border" alt="《遠見》雜誌「2020大學暨技職入學指南」專訪  中正大學校長馮展華：選擇未來想要的生活">
+                    <div class="news_content_title point_baseline2">《遠見》雜誌「2020大學暨技職入學指南」專訪  中正大學校長馮展華：選擇未來想要的生活</div>
+                    <div class="news_content_date">2020-02-17</div>
+                    <div class="text-justify d-md-flex d-none">　《遠見》雜誌連續十年推出《大學入學指南》專刊，是國內相當受重視的大學入學指南之一。此次專刊中，於「校長經驗談....</div>
+                    <div class="text-justify d-md-none d-flex">　《遠見》雜誌連續十年推出《大學入學指南》專刊，是國內相當受重視的大學入學指南之....</div>
+                </div>
+                        <div class="container-fluid mt-3 text-right point_baseline">
+                <a href="/news_list.php?id=1" style="cursor: pointer">更多新聞</a>
+            </div>
+            <!--
+            <div class=" col-md-3 col-6 py-2 px-2 news_content_line">
+                        <img src="./image/news_img_1.jpg" class="my-2 w-100 news_content_img p-1 border" alt="國際研究重大發現！ 有效治療攝護腺癌  中正大學生醫系張德卿開發基因治療載體">
+                        <div class="h5 news_content_title">國際研究重大發現！ 有效治療攝護腺癌 中正大學生醫系張德卿開發基因治療載體</div>
+                        <div class="news_content_date">2019-08-12</div>
+                        <div class="text-justify d-flex">攝護腺癌是全球男性第二大，也是台灣男性第五大癌症。由於攝護腺癌晚期病患大多使用荷爾蒙療法，往往轉變為荷爾蒙抗......</div>
+                    </div>
+                    <div class="col-md-3 col-6  py-2 px-2 news_content_line">
+                        <img src="./image/news_img_2.jpg" class="my-2 w-100 news_content_img p-1 border" alt="中正大學跨國與印度南亞竹子基金會簽約　促在地竹產業推上國際">
+                        <div class="h5 news_content_title">中正大學跨國與印度南亞竹子基金會簽約　促在地竹產業推上國際</div>
+                        <div class="news_content_date">2019-08-06</div>
+                        <div class="text-justify d-flex">台灣是竹子盛產地，過去曾用來製造許多生活用品。隨著塑膠品盛行及中國廉價竹製品大量進口，衝擊台灣竹業，連竹林覆......</div>
+                    </div>
+                    <div class="col-md-3 col-6  py-2 px-2 news_content_line">
+                        <img src="./image/news_img_3.jpg" class="my-2 w-100 news_content_img p-1 border" alt="台印科研人才培訓搖籃 中正大學AI海外科研中心揭牌">
+                        <div class="h5 news_content_title">台印科研人才培訓搖籃 中正大學AI海外科研中心揭牌</div>
+                        <div class="news_content_date">2019-07-27</div>
+                        <div class="text-justify d-flex">人工智慧浪潮席捲全球，科技部也積極推動新南向政策，鼓勵國內學術機構與18個新南向目標國增進技術交流。而中正大......</div>
+                    </div>
+                    <div class="col-md-3 col-6  py-2 px-2 news_content_line">
+                        <img src="./image/1545115709229.jpg" class="my-2 w-100 news_content_img p-1 border" alt="中正大學歡送近3千學子畢業">
+                        <div class="h5 news_content_title">中正大學歡送近3千學子畢業</div>
+                        <div class="news_content_date">2019-06-08</div>
+                        <div class="text-justify d-flex">進入6月，除了迎接盛夏來臨，對許多大學生而言，更代表即將離開校園，展開新的人生旅程。中正大學107學年度畢業典禮......</div>
+                    </div>
+                    -->
+        </div>
+
+        <div id="bulletin" class="mx-xl-2 mx-3 p-3 rounded block-shadow container-fluid overflow-hidden">
+            <div class="conntainer no-gutters row">
+                <div class="col-lg-3 col-12 p-1">
+
+                    <div style="background-color: #eef7fd;min-height: 360px" class="d-lg-flex d-none flex-wrap justify-content-center align-content-center">
+                        <div class="w-100 text-center">
+                            <img src="/image/news_logo.png" class="rounded-circle p-3" style="background-color: #7da2d5" alt="最新公告">
+                        </div>
+                        <div class="w-100 text-center mt-3 h4" style="color: #1f2288">最新公告</div>
+                    </div>
+                    <div style="background-color: #eef7fd;" class="d-lg-none d-flex flex-wrap justify-content-center align-content-center p-3">
+                        <div class="text-center">
+                            <img src="/image/news_logo.png" class="rounded-circle p-1" width="50" style="background-color: #7da2d5" alt="最新公告">
+                        </div>
+                        <div class="text-center mt-2 h4 ml-3" style="color: #1f2288">最新公告</div>
+                    </div>
+                    <!--
+                        <div style="border:#f29600; border-width:0.1rem;border-style:solid;background-color: white;min-height: 360px" class="d-lg-block d-none p-3">
+                            <div class="w-100 text-center h5" style="color: #f29600">校園快訊</div>
+                            <hr style="border-style: solid; border-color: #f29600" class="w-100">
+                            <div style="overflow: hidden; max-height: 260px">
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">工學院夏日學校42位東南亞學生參與　推動新南向人才培育</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">中正大學進階版科普活動登場　雲嘉嘉地區9校200名中學師生熱</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">中正EMBA日前遠赴日本東京　海外移地授課</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">工學院夏日學校42位東南亞學生參與　推動新南向人才培育</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">中正大學進階版科普活動登場　雲嘉嘉地區9校200名中學師生熱</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">中正EMBA日前遠赴日本東京　海外移地授課</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">工學院夏日學校42位東南亞學生參與　推動新南向人才培育</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">中正大學進階版科普活動登場　雲嘉嘉地區9校200名中學師生熱</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">中正EMBA日前遠赴日本東京　海外移地授課</div>
+                                <div class="mb-3 point_baseline" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                            </div>
+                        </div>
+                        <div style="border:#f29600; border-width:0.1rem;border-style:solid;background-color: white;height: 210px" class="d-lg-none d-block p-3">
+                            <div class="w-100 text-center h6" style="color: #f29600">校園快訊</div>
+                            <hr style="border-style: solid; border-color: #f29600" class="w-100 mb-1 mt-1">
+                            <div style="overflow: hidden; max-height: 155px;" class="d-block">
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">工學院夏日學校42位東南亞學生參與　推動新南向人才培育</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">中正大學進階版科普活動登場　雲嘉嘉地區9校200名中學師生熱</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">中正EMBA日前遠赴日本東京　海外移地授課</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">工學院夏日學校42位東南亞學生參與　推動新南向人才培育</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">中正大學進階版科普活動登場　雲嘉嘉地區9校200名中學師生熱</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">中正EMBA日前遠赴日本東京　海外移地授課</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">工學院夏日學校42位東南亞學生參與　推動新南向人才培育</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">中正大學進階版科普活動登場　雲嘉嘉地區9校200名中學師生熱</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">中正EMBA日前遠赴日本東京　海外移地授課</div>
+                                <div class="mb-2 point_baseline h6" style="white-space: nowrap;text-overflow:ellipsis; overflow: hidden">第四屆全校性投資競賽成績揭曉　182支參賽隊伍創紀錄</div>
+                            </div>
+                        </div>
+                    -->
+                </div>
+                <div class="col-lg-9 col-12 container no-gutters ">
+                    <div class="row d-flex justify-content-around mt-1 h6  ml-3 mr-3 no-gutters" style="color: #0657a7">
+                        <div class="col-md col-sm-4 col-6 py-md-2 py-1 rounded-top text-center bar-cursor bulletin-selector-selected bulletin-selector" id="bulletin_feature_selector" onclick="show_bulletin('bulletin_feature')"><span>精選</span><span>訊息</span></div>
+                        <div class="col-md col-sm-4 col-6 py-md-2 py-1 rounded-top text-center bar-cursor bulletin-selector" id="bulletin_acdemic_selector" onclick="show_bulletin('bulletin_acdemic')"><span>學術</span><span>活動</span></div>
+                        <div class="col-md col-sm-4 col-6 py-md-2 py-1 rounded-top mt-sm-0 mt-3  text-center bar-cursor bulletin-selector" id="bulletin_administrative_selector" onclick="show_bulletin('bulletin_administrative')"><span>行政</span><span>事務</span></div>
+                        <div class="col-md col-sm-4 col-6 py-md-2 py-1 rounded-top mt-md-0 mt-3 text-center bar-cursor bulletin-selector" id="bulletin_activity_selector" onclick="show_bulletin('bulletin_activity')"><span>活動</span><span>訊息</span></div>
+                        <div class="col-md col-sm-4 col-6 py-md-2 py-1 rounded-top mt-md-0 mt-3 text-center bar-cursor bulletin-selector" id="bulletin_recruit_selector" onclick="show_bulletin('bulletin_recruit')"><span>徵才</span><span>訊息</span></div>
+                        <div class="col-md col-sm-4 col-6 py-md-2 py-1 rounded-top mt-md-0 mt-3 text-center bar-cursor bulletin-selector" id="bulletin_outside_selector" onclick="show_bulletin('bulletin_outside')"><span>校外</span><span>來文</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col ml-lg-4 ml-0 overflow-hidden" id="bulletin_feature">
+                                                            <div class="container-fluid mt-3 point_baseline">
+                                    <div class="row d-flex justify-content-lg-around flex-wrap">
+                                        <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b;">行政                                        </div>
+                                        <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                        <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34010" target="_blank">2020數位學習及遠距教學工作坊(3/23~3/27)，請授課教師及助教踴躍報名參加。</a></div>
+                                    </div>
+                                </div>
+                                                            <div class="container-fluid mt-3 point_baseline">
+                                    <div class="row d-flex justify-content-lg-around flex-wrap">
+                                        <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b;">行政                                        </div>
+                                        <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                        <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34009" target="_blank">【3/18重要公告】因應新冠肺炎疫情的快速劇變，本校相關防疫作為更新</a></div>
+                                    </div>
+                                </div>
+                                                            <div class="container-fluid mt-3 point_baseline">
+                                    <div class="row d-flex justify-content-lg-around flex-wrap">
+                                        <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b;">行政                                        </div>
+                                        <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                        <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34006" target="_blank">請本校3月5日至14日有歐洲旅遊史的教職員工生，立即主動向防疫窗口通報!!</a></div>
+                                    </div>
+                                </div>
+                                                            <div class="container-fluid mt-3 point_baseline">
+                                    <div class="row d-flex justify-content-lg-around flex-wrap">
+                                        <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b;">行政                                        </div>
+                                        <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                        <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34005" target="_blank">自3月2日起本校自境外返臺之教職員工生，應主動向防疫窗口回報，並填寫「國立中正大學教職員工生國外旅遊史回報表」</a></div>
+                                    </div>
+                                </div>
+                                                            <div class="container-fluid mt-3 point_baseline">
+                                    <div class="row d-flex justify-content-lg-around flex-wrap">
+                                        <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b;">行政                                        </div>
+                                        <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                        <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34004" target="_blank">更新本校因應新型冠狀病毒肺炎疫情學生安心就學措施(新增助學措施)</a></div>
+                                    </div>
+                                </div>
+                                                            <div class="container-fluid mt-3 point_baseline">
+                                    <div class="row d-flex justify-content-lg-around flex-wrap">
+                                        <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b;">行政                                        </div>
+                                        <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                        <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34001" target="_blank">防疫期間校內餐廳用餐注意事項</a></div>
+                                    </div>
+                                </div>
+                                                        <div class="container-fluid mt-3 text-right point_baseline">
+                                <a href="/bullentin_list.php?id=1" style="cursor: pointer">more</a>
+                            </div>
+                        </div>
+                                                <div class="col ml-lg-4 ml-0 overflow-hidden" id="bulletin_acdemic" style="display: none">
+                                                                <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #f5c373">學術                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34007" target="_blank">轉知教育部「109年教育優先區中小學生暑假營隊活動」申請注意事項</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #f5c373">學術                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34003" target="_blank">教育部廢止「補助大專校院推動臺灣研究國際合作計畫實施要點」，並自即日生效</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #f5c373">學術                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33990" target="_blank">慈濟科技大學辦理2020年『Fun教育‧桌遊教具競賽』,即日起至109年3月31日報名徵件</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #f5c373">學術                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33987" target="_blank">台灣癲癇醫學會辦理第18屆「人間有情-關懷癲癇徵文比賽」活動</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #f5c373">學術                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33986" target="_blank">南臺科技大學「第四屆南台灣自釀啤酒大賽」取消</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #f5c373">學術                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33981" target="_blank">「科技融入教育：如何應用互動模擬工具」活動議程，歡迎踴躍報名參與。</a></div>
+                                        </div>
+                                    </div>
+                                                                    <div class="container-fluid mt-3 text-right point_baseline">
+                                    <a href="/bullentin_list.php?id=2" style="cursor: pointer">more</a>
+                                </div>
+                        </div>
+                                                    <div class="col ml-lg-4 ml-0 overflow-hidden" id="bulletin_administrative" style="display: none">
+                                                                <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b">行政                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34010" target="_blank">2020數位學習及遠距教學工作坊(3/23~3/27)，請授課教師及助教踴躍報名參加。</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b">行政                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34009" target="_blank">【3/18重要公告】因應新冠肺炎疫情的快速劇變，本校相關防疫作為更新</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b">行政                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34006" target="_blank">請本校3月5日至14日有歐洲旅遊史的教職員工生，立即主動向防疫窗口通報!!</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b">行政                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34005" target="_blank">自3月2日起本校自境外返臺之教職員工生，應主動向防疫窗口回報，並填寫「國立中正大學教職員工生國外旅遊史回報表」</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b">行政                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34004" target="_blank">更新本校因應新型冠狀病毒肺炎疫情學生安心就學措施(新增助學措施)</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #18c06b">行政                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34001" target="_blank">防疫期間校內餐廳用餐注意事項</a></div>
+                                        </div>
+                                    </div>
+                                                                    <div class="container-fluid mt-3 text-right point_baseline">
+                                    <a href="/bullentin_list.php?id=3" style="cursor: pointer">more</a>
+                                </div>
+                        </div>
+                                                    <div class="col ml-lg-4 ml-0 overflow-hidden" id="bulletin_activity" style="display: none">
+                                                                <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #202389">活動                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34000" target="_blank">特約廠商簽署訊息：星野肉肉鍋嘉義垂楊店</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #202389">活動                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33998" target="_blank">2020年 雲林縣英文聽力與專業詞彙能力大賽</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #202389">活動                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-16</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33994" target="_blank">教育部函轉社團法人台灣環境資訊協會辦理「2020地球日環境教育推廣計畫：說到做到愛地球」活動之「『地球日選書』 圖書書單」１份，請踴躍參與使用。</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #202389">活動                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33988" target="_blank">109學年度數位學習碩士在職專班（秋季班）招生公告</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #202389">活動                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33980" target="_blank">「2020校園暨親子神槍手—全國漆彈大作戰」活動延期</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #202389">活動                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-12</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33974" target="_blank">公共藝術講座(109年3月19日)</a></div>
+                                        </div>
+                                    </div>
+                                                                    <div class="container-fluid mt-3 text-right point_baseline">
+                                    <a href="/bullentin_list.php?id=4" style="cursor: pointer">more</a>
+                                </div>
+                        </div>
+                                                    <div class="col ml-lg-4 ml-0 overflow-hidden" id="bulletin_recruit" style="display: none">
+                                                                <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #1689af">徵才                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34002" target="_blank">台灣南部地震研究中心誠徵臨時工</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #1689af">徵才                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33991" target="_blank">國立中正大學通識教育中心身心障礙專案工作人員職缺校外遞補公告</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #1689af">徵才                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33984" target="_blank">臺北醫學大學誠徵牙醫學系主任人選</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #1689af">徵才                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33977" target="_blank">學務處(原資中心)專案工作人員職缺校外遞補公告</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #1689af">徵才                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-12</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33976" target="_blank">資訊工程學系專案工作人員職缺校外遞補公告</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #1689af">徵才                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-12</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33973" target="_blank">國立中正大學清江學習中心推廣教育組專案工作人員職缺校外遞補公告</a></div>
+                                        </div>
+                                    </div>
+                                                                    <div class="container-fluid mt-3 text-right point_baseline">
+                                    <a href="/bullentin_list.php?id=5" style="cursor: pointer">more</a>
+                                </div>
+                        </div>
+                                                    <div class="col ml-lg-4 ml-0 overflow-hidden" id="bulletin_outside" style="display: none">
+                                                                <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #8e005d">校外                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-18</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=34008" target="_blank">轉知「衛生福利部依嚴重特殊傳染性肺炎防治及紓困振興特別條例第十二條公告之防疫器具、設備、藥品、醫療器材或其他防疫物資」</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #8e005d">校外                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33997" target="_blank">轉知「教育部青年發展署青年壯遊體驗學習獎補助要點」修正來函</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #8e005d">校外                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-17</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33996" target="_blank">轉知「教育部補助辦理教育優先區中小學生營隊活動要點」修正</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #8e005d">校外                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33989" target="_blank">經國管理暨健康學院109學年度研究所考試入學招生資訊</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #8e005d">校外                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33985" target="_blank">輔仁大學管理學院「國際創業與經營管理碩士在職專班」招生報考資訊</a></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="container-fluid mt-3 point_baseline">
+                                        <div class="row d-flex justify-content-lg-around flex-wrap">
+                                            <div class="col-1 d-md-block d-none text-nowrap" style="color: #8e005d">校外                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-12 text-nowrap">2020-03-13</div>
+                                            <div class="col-md-9 col-sm-9 col-12 bulletin_row_title"><a href="/new_content_demo.php?type=bulletin&id=33983" target="_blank">金門縣政府環境影響評估審查委員會專家學者委員遴選推薦期限延至109年3月31日止。</a></div>
+                                        </div>
+                                    </div>
+                                                                    <div class="container-fluid mt-3 text-right point_baseline">
+                                    <a href="/bullentin_list.php?id=6" style="cursor: pointer">more</a>
+                                </div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="other_info" class="container mt-4 ml-xl-2 mr-xl-2 mx-3 p-0 mb-5">
+            <div class="row d-flex flex-wrap justify-content-between no-gutters  rounded block-shadow ">
+                <div class="col-xl-4 col-md-6 col-12 ml-0" style="background-color: #fff8de; border-bottom: 0.05rem #9d9d9d solid;">
+                    <div class="h5 p-3 px-4 mb-0" style="border-bottom: 0.05rem #9d9d9d solid;color: #0053a5;">
+                        校園資訊
+                    </div>
+                    <div class="h5 p-4 container mb-0">
+                        <div class="row">
+                            <!-- <a class="d-flex align-items-center mt-0 col-sm-6 col-12 point_baseline"><img src="image/info_icon/e1.png" class="info_icon">中正之友</a>-->
+                            <a class="d-flex align-items-center mt-sm-0 col-sm-6 col-12 point_baseline" href="/calender.php"><img src="/image/info_icon/e4.png" class="info_icon" alt="行事曆">行事曆</a>
+                            <a class="d-flex align-items-center mt-sm-0 mt-3 col-sm-6 col-12 point_baseline" href="/information_service.php"><img src="/image/info_icon/e2.png" class="info_icon" alt="資訊服務">資訊服務</a>
+                            <a class="d-flex align-items-center mt-3 col-sm-6 col-12 point_baseline" href="http://ccuweb.ccu.edu.tw/telsys/" target="_blank"><img src="/image/info_icon/e3.png" class="info_icon" alt="分機號碼表">分機號碼表</a>
+                            <a class="d-flex align-items-center mt-3 col-sm-6 col-12 point_baseline" href="/traffic_info.php"><img src="/image/info_icon/e5.png" class="info_icon" alt="交通資訊">交通資訊</a>
+                            <a class="d-flex align-items-center mt-3 col-sm-6 col-12 point_baseline" href="https://affairs.ccu.edu.tw/security/regulations" target="_blank"><img src="/image/info_icon/e6.png" class="info_icon" alt="校園地圖">校園地圖</a>
+                            <a class="d-flex align-items-center mt-3 col-sm-6 col-12 point_baseline" href="/life_info.php"><img src="/image/info_icon/e9.png" class="info_icon" alt="生活資訊">生活資訊</a>
+                            <a class="d-flex align-items-center mt-3 col-sm-6 col-12 point_baseline" href="/webmail.php"><img src="/image/info_icon/e7.png" class="info_icon" alt="Webmail">Webmail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mt-md-0 col-12 " style="background-color: #fffdf2;border-bottom: 0.05rem #9d9d9d solid;">
+                    <div class="h5 p-3 px-4 mb-0" style="border-bottom: 0.05rem #9d9d9d solid;color: #0053a5;">
+                        重點網站
+                    </div>
+                    <div class=" h5 p-4 mb-0">
+                        <a class="d-block mt-0 point_baseline" href="https://www.cac.edu.tw/cacportal/index.php" target="_blank">大學甄選入學委員會</a>
+                        <a class="d-block mt-3 point_baseline" href="https://www.tcus.edu.tw/TradChinese" target="_blank">臺灣綜合大學系統</a>
+                        <a class="d-block mt-3 point_baseline" href="/evaluation_and_plan.php">評鑑與計畫</a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-12 mt-xl-0 p-xl-0" style="background-color: #fff8e8; border-bottom: 0.05rem #9d9d9d solid;">
+                    <div class="h5 p-3 px-4 mb-0" style="border-bottom: 0.05rem #9d9d9d solid;color: #0053a5;">
+                        常用網站
+                    </div>
+                    <div class="h5 p-4 mb-0">
+
+                        <!--<a class="d-flex align-items-center mt-0 mb-2 col-12 point_baseline" target="_blank" href="https://ccu30.ccu.edu.tw/ccu30a/"><img src="/image/flag_link/01.png" class="info_icon" alt=中正30校慶網站"">中正30校慶網站</a>-->
+                        <a class="d-flex align-items-center mt-0 mb-2 col-12 point_baseline" target="_blank" href="https://ccu30y.ccu.edu.tw/ccu30y/"><img src="/image/flag_link/02.png" class="info_icon" alt=紀念品及捐款專區"">CCU線上購物網(紀念品及捐款)</a>
+                        <!--<a class="d-flex align-items-center mt-0 mb-2 col-12 point_baseline" target="_blank" href="https://ccu30y.ccu.edu.tw/ccu30y/"><img src="/image/flag_link/08.png" class="info_icon" alt=紀念品及捐款專區"">紀念品及捐款專區</a>
+                        <a class="d-flex align-items-center mt-0 my-2 col-12 point_baseline" target="_blank" href="https://108niag.ccu.edu.tw/default.aspx"><img src="/image/flag_link/02.png" class="info_icon" alt="108 全大運">108 全大運</a>-->
+                        <a class="d-flex align-items-center mt-0 my-2 col-12 point_baseline" target="_blank" href="https://cloud.ccu.edu.tw/Site/ccudcpro/dir_ALVATE/"><img src="/image/flag_link/03.png" class="info_icon" alt="深耕計畫審查委員專區">深耕計畫審查委員專區</a>
+                        <a class="d-flex align-items-center mt-0 my-2 col-12 point_baseline" target="_blank" href="https://www.startupland.ccu.edu.tw/"><img src="/image/flag_link/04.png" class="info_icon" alt="創新創業基地">創新創業基地</a>
+                        <a class="d-flex align-items-center mt-0 my-2 col-12 point_baseline" target="_blank" href="http://140.123.13.96/college/college108.htm"><img src="/image/flag_link/05.png" class="info_icon" alt="院長遴選專區">院長遴選專區</a>
+                        <a class="d-flex align-items-center mt-0 my-2 col-12 point_baseline" target="_blank" href="https://hesp.ccu.edu.tw/"><img src="/image/flag_link/09.png" class="info_icon" alt="開放式大學網站">開放式大學網站</a>
+                        <a class="d-flex align-items-center mt-0 my-2 col-12 point_baseline" target="_blank" href="http://140.123.5.5/index2.php"><img src="/image/flag_link/07.png" class="info_icon" alt="舊版網站">舊版網站</a>
+                        <!-- <div class="d-flex align-items-center mt-0 my-2 col-12 point_baseline"><img src="/image/flag_link/06.png" class="info_icon" alt="公開資訊">
+                            <select class="rounded bg-white" style="width: 10rem;" onchange="hyperlink(this.value);window.open(this.value);">
+                                <option selected disabled>公開資訊</option>
+                                <option value="http://get.aca.ntu.edu.tw/">台灣通識網</option>
+                                <option value="http://enc.moe.edu.tw/">紫錐花運動</option>
+                                <option value="https://eeis.epa.gov.tw/eeaward/">國家環境教育獎</option>
+                                <option value="http://www.ccu.edu.tw/prj/nyc-edm/nyc-edm.html">青輔會提升青年就業力措施</option>
+                                <option value="http://www.csa.edu.tw/">教育部公務人員協會</option>
+                                <option value="http://secretar.ccu.edu.tw/pages/public_information/">校務資訊公開專區</option>
+                                <option value="http://www.ccu.edu.tw/file/public/95-109utilities.xls">用電資訊</option>
+                                <option value="http://secretar.ccu.edu.tw/gender-equality/">性別平等</option>
+                                <option value="http://studaffbh.ccu.edu.tw/files/11-1002-583.php">校內吸菸區</option>
+                                <option value="http://greenliving.epa.gov.tw/">全民綠色消費</option>
+                                <option value="-2">二手教科書網</option>
+                                <option value="http://www.ccu.edu.tw/layer2/layer2/intellectual.php">尊重智慧財產權</option>
+                                <option value="http://studaffbh.ccu.edu.tw/files/11-1002-207.php">各項校外獎助學金訊息</option>
+                                <option value="http://www.sports.url.tw/">學生游泳能力121網站</option>
+                                <option value="http://studaffbh.ccu.edu.tw/files/11-1002-240.php">流感訊息</option>
+                                <option value="http://www.grb.gov.tw/index.htm">研究計畫(GRB)系統</option>
+                                <option value="https://www.grb.gov.tw/advq">GRB智慧搜尋系統</option>
+                            </select>
+                        </div>
+-->
+                        <div class="d-flex align-items-center mt-0 my-2 col-12 point_baseline"><img src="/image/flag_link/06.png" class="info_icon" alt="宣導資訊">
+                            <select class="rounded bg-white" style="width: 10rem;" onchange="hyperlink(this.value);window.open(this.value);">
+                                <option value="-2" selected disabled>宣導資訊</option>
+                                <option value="http://studaffbh.ccu.edu.tw/files/11-1002-205.php">校外租屋租金補助</option>
+                                <option value="https://rdrc.mnd.gov.tw/">國軍人才招募中心</option>
+                                <option value="https://www.cib.gov.tw/Wanted/FraudDriver">詐欺車手專區</option>
+                                <option value="http://www.csptc.gov.tw/pages/list.aspx?Node=846&Type=1&Index=2">公務人員保障暨培訓委員會</option>
+                                <option value="http://sport.ccu.edu.tw/files/13-1001-1822.php">運動故事館</option>
+                                <option value="http://admdmt.ccu.edu.tw/safe/secmap/index.php">校園安全地圖</option>
+                                <option value="http://studaffbh.ccu.edu.tw/files/11-1002-537.php">傳染病防治專區</option>
+                                <!-- <option value="-2">中正菁英榜</option> 掛了-->
+                                <option value="http://www.ccuelite.ccu.edu.tw/index.php">紫荊書院</option>
+                                <option value="https://yct.ncku.edu.tw/">雲嘉南區域教學資源中心</option>
+                                <option value="http://admdmt.ccu.edu.tw//springs/index.html">反毒新世代</option>
+                                <option value="https://twcertcc.blogspot.com/">台灣電腦網路危機處理暨協調中心</option>
+                                <option value="https://www.rd.ccu.edu.tw/zh_tw/usr/csr">社會責任</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="d-flex justify-content-center" style="background-color:#0053a5;font-size: 0.9rem!important;">
+    <div class="text-white d-flex  justify-content-between mx-5" id="footer_content">
+        <div class="row w-100 d-flex justify-content-between align-items-sm-start my-3">
+            <div class="col-auto">
+                <div>@ 2019 版權為中正大學所有</div>
+                <div>總機：05-2720411</div>
+                <div>傳真：05-2723358</div>
+                <a class="footer_link" href="mailto:secretar@ccu.edu.tw">E-mail：secretar@ccu.edu.tw</a>
+                <div>地址：621301嘉義縣民雄鄉大學路一段168號</div><!-- 原 62102 -->
+                <div>維護日期：2019.10.22</div>
+            </div>
+            <div class="col-auto">
+                <a class="footer_link d-flex" href="/file/index/CCU-PIMS-A-001_個人資料保護管理政策_v1.4_108.11.07.pdf" target="_blank">個資政策</a>
+                <a class="footer_link d-flex" href="/privacy.php">隱私權聲明</a>
+                <a class="footer_link d-flex" href="/file/index/RNC-CCU-A-001_1070801_v3.1.pdf" target="_blank">資安政策</a>
+                <a class="footer_link d-flex" href="/about_us.php">關於我們</a>
+                <a class="footer_link d-flex" href="mailto:tsices@ccu.edu.tw,vin870426@gmail.com,ejk2013421@gmail.com?subject=中正首頁問題反應"><span style="color:">聯絡我們</span></a>
+
+                <div class="mt-2">
+                    <a href="https://www.facebook.com/alumni.ccu" target="_blank"><img src="/image/footer/facebook.png" class="mr-2" style="width: 1.8rem;cursor: pointer" alt="中正大學粉絲團"></a>
+                    <a href="https://enews.ccu.edu.tw/" target="_blank"><img src="/image/footer/ccu_e_newspaper.png" class="mr-2" style="width: 2rem;cursor: pointer" alt="中正E報"></a>
+                    <a href="https://www.facebook.com/NCCUSAbest" target="_blank"><img src="/image/footer/ccu_student_union.png" style="width: 2rem;cursor: pointer" alt="學生會"></a>
+                </div>
+            </div>
+            <div class="col-auto">
+
+            </div>
+        </div>
+    </div>
+
+</div></body>
+
+</html>

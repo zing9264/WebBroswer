@@ -1,0 +1,460 @@
+<html lang="zh-TW">
+<head>
+    
+            <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>國立中正大學　National Chung Cheng University</title>
+
+        <script src="/lib/js/tether.min.js"  crossorigin="anonymous"></script>
+        <script src="/lib/bootstrap/js/bootstrap.js"  crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
+        
+        <script src="/lib/js/popper.js"  crossorigin="anonymous"></script>
+        <script src="/lib/js/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="/css/index.css" crossorigin="anonymous">
+        <script src="/lib/bootstrap/js/bootstrap.bundle.js"  crossorigin="anonymous"></script>
+        <script type="application/javascript" src="/lib/js/top_list.js"></script>
+        <link rel="icon" href="/image/short_icon.png" type="image/x-icon">
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150745955-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150745955-1');
+</script>
+
+
+            <script type="application/javascript">
+    </script>
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/academic.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <script type="application/javascript" src="/lib/js/hyperlink.js"></script>
+    <script type="application/javascript" src="/lib/js/top_list.js"></script>
+</head>
+<body  onclick="hide_top_list()">
+<h1 style="display: none">國立中正大學首頁</h1>
+<div id="common" class="d-md-block d-none" style="width: 8rem;position: fixed;right: 0; bottom: 1rem; z-index: 9999;">
+    <div class=" pl-4 pr-2 text-center bar-cursor"  onclick="show_useful_system();">
+        <img src="/image/useful_system.png" style="width: 5rem" alt="常用系統"><br/>
+    </div>
+    <div class=" pl-4 pr-2 text-center bar-cursor" onclick="show_useful_link();">
+        <img src="/image/useful_link.png" style="width: 5rem" alt="常用連結"><br/>
+    </div>
+</div>
+<div id="common" class="d-md-none d-block" style="width: 6rem;position: fixed;right: 0; bottom: 1rem; z-index: 9999;">
+    <div class=" pl-4 pr-2 text-center bar-cursor"  onclick="show_useful_system();">
+        <img src="/image/useful_system.png" style="width: 4rem" alt="常用系統"><br/>
+    </div>
+    <div class=" pl-4 pr-2 text-center bar-cursor" onclick="show_useful_link();">
+        <img src="/image/useful_link.png" style="width: 4rem" alt="常用連結"><br/>
+    </div>
+</div>
+<div id="bar">
+    <div id="bar-up" class="bg-bar-up">
+        <div class="container bar-max">
+            <div class="row no-gutters  justify-content-between no-gutters">
+                <a href="/index.php" class="d-block col-auto p-2" id="bar-LOGO">
+                    <img src="/image/ccu_logo.png" style="width: 16vw;min-width: 140px;cursor: pointer;" alt="國立中正大學">
+                </a>
+                <div class="col container d-flex align-items-center justify-content-end flex-wrap pr-2">
+                    <div class="row m-0 mt-1 mb-1 h6">
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="/student.php"><span class="bar-cursor" >學生</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="/staff.php"><span class="bar-cursor">教職員</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="/customer.php"><span class="bar-cursor">訪客</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://140.123.13.16/welcome.php" target="_blank"><span class="bar-cursor">新生</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://www.alumni.ccu.edu.tw/wpnew/" target="_blank"><span class="bar-cursor">校友</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://deptrdc.ccu.edu.tw/neweb/" target="_blank"><span class="bar-cursor">中正之友</span></a>
+                        <a class="col-auto d-lg-flex align-items-center d-none text-white text-nowrap bar_identity_but" href="http://secretary.ccu.edu.tw/donate/" target="_blank"><span class="bar-cursor">捐款中正</span></a>
+                        <div class="col-auto rounded d-sm-flex d-none">
+                            <label for="keyword" style="display: none">搜尋</label>
+                            <input type="text" size="10" value="" name="keyword" id="keyword" class="rounded-left border-0" style="height:1.5rem" title="站內搜尋">
+                            <img src="/image/search_icon.png" class="rounded-right" style="background-color: #9cc1e6; height: 1.5rem;width: 1.5rem;padding: 0.3rem 0.3rem 0.3rem 0.3rem;cursor: pointer" alt="開始搜尋"
+                                 onclick="window.open('https://www.google.com/search?&q=site%3Awww.ccu.edu.tw+'+ document.getElementById('keyword').value +'&oq=site%3Awww.ccu.edu.tw+administrative')">
+                        </div>
+                        <div class="col-sm-auto mt-sm-0 mt-2 col-12 rounded d-sm-flex d-none">
+                            <div class="rounded-left px-2 align-items-center d-flex" unselectable="on" onselectstart="return false;" style="background-color: #ffffff; color: #217fc0;font-size:0.8rem; -moz-user-select: none;-webkit-user-select:none;">中文</div>
+                            <div class="rounded-right px-2 point_baseline align-items-center d-flex" style="background-color: #9cc1e6; color: #FFFFFF;font-size: 0.8rem"><a href="/eng/index.php">ENG</a></div>
+                        </div>
+                        <a class="btn mr-3 p-0 d-flex d-lg-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <img src="/image/bar_menu_icon.png"  style=" height: 1.2rem;width: 1.2rem;" alt="選單"></a>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 collapse text-white text-nowrap justify-content-center bg-bar-menu py-3 d-lg-none" id="collapseExample" >
+                    <div class="col-auto rounded d-flex d-sm-none mb-2">
+                        <label for="keyword" style="display: none">搜尋</label>
+                        <input type="text" size="10" value="" name="keyword" id="keyword" class="rounded-left border-0" style="height:1.5rem" title="站內搜尋">
+                        <img src="/image/search_icon.png" class="rounded-right" style="background-color: #9cc1e6; height: 1.5rem;width: 1.5rem;padding: 0.3rem 0.3rem 0.3rem 0.3rem;cursor: pointer" alt="開始搜尋">
+                    </div>
+                    <div class="col-auto rounded d-flex d-sm-none mb-2">
+                        <div class="rounded-left pl-2 pr-2 point_baseline d-flex align-items-center" style="background-color: #ffffff; color: #217fc0;font-size:0.8rem">中文</div>
+                        <div class="rounded-right pl-2 pr-2 point_baseline d-flex align-items-center" style="background-color: #9cc1e6; color: #FFFFFF;font-size: 0.8rem"><a href="/eng/index.php">ENG</a></div>
+                    </div>
+                    <div class="col-10 row m-0 align-items-center justify-content-start p-3" style="border-top: white 1px solid;">
+                        <a class="d-block col-auto bar_identity_but" href="student.php">學生</a>
+                        <a class="d-block col-auto bar_identity_but" href="staff.php">教職員</a>
+                        <a class="d-block col-auto bar_identity_but" href="customer.php">訪客</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://140.123.13.16/welcome.php" target="_blank">新生</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://www.alumni.ccu.edu.tw/wpnew/" target="_blank">校友</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://deptrdc.ccu.edu.tw/neweb/" target="_blank">中正之友</a>
+                        <a class="d-block col-auto bar_identity_but" href="http://secretary.ccu.edu.tw/donate/" target="_blank">捐款中正</a>
+                    </div>
+                    <div class="col-10 row m-0  align-items-center justify-content-start p-3" style="border-top: white 1px solid;">
+                        <a class="d-block col-auto bar_identity_but" href="/about_ccu.php">關於中正</a>
+                        <a class="d-block col-auto bar_identity_but" href="/academic.php">學術單位</a>
+                        <a class="d-block col-auto bar_identity_but" href="/administrative.php">行政單位</a>
+                        <a class="d-block col-auto bar_identity_but" href="/research_list.php">學術研究</a>
+                        <a class="d-block col-auto bar_identity_but" href="/administrative_service.php">行政服務</a>
+                    </div>
+                    <div class="col-10 row m-0 align-items-center justify-content-start p-3" style="border-top: white 1px solid;border-bottom: white 1px solid;">
+                        <a class="d-block col-auto bar_identity_but" href="https://portal.ccu.edu.tw/" target="_blank"><span>單一入口</span></a>
+                        <!--<a class="d-block col-auto bar_identity_but" href="https://ecourse.ccu.edu.tw/"  target="_blank"><span>教學課程平台</span></a>-->
+                        <a class="d-block col-auto bar_identity_but" href="https://ecourse2.ccu.edu.tw/autologin.php"  target="_blank"><span>教學課程平台</span></a>
+                        <a class="d-block col-auto bar_identity_but" href="https://my.edoc.ccu.edu.tw/edocsys/index.jsp"  target="_blank"><span>電子公文</span></a>
+                        <a class="d-block col-auto bar_identity_but" href="/public_info.php" target="_blank"><span>公開資訊</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bar-down" class="d-none d-lg-flex align-items-center bg-bar-down">
+        <div class="container bar-max">
+            <div class="row no-gutters  justify-content-between no-gutters ">
+                <div class="col-auto">
+                    <div class="row m-0 d-flex align-items-center">
+                        <a href="/about_ccu.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">關於中正</a>
+                        <a href="/academic.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">學術單位</a>
+                        <a href="/administrative.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">行政單位</a>
+                        <a href="/research_list.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">學術研究</a>
+                        <a href="/administrative_service.php" class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center">行政服務</a>
+                    </div>
+                </div>
+                <div class="col-lg col-12 container d-flex align-items-center justify-content-lg-end justify-content-start pr-2">
+                    <div class="row m-0  d-flex align-items-center">
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://portal.ccu.edu.tw/" target="_blank">單一入口</a>
+                        <!--<a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://ecourse.ccu.edu.tw/" target="_blank">教學課程平台</a>-->
+                        <!--<a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://ecourse2.ccu.edu.tw/autologin.php" target="_blank">eCourse2</a>-->
+
+                        <div class="nav-item dropdown" id="ecourse_dropdown">
+                            <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教學課程平台</a>
+                                <div class="dropdown-menu dropdown_menu_overflow" aria-labelledby="dropdown01" style="overflow-y: auto;">
+                                    <a class="dropdown-item" href="https://ecourse2.ccu.edu.tw/autologin.php" target="_blank">eCourse2</a>
+                                    <a class="dropdown-item" href="https://ecourse.ccu.edu.tw/" target="_blank">教學課程平台</a>
+                                </div>
+                        </div>
+                        <script rel="script" type="text/javascript">
+                            document.getElementById("ecourse_dropdown").click();
+                        </script>
+
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="https://my.edoc.ccu.edu.tw/edocsys/index.jsp" target="_blank">電子公文</a>
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="http://exams.ccu.edu.tw/index.php" target="_blank">招生資訊</a>
+                        <a class="d-block col-auto text-dark text-nowrap bar-down-btn bar-cursor d-flex align-items-center" href="/public_info.php" target="_blank">公開資訊</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="useful-system" class="p-md-5 p-2 rounded container-fluid no-gutters d-flex flex-wrap justify-content-center" style="display:none!important;">
+    <div class="row w-100 d-flex justify-content-center flex-wrap text-center container-fluid align-items-start" style=" max-width: 1100px!important;width: 100vw!important;">
+        <div class="row justify-content-around col-12 bg-white mt-md-0 mt-3 align-items-center" style="border-radius: 1rem;height: 3rem;align-items: center">
+            <div class="col h5 font-weight-bold align-items-center">常用系統</div>
+        </div>
+        <div class="row justify-content-around col-12 text-white">
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="/admin/">
+                    <div><img src="/image/useful_sysytem/02.png" class="useful_img mr-3 d-md-flex d-none" alt="公告系統"></div>
+                    <div class="h6 text-left">公告系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://oldw3.ccu.edu.tw/newssubmit/" target="_blank">
+                    <div><img src="/image/useful_sysytem/06.png" class="useful_img mr-3 d-md-flex d-none" alt="新聞投遞系統"></div>
+                    <div class="h6 text-left">新聞投遞系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://coursemap.ccu.edu.tw" target="_blank">
+                    <div><img src="/image/useful_sysytem/23.png" class="useful_img mr-3 d-md-flex d-none" alt="課程地圖"></div>
+                    <div class="h6 text-left">課程地圖</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://cyberccu.ccu.edu.tw/index_0.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/04.png" class="useful_img mr-3 d-md-flex d-none" alt="中正網路大學"></div>
+                    <div class="h6 text-left">中正網路大學</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www026197.ccu.edu.tw/salarysys01/" target="_blank">
+                    <div><img src="/image/useful_sysytem/16.png" class="useful_img mr-3 d-md-flex d-none" alt="員工薪資查詢"></div>
+                    <div class="h6 text-left">員工薪資查詢</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://affairs.ccu.edu.tw/student/login" target="_blank">
+                    <div><img src="/image/useful_sysytem/11.png" class="useful_img mr-3 d-md-flex d-none" alt="學位服借用管理系統"></div>
+                    <div class="h6 text-left">學位服借用管理系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://cloud.ccu.edu.tw/Register/" target="_blank">
+                    <div><img src="/image/useful_sysytem/20.png" class="useful_img mr-3 d-md-flex d-none" alt="NUCloud"></div>
+                    <div class="h6 text-left">NUCloud</div>
+                </a>
+
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <!--<a class="row align-items-center p-3 d-flex text-white" href="https://ecourse.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/useful_sysytem/15.png" class="useful_img mr-3 d-md-flex d-none" alt="教學課程平台"></div>
+                    <div class="h6 text-left">教學課程平台</div>
+                </a>-->
+                <a class="row align-items-center p-3 d-flex text-white" href="https://ecourse2.ccu.edu.tw/autologin.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/24.png" class="useful_img mr-3 d-md-flex d-none" alt="eCourse2教學課程系統"></div>
+                    <div class="h6 text-left">eCourse2教學課程系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://sslvpn.ccu.edu.tw/dana-na/auth/url_5/welcome.cgi" target="_blank">
+                    <div><img src="/image/useful_sysytem/04.png" class="useful_img mr-3 d-md-flex d-none" alt="電子公文(VPN)"></div>
+                    <div class="h6 text-left">電子公文(VPN)</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/parttime/index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/01.png" class="useful_img mr-3 d-md-flex d-none" alt="學習暨勞僱時數登錄"></div>
+                    <div class="h6 text-left">學習暨勞僱時數登錄</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/AMS/" target="_blank">
+                    <div><img src="/image/useful_sysytem/08.png" class="useful_img mr-3 d-md-flex d-none" alt="財產管理系統"></div>
+                    <div class="h6 text-left">財產管理系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/quitapply/Qa_index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/09.png" class="useful_img mr-3 d-md-flex d-none" alt="員工網路離校"></div>
+                    <div class="h6 text-left">員工網路離校</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/account/index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/14.png" class="useful_img mr-3 d-md-flex d-none" alt="會計WEB查詢系統"></div>
+                    <div class="h6 text-left">會計WEB查詢系統</div>
+                </a>
+
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/evaluation/001.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/21.png" class="useful_img mr-3 d-md-flex d-none" alt="線上教學意見系統"></div>
+                    <div class="h6 text-left">線上教學意見系統</div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www026197.ccu.edu.tw/dutysys01/" target="_blank">
+                    <div><img src="/image/useful_sysytem/13.png" class="useful_img mr-3 d-md-flex d-none" alt="差勤系統"></div>
+                    <div class="h6 text-left">差勤系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://kiki.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/useful_sysytem/03.png" class="useful_img mr-3 d-md-flex d-none" alt="教務系統"></div>
+                    <div class="h6 text-left">教務系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/pt_proj/index.php" target="_blank">
+                    <div><img src="/image/useful_sysytem/07.png" class="useful_img mr-3 d-md-flex d-none" alt="兼任助理、臨時工日誌"></div>
+                    <div class="h6 text-left">兼任助理、臨時工日誌</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www026197.ccu.edu.tw/gensys01/" target="_blank">
+                    <div><img src="/image/useful_sysytem/05.png" class="useful_img mr-3 d-md-flex d-none" alt="付款及所得查詢系統"></div>
+                    <div class="h6 text-left">付款及所得查詢系統</div>
+                </a>
+
+                <a class="row align-items-center p-3 d-flex text-white" href="https://ecard.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/useful_sysytem/10.png" class="useful_img mr-3 d-md-flex d-none" alt="電子賀卡系統"></div>
+                    <div class="h6 text-left">電子賀卡系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/consume/" target="_blank">
+                    <div><img src="/image/useful_sysytem/17.png" class="useful_img mr-3 d-md-flex d-none" alt="物品管理系統"></div>
+                    <div class="h6 text-left">物品管理系統</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://miswww1.ccu.edu.tw/tastuctrl/" target="_blank">
+                    <div><img src="/image/useful_sysytem/22.png" class="useful_img mr-3 d-md-flex d-none" alt="教學助理暨工讀生登錄系統"></div>
+                    <div class="h6 text-left">教學助理暨工讀生登錄系統</div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--
+<div id="useful-system1" class="p-5 rounded container-fluid no-gutters d-flex align-items-center flex-wrap" style="display:none!important;">
+    <div class="row w-100  d-flex justify-content-around flex-wrap text-center flex-wrap ">
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/11.png" class="useful_img"></div>
+            <div>學士服借用管理系統</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/12.png" class="useful_img"></div>
+            <div>電子公文(VPN)</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/13.png" class="useful_img"></div>
+            <div>差勤系統</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/14.png" class="useful_img"></div>
+            <div>會計WEB查詢系統</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/15.png" class="useful_img"></div>
+            <div>Ecourse教學課程平台</div>
+        </div>
+        <div class="col-xl-1 col-6 p-0">
+            <div><img src="image/useful_sysytem/16.png" class="useful_img"></div>
+            <div>員工薪資查詢</div>
+        </div>
+    </div>
+</div>
+-->
+<div id="useful-link" class="p-md-5 p-2 rounded container-fluid no-gutters d-flex flex-wrap justify-content-center" style="display:none!important;">
+    <div class="row w-100  d-flex justify-content-center flex-wrap text-center container-fluid align-items-start" style=" max-width: 1100px!important;width: 100vw!important;">
+        <div class="row justify-content-around col-12 bg-white mt-md-0 mt-3 align-items-center" style="border-radius: 1rem;height: 3rem;align-items: center">
+            <div class="col h5 font-weight-bold align-items-center">常用連結</div>
+        </div>
+        <div class="row justify-content-around col-12 text-white">
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www.lib.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/library.png" class="useful_img mr-3 d-md-flex d-none" alt="圖書館"></div>
+                    <div class="h6 text-left">圖書館</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://www.ccunix.ccu.edu.tw/~cashier/ccuindex_tuition.htm" target="_blank">
+                    <div><img src="/image/important_link/10.png" class="useful_img mr-3 d-md-flex d-none" alt="學雜費繳費"></div>
+                    <div class="h6 text-left">學雜費繳費</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="webmail.php">
+                    <div><img src="/image/important_link/03.png" class="useful_img mr-3 d-md-flex d-none" alt="Webmail"></div>
+                    <div class="h6 text-left">Webmail</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://studaffbh.ccu.edu.tw/files/11-1002-271.php" target="_blank">
+                    <div><img src="/image/important_link/16.jpg" class="useful_img mr-3 d-md-flex d-none" alt="職涯發展中心"></div>
+                    <div class="h6 text-left">職涯發展中心</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="http://secretar.ccu.edu.tw/gender-equality/" target="_blank">
+                    <div><img src="/image/important_link/18.png" class="useful_img mr-3 d-md-flex d-none" alt="性別平等"></div>
+                    <div class="h6 text-left">性別平等</div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="http://cultural.lib.ccu.edu.tw/index.php/" target="_blank">
+                    <div><img src="/image/important_link/09.png" class="useful_img mr-3 d-md-flex d-none" alt="藝文中心"></div>
+                    <div class="h6 text-left">藝文中心</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://www.pcc.gov.tw/Default.aspx" target="_blank">
+                    <div><img src="/image/important_link/08.png" class="useful_img mr-3 d-md-flex d-none" alt="電子採購網"></div>
+                    <div class="h6 text-left">電子採購網</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://alum.ccu.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/05.png" class="useful_img mr-3 d-md-flex d-none" alt="校友信箱"></div>
+                    <div class="h6 text-left">校友信箱</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://miswww1.ccu.edu.tw/hostel/" target="_blank">
+                    <div><img src="/image/important_link/17.jpg" class="useful_img mr-3 d-md-flex d-none" alt="致遠樓線上客房申請"></div>
+                    <div class="h6 text-left">致遠樓線上客房申請</div>
+                </a>
+
+                <a class="row align-items-center p-3 d-flex text-white" href="https://affairs.ccu.edu.tw/cashier/epayment" target="_blank">
+                    <div><img src="/image/important_link/19_2.png" class="useful_img mr-3 d-md-flex d-none" alt="電子化收費系統專區"></div>
+                    <div class="h6 text-left">電子化收費系統專區</div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-md-10 col-12">
+                <a class="row align-items-center p-3 d-flex text-white" href="http://ycrc.tanet.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/07.png" class="useful_img mr-3 d-md-flex d-none" alt="雲嘉區網"></div>
+                    <div class="h6 text-left">雲嘉區網</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://document.ccu.edu.tw/Document/filemanage/filemanager.php" target="_blank">
+                    <div><img src="/image/important_link/11.png" class="useful_img mr-3 d-md-flex d-none" alt="檔案E網通"></div>
+                    <div class="h6 text-left">檔案E網通</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://cjlc.ccu.edu.tw/main.php" target="_blank">
+                    <div><img src="/image/important_link/15.png" class="useful_img mr-3 d-md-flex d-none" alt="推廣教育"></div>
+                    <div class="h6 text-left">推廣教育</div>
+                </a>
+                <a class="row align-items-center p-3 d-flex text-white" href="https://ethics.moe.edu.tw/" target="_blank">
+                    <div><img src="/image/important_link/aca_ethic.png" class="useful_img mr-3 d-md-flex d-none" alt="學術倫理教育資源"></div>
+                    <div class="h6 text-left">學術倫理教育資源</div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="center" class="d-flex justify-content-center flex-wrap row">
+    <div class="text-right small_bg">
+        <img src="/image/ccu_bg_logo.png" style="max-width: 20vw" alt="">
+    </div>
+    <div id="content" class="content container-fluid my-4 mb-5 px-md-5 px-0 row justify-content-center">
+        <div id="academic"  class="col-lg-12 col-11">
+            <div id="position" class="py-2 ml-md-0 ml-2 direction_link"><a href="/index.php" class="point_baseline">首頁</a> > <a href="/administrative.php" class="point_baseline">行政單位</a></div>
+            <div id="secondary_title" class="px-3 py-0 no-gutters  ml-md-0 ml-2">行政單位</div>
+            <hr>
+            <div class="row d-flex justify-content-start pl-3">
+                <div id="administrative" class="  mt-3 rounded  col-12 justify-content-around align-items-center  px-4 ">
+                    <div class="row  block-shadow py-5 px-2  aca_block  justify-content-center align-items-center">
+                        <div id="category"
+                             class="col-md-4 col-12 category align-content-center row d-flex  h-100 justify-content-center">
+                            <img src="/image/academic/administrative.png" class="academic_img px-5" alt="行政單位">
+                            <div class="academic_title col-12 text-center mt-3">行政單位</div>
+                        </div>
+                        <div class="col-8 container-fluid no-gutters">
+                            <div class="row">
+                                <div class="col-sm-6 col-12 p-0 no-gutters px-2">
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://140.123.13.101/">校長室</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://secretar.ccu.edu.tw/vicepre2.html">副校長室</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://secretar.ccu.edu.tw/main/">秘書室</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://oaa.ccu.edu.tw/oaa1/">教務處</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://studaffbh.ccu.edu.tw/bin/home.php">學務處</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="https://affairs.ccu.edu.tw/">總務處</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="https://www.rd.ccu.edu.tw/">研發處</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://oia.ccu.edu.tw/www/">國際處</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="https://it.ccu.edu.tw/">資訊處</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="https://www.lib.ccu.edu.tw/">圖書館</a>
+                                </div>
+                                <div class="col-sm-6 col-12 no-gutters px-2">
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://sport.ccu.edu.tw/bin/home.php">體育中心</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://advising.ccu.edu.tw/">輔導中心</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://account.ccu.edu.tw/">主計室</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://person.ccu.edu.tw/">人事室</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://deptehsc.ccu.edu.tw/">環安中心</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="https://cjlc.ccu.edu.tw/main.php">清江學習中心</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://secretar.ccu.edu.tw/main/">媒體暨公關中心</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://ccutec.ccu.edu.tw/hesp/index.php">高等教育深耕計畫辦公室</a>
+                                    <a class="d-block py-2 point_baseline" target="_blank" href="http://oir.ccu.edu.tw/">校務研究辦公室</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="footer" class="d-flex justify-content-center" style="background-color:#0053a5;font-size: 0.9rem!important;">
+    <div class="text-white d-flex  justify-content-between mx-5" id="footer_content">
+        <div class="row w-100 d-flex justify-content-between align-items-sm-start my-3">
+            <div class="col-auto">
+                <div>@ 2019 版權為中正大學所有</div>
+                <div>總機：05-2720411</div>
+                <div>傳真：05-2723358</div>
+                <a class="footer_link" href="mailto:secretar@ccu.edu.tw">E-mail：secretar@ccu.edu.tw</a>
+                <div>地址：621301嘉義縣民雄鄉大學路一段168號</div><!-- 原 62102 -->
+                <div>維護日期：2019.10.22</div>
+            </div>
+            <div class="col-auto">
+                <a class="footer_link d-flex" href="/file/index/CCU-PIMS-A-001_個人資料保護管理政策_v1.4_108.11.07.pdf" target="_blank">個資政策</a>
+                <a class="footer_link d-flex" href="/privacy.php">隱私權聲明</a>
+                <a class="footer_link d-flex" href="/file/index/RNC-CCU-A-001_1070801_v3.1.pdf" target="_blank">資安政策</a>
+                <a class="footer_link d-flex" href="/about_us.php">關於我們</a>
+                <a class="footer_link d-flex" href="mailto:tsices@ccu.edu.tw,vin870426@gmail.com,ejk2013421@gmail.com?subject=中正首頁問題反應"><span style="color:">聯絡我們</span></a>
+
+                <div class="mt-2">
+                    <a href="https://www.facebook.com/alumni.ccu" target="_blank"><img src="/image/footer/facebook.png" class="mr-2" style="width: 1.8rem;cursor: pointer" alt="中正大學粉絲團"></a>
+                    <a href="https://enews.ccu.edu.tw/" target="_blank"><img src="/image/footer/ccu_e_newspaper.png" class="mr-2" style="width: 2rem;cursor: pointer" alt="中正E報"></a>
+                    <a href="https://www.facebook.com/NCCUSAbest" target="_blank"><img src="/image/footer/ccu_student_union.png" style="width: 2rem;cursor: pointer" alt="學生會"></a>
+                </div>
+            </div>
+            <div class="col-auto">
+
+            </div>
+        </div>
+    </div>
+
+</div></body>
+</html>
