@@ -4,7 +4,24 @@ import hashlib
 import csv
 
 maxarray = 1000000
+def urlqueueDBget():
+    urlqueueDB=[]
+    with open('urlqueueDB.csv', newline='') as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        for row in reader:
+            urlqueueDB.extend(row)
+    return urlqueueDB
 
+
+def urlqueueDBinsert(datas):
+    with open('urlqueueDB.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        for row in datas:
+            print(row)
+            writer.writerow([row])
+
+'''
 def contentDBget():
     contentDB = pd.read_csv('contentDB.csv',index_col=0)
     print("---get---\n")
@@ -85,3 +102,4 @@ def resetALLDB():
 if __name__ == "__main__":
     resetALLDB()
     pass
+'''
