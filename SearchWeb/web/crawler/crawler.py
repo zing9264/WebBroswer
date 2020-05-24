@@ -36,8 +36,8 @@ logging.warning('Hello warning!')
 logging.error('Hello error!')
 logging.critical('Hello critical!')
 
-maxarray = 1000000
-Urlqueue = Queue(1000000)
+maxarray = 10000000
+Urlqueue = Queue(maxarray)
 
 def DomaintoIp(url):
     res = urlparse(url)
@@ -48,9 +48,12 @@ def DomaintoIp(url):
         ip='0.0.0.0'
     return ip
 
+import random
+
 
 def fetcher(url="https://www.ccu.edu.tw/"):
-    time.sleep(1)
+    
+    time.sleep(random.randint(1,10)/10)
     #1.向伺服器傳送get請求
     theTime = datetime.datetime.now().strftime(ISOTIMEFORMAT)
     try:
@@ -61,12 +64,17 @@ def fetcher(url="https://www.ccu.edu.tw/"):
         return DataStruct.fetchData(time=theTime,status_code=504,url=url)
 
     #checkinDB() 
-    time.sleep(1)
-    ip= DomaintoIp(response.url)
+    #time.sleep(1)
+    ip = DomaintoIp(response.url)
+        
     #2.使用response處理伺服器的響應內容
     if (response.status_code != 200):
         print("response.status_code :" + str(response.status_code))
         resultData = DataStruct.fetchData(time=theTime,status_code=response.status_code, url=response.url, ip=ip)
+        return resultData
+
+    if ('text/html' not in response.headers['Content-Type']):
+        resultData = DataStruct.fetchData(time=theTime, status_code=77777, url=response.url, ip=ip, content=response.headers['Content-Type'])
         return resultData
     
     '''
@@ -91,7 +99,10 @@ def UrlQueueFilter(url, currentUrl):
     elif ('https://' in url):
         pass
     else:
-        url=urljoin(currentUrl,url)
+        url = urljoin(currentUrl, url)
+        ip = DomaintoIp(currentUrl)
+        if (ip != '140.123.5.6'):
+            return False
     newurl, dummy_frag = urldefrag(url)
 
     return newurl
@@ -105,7 +116,7 @@ def insertDB(url,data):
     return 0
 
 def saveQueue():
-    tmpqueue = Queue(1000000)
+    tmpqueue = Queue(maxarray)
     urlqueueDB = []
     while (Urlqueue.empty() == False):
         item = Urlqueue.get()
@@ -152,13 +163,16 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=7):
         clock=clock+1
         item = Urlqueue.get()
         currentUrl = item[0]
-        currentLevel=item[1]
+        currentLevel = item[1]
         print("currentUrl=" + str(currentUrl))
         print("currentLevel=" + str(currentLevel))
         if (currentLevel == 0):
             continue
         urlIDcheck = siteDB.CheckDBUrl(currentUrl)
         if (urlIDcheck == 'NotInDB'):
+            ip = DomaintoIp(currentUrl)
+            if (ip != '140.123.5.6'):
+                continue
             fetchData = fetcher(currentUrl)
             if (fetchData.status_code != 200):
                 continue
@@ -167,11 +181,15 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=7):
             insertDB(currentUrl, fetchData)
             links.sort()
             for i in links:
+                if (i == 'https://www.ccu.edu.tw/eng/academic_management.php.php'):
+                    print("findthepage:")
+                    print(currentUrl)
+                    return 0
                 tmpUrl = UrlQueueFilter(i,currentUrl)
                 if (tmpUrl == False):
                     continue
                 Urlqueue.put([tmpUrl, str(int(currentLevel) - 1)])
-            if (clock % 500 == 0):
+            if (clock % 50000 == 0):
                 print('----------SaveData--------')
                 saveQueue()
                 loadQueue()
@@ -182,4 +200,4 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=7):
 
 
 if __name__ == "__main__":
-    startFetch(inputLevel=7)
+    startFetch('https://www.ccu.edu.tw/eng/index.php',inputLevel=7)

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="perfect-scrollbar-on" >
+    <head>
+        <title>Dashboard</title>
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;500&display=swap" rel="stylesheet">
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" ></script>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/dashboard-style.css' %}"/>
+        <script src="{% static 'js/dashboard/dashboard.js' %}" defer></script>
+
+    </head>
+    <body>
+        <!-- Modal -->
+        <div class="modal fade" id="addNewthread" tabindex="-1" role="dialog" aria-labelledby="addNewthreadLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h3 class="modal-title" id="addNewthreadLabel" >管理排程工作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <form action="/addnewthread/" method="post">
+                    <div class="modal-body">
+                            <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="newthread-URL">種子網站URL</label>
+                                <input type="url" class="form-control" name="newthread-URL" value="https://tw.news.yahoo.com/">
+                            </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="newthread-level">爬取深度</label>
+                                    <input type="number" class="form-control" name="newthread-level" value="6">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="newthread-level">爬取速度(等待X秒)</label>
+                                    <input type="number" step="0.01" class="form-control" name="newthread-wait" value="0.5">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="newthread-num">第N值行續(MAX:4)</label>
+                                    <input type="number" class="form-control" name="newthread-num" value="1">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="newthread-state">運行狀態</label>
+                                    <select id="newthread-state" name="newthread-state" class="form-control">
+                                        <option selected>run</option>
+                                        <option>pause</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input class="inactive" name='csrfmiddlewaretoken' id='csrfmiddlewaretoken'>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id='addwork'>新增工作</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+                <!-- Image and text -->
+        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent" style="height:4rem">
+            <a class="navbar-brand" href="#">
+            Dashboard
+            </a>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12" id="main-console">
+                    <div class="card card-chart">
+                        <div class="card-header ">
+                          <div class="row">
+                            <div class="col-sm-6 text-left">
+                              <h5 class="card-category">爬蟲工作</h5>
+                              <h2 class="card-title">主控台</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <script>
+                                    $(function(){
+                                        $("input[name='options']").change(function(){
+                                            var s = $("input[name='options']:checked").val();
+                                            if(s==1){
+                                                document.querySelector('#main-console-screen').classList.remove('inactive');
+                                                document.querySelector('#schedule-screen').classList.add('inactive');
+                                                document.querySelector('#IP-control-screen').classList.add('inactive');
+                                            }
+                                            else if(s==2){
+                                                document.querySelector('#main-console-screen').classList.add('inactive');
+                                                document.querySelector('#schedule-screen').classList.remove('inactive');
+                                                document.querySelector('#IP-control-screen').classList.add('inactive');
+                                            }
+                                            else if(s==3){
+                                                document.querySelector('#main-console-screen').classList.add('inactive');
+                                                document.querySelector('#schedule-screen').classList.add('inactive');
+                                                document.querySelector('#IP-control-screen').classList.remove('inactive');
+                                            } 
+                                        });
+                                    })
+                                </script>
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active">
+                                        <input type="radio" name="options" id="option1" value="1" autocomplete="off" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">控制</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="options" id="option2" value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="options" id="option3" value="3" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">IP控制</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body main-ctrl " id="main-console-screen">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button class="btn btn-outline-primary btn-lg " data-toggle="modal" data-target="#addNewthread" >管理排程工作</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body main-ctrl inactive" id="schedule-screen" >
+                            2
+                        </div>
+                        <div class="card-body main-ctrl inactive" id="IP-control-screen">
+                            3
+                        </div>
+
+                      </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

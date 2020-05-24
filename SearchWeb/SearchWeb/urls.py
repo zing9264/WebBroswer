@@ -21,6 +21,9 @@ from django.urls import path
 
 from web.views import Search
 from web.views import ReadDB
+from web.views import Dashboard
+from web.views import AddNewThread
+from web.views import get_csrf
 
 from django.views.generic import RedirectView
 
@@ -28,5 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', include('web.urls')),
     path('readDB/', ReadDB),
+    path('dashboard/', Dashboard),
+    path('addnewthread/', AddNewThread),
+    path('getcsrf/',get_csrf),
     path('', RedirectView.as_view(url='/search/'))
 ]

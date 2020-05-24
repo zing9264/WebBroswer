@@ -7,9 +7,29 @@ from datetime import datetime
 
 import pandas as pd
 import csv
+import json
+from .crawlermanage import crawlermanage
+from .crawler.DatabaseCtrl import mutual_stateDBinsert
 
 def Search(request):
     return render(request, 'index.html')
+
+def Dashboard(request):
+    return render(request, 'dashboard.html')
+
+def AddNewThread(request):
+    if 'newthread-URL' in request.POST:
+        print("url:" + request.POST['newthread-URL'])
+        print("level:" + request.POST['newthread-level'])
+        print("wait:" + request.POST['newthread-wait'])
+        print("num:" + request.POST['newthread-num'])
+        print("state:" + request.POST['newthread-state'])
+        datas = [request.POST['newthread-num'] ,request.POST['newthread-state'] ,request.POST['newthread-URL'] ,request.POST['newthread-URL'] ,request.POST['newthread-level'],request.POST['newthread-wait']]
+        mutual_stateDBinsert(datas)
+        return render(request, 'dashboard.html')
+    else:
+        return render(request, 'dashboard.html')
+
 
 def Page(request, searchText, page):
 	return render(request, 'index.html', {
@@ -30,3 +50,14 @@ def ReadDB(request):
         'data': contentDB,
     })
 
+from django.template.context_processors import csrf
+from django.http import JsonResponse
+
+def get_csrf(request):
+        #生成 csrf 数据，发送给前端
+    x = csrf(request)
+    csrf_token = x['csrf_token']
+    data = {
+        'csrf_token': str(csrf_token),
+    }
+    return JsonResponse(data)

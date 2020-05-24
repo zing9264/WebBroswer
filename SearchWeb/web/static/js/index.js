@@ -119,6 +119,11 @@ function _onJsonReady(json) {
 			i = 1;
 	}
 
+	console.log(i)
+	console.log(end)
+	console.log(pagecount)
+	console.log(page)
+	
     document.querySelectorAll('.page > a').forEach(e => e.remove());;
     var pageDiv = document.querySelector('.page');
     for(var i; i<=end; i++){

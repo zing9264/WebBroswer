@@ -20,7 +20,36 @@ def urlqueueDBinsert(datas):
         for row in datas:
             writer.writerow(row)
             
+def mutual_stateDBget(threadnum):
+    urlqueueDB=[]
+    with open('mutual_state.csv','r', newline='',encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        for row in reader:
+            if row[0]==threadnum:
+                return row
+
+
+def mutual_stateDBinsert(datas):
+    with open('G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\mutual_state.csv','r', newline='',encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        print(reader)
+        rows = [row for row in reader]
+    with open('G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\mutual_state.csv', 'w', newline='',encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        print(rows)
+        print(datas)
+        rows[int(datas[0])] = datas
+        print(rows)
+        writer.writerows(rows)
+            
+
+
+
 '''
+
+
 def checkinSeenDB(content):
     print("init--------")
     SeenDB=[]

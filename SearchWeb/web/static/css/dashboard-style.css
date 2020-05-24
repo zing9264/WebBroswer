@@ -1,0 +1,57 @@
+body{
+    background: #1e1e2f;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.card-body{
+    color: #fff;
+}
+
+.navbar .navbar-brand {
+    position: fixed;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    color: #fff;
+    margin-left: 17px;
+    margin-top: 3px;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+.inactive {
+    display: none !important;
+  }
+
+.card{
+    background: #27293d;
+}
+.card .card-header .card-category {
+    color: #9a9a9a;
+    margin-bottom: 5px;
+    font-weight: 300;
+    font-family: 'Noto Sans TC', sans-serif;
+
+}
+.card .card-title {
+    margin-bottom: .75rem;
+    font-family: 'Noto Sans TC', sans-serif;
+
+}
+.card .card-header {
+    padding: 15px 15px 0;
+    border: 0;
+    color: hsla(0,0%,100%,.8);
+}
+
+.card .card-header .card-title {
+    color: #fff;
+    font-weight: 100;
+}
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.modal{
+    color: slategrey;
+}
