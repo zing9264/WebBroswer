@@ -6,6 +6,30 @@ body{
     color: #fff;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 0.35rem;
+    height: 0.35rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
 .navbar .navbar-brand {
     position: fixed;
     padding-top: .3125rem;
@@ -20,8 +44,12 @@ body{
     display: none !important;
   }
 
+.thread-btn{
+margin: 1rem;
+  }
 .card{
     background: #27293d;
+    margin-bottom: 3rem;
 }
 .card .card-header .card-category {
     color: #9a9a9a;

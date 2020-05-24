@@ -124,7 +124,6 @@
                                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">IP控制</span>
                                         <span class="d-block d-sm-none">
                                     </label>
-
                                 </div>
                             </div>
                           </div>
@@ -146,6 +145,384 @@
                       </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12" id="thread-console-1" >
+                    <div class="card card-chart">
+                        <div class="card-header ">
+                          <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h7 class="card-category">工作檢視</h5>
+                                <h4 class="card-title">執行續1</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <script>
+                                    $(function(){
+                                        $("input[name='threadcon1']").change(function(){
+                                            var s = $("input[name='threadcon1']:checked").val();
+                                            if(s==1){
+                                                document.querySelector('#thread-1-1').classList.remove('inactive');
+                                                document.querySelector('#thread-1-2').classList.add('inactive');
+                                            }
+                                            else if(s==2){
+                                                document.querySelector('#thread-1-1').classList.add('inactive');
+                                                document.querySelector('#thread-1-2').classList.remove('inactive');
+                                            }
+                                        });
+                                    })
+                                </script>
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
+                            <div class="row" >
+                                <div class="col-12 " id=thread-1-1>
+                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
+                                    <br>
+                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
+                                    </span>
+                                    <br>
+                                    <span>當前IP:98.138.219.232</span>
+                                    <br>
+                                    <span>當前速率:0.3</span>
+                                    <br>
+                                    <span>已爬取:81235</span>
+                                    <br>                                        
+                                    <span>佇列剩餘:123254</span>
+                                    <br>                                    
+                                    <br>
+                                    <br>
+                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
+                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                </div>
+                                <div class="col-12 inactive" id=thread-1-2>
+                                    <table class="table table-dark">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">treadNum</th>
+                                            <th scope="col">operatingStatus</th>
+                                            <th scope="col">seedUrl</th>
+                                            <th scope="col">lastUrl</th>
+                                            <th scope="col">level</th>
+                                            <th scope="col">waittime</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>run</td>
+                                            <td>https://tw.news.yahoo.com/</td>
+                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
+                                            <td>5</td>
+                                            <td>0.3</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12" id="thread-console-1" >
+                    <div class="card card-chart">
+                        <div class="card-header ">
+                          <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h7 class="card-category">工作檢視</h5>
+                                <h4 class="card-title">執行續1</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <script>
+                                    $(function(){
+                                        $("input[name='threadcon1']").change(function(){
+                                            var s = $("input[name='threadcon1']:checked").val();
+                                            if(s==1){
+                                                document.querySelector('#thread-1-1').classList.remove('inactive');
+                                                document.querySelector('#thread-1-2').classList.add('inactive');
+                                            }
+                                            else if(s==2){
+                                                document.querySelector('#thread-1-1').classList.add('inactive');
+                                                document.querySelector('#thread-1-2').classList.remove('inactive');
+                                            }
+                                        });
+                                    })
+                                </script>
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
+                            <div class="row" >
+                                <div class="col-12 " id=thread-1-1>
+                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
+                                    <br>
+                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
+                                    </span>
+                                    <br>
+                                    <span>當前IP:98.138.219.232</span>
+                                    <br>
+                                    <span>當前速率:0.3</span>
+                                    <br>
+                                    <span>已爬取:81235</span>
+                                    <br>                                        
+                                    <span>佇列剩餘:123254</span>
+                                    <br>                                    
+                                    <br>
+                                    <br>
+                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
+                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                </div>
+                                <div class="col-12 inactive" id=thread-1-2>
+                                    <table class="table table-dark">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">treadNum</th>
+                                            <th scope="col">operatingStatus</th>
+                                            <th scope="col">seedUrl</th>
+                                            <th scope="col">lastUrl</th>
+                                            <th scope="col">level</th>
+                                            <th scope="col">waittime</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>run</td>
+                                            <td>https://tw.news.yahoo.com/</td>
+                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
+                                            <td>5</td>
+                                            <td>0.3</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12" id="thread-console-1" >
+                    <div class="card card-chart">
+                        <div class="card-header ">
+                          <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h7 class="card-category">工作檢視</h5>
+                                <h4 class="card-title">執行續1</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <script>
+                                    $(function(){
+                                        $("input[name='threadcon1']").change(function(){
+                                            var s = $("input[name='threadcon1']:checked").val();
+                                            if(s==1){
+                                                document.querySelector('#thread-1-1').classList.remove('inactive');
+                                                document.querySelector('#thread-1-2').classList.add('inactive');
+                                            }
+                                            else if(s==2){
+                                                document.querySelector('#thread-1-1').classList.add('inactive');
+                                                document.querySelector('#thread-1-2').classList.remove('inactive');
+                                            }
+                                        });
+                                    })
+                                </script>
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
+                            <div class="row" >
+                                <div class="col-12 " id=thread-1-1>
+                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
+                                    <br>
+                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
+                                    </span>
+                                    <br>
+                                    <span>當前IP:98.138.219.232</span>
+                                    <br>
+                                    <span>當前速率:0.3</span>
+                                    <br>
+                                    <span>已爬取:81235</span>
+                                    <br>                                        
+                                    <span>佇列剩餘:123254</span>
+                                    <br>                                    
+                                    <br>
+                                    <br>
+                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
+                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                </div>
+                                <div class="col-12 inactive" id=thread-1-2>
+                                    <table class="table table-dark">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">treadNum</th>
+                                            <th scope="col">operatingStatus</th>
+                                            <th scope="col">seedUrl</th>
+                                            <th scope="col">lastUrl</th>
+                                            <th scope="col">level</th>
+                                            <th scope="col">waittime</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>run</td>
+                                            <td>https://tw.news.yahoo.com/</td>
+                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
+                                            <td>5</td>
+                                            <td>0.3</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12" id="thread-console-1" >
+                    <div class="card card-chart">
+                        <div class="card-header ">
+                          <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h7 class="card-category">工作檢視</h5>
+                                <h4 class="card-title">執行續1</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <script>
+                                    $(function(){
+                                        $("input[name='threadcon1']").change(function(){
+                                            var s = $("input[name='threadcon1']:checked").val();
+                                            if(s==1){
+                                                document.querySelector('#thread-1-1').classList.remove('inactive');
+                                                document.querySelector('#thread-1-2').classList.add('inactive');
+                                            }
+                                            else if(s==2){
+                                                document.querySelector('#thread-1-1').classList.add('inactive');
+                                                document.querySelector('#thread-1-2').classList.remove('inactive');
+                                            }
+                                        });
+                                    })
+                                </script>
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
+                            <div class="row" >
+                                <div class="col-12 " id=thread-1-1>
+                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
+                                    <br>
+                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
+                                    </span>
+                                    <br>
+                                    <span>當前IP:98.138.219.232</span>
+                                    <br>
+                                    <span>當前速率:0.3</span>
+                                    <br>
+                                    <span>已爬取:81235</span>
+                                    <br>                                        
+                                    <span>佇列剩餘:123254</span>
+                                    <br>                                    
+                                    <br>
+                                    <br>
+                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
+                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
+                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                </div>
+                                <div class="col-12 inactive" id=thread-1-2>
+                                    <table class="table table-dark">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">treadNum</th>
+                                            <th scope="col">operatingStatus</th>
+                                            <th scope="col">seedUrl</th>
+                                            <th scope="col">lastUrl</th>
+                                            <th scope="col">level</th>
+                                            <th scope="col">waittime</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>run</td>
+                                            <td>https://tw.news.yahoo.com/</td>
+                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
+                                            <td>5</td>
+                                            <td>0.3</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+
+
         </div>
     </body>
 </html>
