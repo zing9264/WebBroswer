@@ -23,6 +23,7 @@ from web.views import Search
 from web.views import ReadDB
 from web.views import Dashboard
 from web.views import get_csrf
+from web.views import GetBatchCsv
 
 from django.views.generic import RedirectView
 
@@ -31,6 +32,7 @@ urlpatterns = [
     path('search/', include('web.urls')),
     path('readDB/', ReadDB),
     path('dashboard/', Dashboard),
-    path('getcsrf/',get_csrf),
+    path('getcsrf/', get_csrf),
+    path('dashboard/getbatchcsv/',GetBatchCsv),
     path('', RedirectView.as_view(url='/search/'))
 ]

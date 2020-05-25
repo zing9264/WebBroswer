@@ -10,6 +10,7 @@ import csv
 import json
 from .crawlermanage import crawlermanage
 from .crawler.DatabaseCtrl import mutual_stateDBinsert
+from .crawler.DatabaseCtrl import currentBatchGet
 
 def Search(request):
     return render(request, 'index.html')
@@ -32,6 +33,13 @@ def Page(request, searchText, page):
         'searchText': searchText,
         'page': page
     })
+
+def GetBatchCsv(request):
+
+    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as fp:
+        all_lines = fp.readlines()
+    print(all_lines)
+    return HttpResponse(all_lines, content_type="text/csv")
 
 def ReadDB(request):
 	contentDB = pd.read_csv('web\crawler\contentDB.csv',index_col=0)

@@ -10,3 +10,4 @@ SearchWeb/web/queue/urlqueueDB.csv
 *.pyc
 SearchWeb/web/crawler/error.log
 SearchWeb/web/crawler/urlqueueDB.csv
+SearchWeb/web/crawler/urlqueueDB.csv

@@ -195,8 +195,5 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
             saveQueue()
             loadQueue()
 
-
-
-
 if __name__ == "__main__":
     startFetch(inputurl='https://udn.com/news/story/120884/4588528?from=udn-category&utm_source=udnnews&utm_medium=fb&fbclid=IwAR3KXxtepATrREnRYnv8FF2O4rZlnxuTMXJtDrfReYAt6BgoXVSXfKveTbE',inputLevel=5)
