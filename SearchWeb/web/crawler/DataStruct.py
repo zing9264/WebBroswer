@@ -7,3 +7,18 @@ class fetchData():
         self.title=title
         self.content = content
         self.fetchCount = fetchCount
+
+#IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
+class currentBatch():
+    def __init__(self,ip='0.0.0.0',url='',level=0,totalFetchCnt=0,queueCnt=0,failCnt=0,successCnt=0,redundancyUrlCnt=0,speed=0.05,passedTime=0):
+        self.ip = ip
+        self.url = url
+        self.level=int(level)
+        self.totalFetchCnt = int(totalFetchCnt)
+        self.queueCnt = int(queueCnt)
+        self.failCnt=int(failCnt)
+        self.successCnt = int(successCnt)
+        self.redundancyUrlCnt = int(redundancyUrlCnt)
+        self.speed = float(speed)
+        self.passedTime = float(passedTime)
+        

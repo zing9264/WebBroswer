@@ -51,9 +51,12 @@ def DomaintoIp(url):
 import random
 
 
-def fetcher(url="https://www.ccu.edu.tw/"):
+def fetcher(url="https://www.ccu.edu.tw/", speed=0.3):
     
-    time.sleep(random.randint(1,10)/10)
+    speed = speed + random.randint(-400, 400) / 1000
+    if (speed < 0):
+        speed=0
+    time.sleep(speed)
     #1.向伺服器傳送get請求
     theTime = datetime.datetime.now().strftime(ISOTIMEFORMAT)
     try:
@@ -100,9 +103,6 @@ def UrlQueueFilter(url, currentUrl):
         pass
     else:
         url = urljoin(currentUrl, url)
-        ip = DomaintoIp(currentUrl)
-        if (ip != '140.123.5.6'):
-            return False
     newurl, dummy_frag = urldefrag(url)
 
     return newurl
@@ -130,74 +130,73 @@ def loadQueue():
         Urlqueue.put(i)
 
 
+def currentBatchInit(inputurl,inputspeed):
+#IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
+    tmpBatch = DBCtrl.currentBatchGet()
+    ip = DomaintoIp(inputurl)
+    currentBatch = DataStruct.currentBatch(ip, inputurl, tmpBatch[2], tmpBatch[3], tmpBatch[4], tmpBatch[5], tmpBatch[6], tmpBatch[7], inputspeed, tmpBatch[9])
+    time.sleep(5)
+    #ip='0.0.0.0',url='',level=0,totalFetchCnt=0,queueCnt=0,failCnt=0,successCnt=0,redundancyUrlCnt=0,speed=0.05,passedTime=0
+    return currentBatch
+    
+def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,inputthread=1):
 
-def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=7):
-    currentLevel = inputLevel
-    currentUrl= inputurl
-    fetchData = fetcher(currentUrl)
-    clock = 0
-    print('------------------------------')
-    print(fetchData.time)
-    print(fetchData.status_code)
-    print(fetchData.url)
-    print(fetchData.ip)
-    print(fetchData.content)
-    print('------------------------------')
-    fetchData.title, contextpool, links = ps.parser(fetchData.content)
-    fetchData.content = "".join(contextpool)
-    insertDB(currentUrl,fetchData)
-
-    #SiteDbInsert(fetchData)
-    #title, contextpool, links = ps.parser(fetchData.content)
-    links.sort()
-    loadQueue()
-    for i in links:
-        tmpUrl = UrlQueueFilter(i,currentUrl)
-        if (tmpUrl == False):
-            continue
-        Urlqueue.put([tmpUrl,str(int(currentLevel)-1)])
-    saveQueue()
-    loadQueue()
-
-    while (Urlqueue.empty() == False):
-        clock=clock+1
+    currentBatch = currentBatchInit(inputurl,inputspeed)
+    startTime = time.time()
+    saveTime=0
+    passTime=currentBatch.passedTime
+    loadQueue()                 #讀取佇列
+    if (Urlqueue.empty() == True):#若空則由種子網站開始
+        Urlqueue.put([inputurl, 0])
+    fetchCnt =currentBatch.totalFetchCnt 
+    while (Urlqueue.empty() == False):#爬取到佇列空為止
         item = Urlqueue.get()
         currentUrl = item[0]
         currentLevel = item[1]
         print("currentUrl=" + str(currentUrl))
         print("currentLevel=" + str(currentLevel))
-        if (currentLevel == 0):
+        if (int(currentLevel) >= inputLevel):# 超過預定深度就不爬取
             continue
-        urlIDcheck = siteDB.CheckDBUrl(currentUrl)
-        if (urlIDcheck == 'NotInDB'):
-            ip = DomaintoIp(currentUrl)
-            if (ip != '140.123.5.6'):
+        urlIDcheck = siteDB.CheckDBUrl(currentUrl)# 檢查是否存在資料庫
+        if (urlIDcheck == 'NotInDB'):  # 若不存在則進行爬取
+            fetchCnt=fetchCnt+1
+            print('NotInDB')
+            fetchData = fetcher(currentUrl,currentBatch.speed) #執行FETCHER 回傳fetchData的資料型態 定義在DataStruct.py
+            if (fetchData.status_code != 200): #檢查碼是否正常
+                currentBatch.failCnt=currentBatch.failCnt+1
                 continue
-            fetchData = fetcher(currentUrl)
-            if (fetchData.status_code != 200):
-                continue
-            fetchData.title, contextpool, links = ps.parser(fetchData.content)
-            fetchData.content = "".join(contextpool)
-            insertDB(currentUrl, fetchData)
+            currentBatch.successCnt=currentBatch.successCnt+1
+            fetchData.title, contextpool, links = ps.parser(fetchData.content)#將爬取到的資料丟進PARSER，取得標題、連結、內文
+            fetchData.content = "".join(contextpool)#將內文從ARRAY合併成一個字串
+            insertDB(currentUrl, fetchData)#送到ELASTIC DB
             links.sort()
-            for i in links:
-                if (i == 'https://www.ccu.edu.tw/eng/academic_management.php.php'):
-                    print("findthepage:")
-                    print(currentUrl)
-                    return 0
+            #print(links)
+            for i in links:  #將連結加到QUEUE
                 tmpUrl = UrlQueueFilter(i,currentUrl)
                 if (tmpUrl == False):
                     continue
-                Urlqueue.put([tmpUrl, str(int(currentLevel) - 1)])
-            if (clock % 50000 == 0):
-                print('----------SaveData--------')
-                saveQueue()
-                loadQueue()
-        else:
+                Urlqueue.put([tmpUrl, str(int(currentLevel) + 1)])
+        else: #若該筆連結已存在資料庫中，更新他被爬取過的次數(記錄被多少網站連過)，這裡沒有對內容更新，若要更新內容，需要再寫一個針對資料庫已有資料進行更新的程式。
+            print('indb')
             fetchData = siteDB.getIDdata(urlIDcheck)
-            insertDB(currentUrl,fetchData)
+            insertDB(currentUrl, fetchData)
+            currentBatch.redundancyUrlCnt = currentBatch.redundancyUrlCnt + 1  #統計重複的URL總數
+        timeLag=time.time()-startTime
+        saveTime = saveTime+ timeLag
+        passTime = passTime +timeLag
+        startTime = time.time()
+        if (saveTime >= 4):  #對網頁要顯示的資料進行更新
+            saveTime=0
+            currentBatchData = [fetchData.ip,fetchData.url,currentLevel,fetchCnt,Urlqueue.qsize(),currentBatch.failCnt,currentBatch.successCnt,currentBatch.redundancyUrlCnt,currentBatch.speed,passTime] #IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
+            DBCtrl.currentBatchInsert(currentBatchData)
+
+        if (fetchCnt % 1000 == 0): #自動存檔功能
+            print('----------SaveData--------')
+            saveQueue()
+            loadQueue()
+
 
 
 
 if __name__ == "__main__":
-    startFetch('https://www.ccu.edu.tw/eng/index.php',inputLevel=7)
+    startFetch(inputurl='https://udn.com/news/story/120884/4588528?from=udn-category&utm_source=udnnews&utm_medium=fb&fbclid=IwAR3KXxtepATrREnRYnv8FF2O4rZlnxuTMXJtDrfReYAt6BgoXVSXfKveTbE',inputLevel=5)

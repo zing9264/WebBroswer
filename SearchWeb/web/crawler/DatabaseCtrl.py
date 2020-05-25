@@ -31,20 +31,43 @@ def mutual_stateDBget(threadnum):
 
 
 def mutual_stateDBinsert(datas):
-    with open('G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\mutual_state.csv','r', newline='',encoding="utf-8") as csvfile:
+    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\mutual_state.csv','r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         print(reader)
         rows = [row for row in reader]
-    with open('G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\mutual_state.csv', 'w', newline='',encoding="utf-8") as csvfile:
+    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\mutual_state.csv', 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print(rows)
         print(datas)
         rows[int(datas[0])] = datas
         print(rows)
         writer.writerows(rows)
+    return
             
 
+def currentBatchGet():
+    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        print(reader)
+        rows = [row for row in reader]
+    return rows[1]
+
+def currentBatchInsert(datas):
+    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        print(reader)
+        rows = [row for row in reader]
+    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\currentBatch.csv', 'w', newline='',encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        print(rows)
+        print(datas)
+        rows[1] = datas
+        print(rows)
+        writer.writerows(rows)
+    return
 
 
 '''

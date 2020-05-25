@@ -1,8 +1,12 @@
 *.pyc
 *\__pycache__
+*__pycache__/
 crawlerS/
 crawlerS/FORUMGAMER/crawler.py
 crawlerS/ithome/crawler.py
 crawlerS/udn/error.log
 crawlerS/yahoo/crawler.py
 SearchWeb/web/queue/urlqueueDB.csv
+*.pyc
+SearchWeb/web/crawler/error.log
+SearchWeb/web/crawler/urlqueueDB.csv
