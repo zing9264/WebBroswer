@@ -8,6 +8,15 @@ page = 1
 pageSize = 5;
 var searchTextValue = ''
 
+document.getElementById("id_of_textbox")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("id_of_button").click();
+    }
+});
+
+
 pageContent = document.querySelector('.NonDisplay-Page').textContent;
 if(pageContent != '')
 	page = pageContent
@@ -175,6 +184,16 @@ function _onJsonReady(json) {
 		para.appendChild(p);
 
 		para.classList.add("fadeInUp");
+		element.appendChild(para);
+    }
+
+    if(json['hits']['hits'].length==0){
+    	var para = document.createElement("div");
+    	para.classList.add("resultHtmlList");
+    	p = document.createElement("p");
+    	p.innerHTML = ("無法找到匹配的結果");
+    	para.appendChild(p);
+    	para.classList.add("fadeInUp");
 		element.appendChild(para);
     }
 

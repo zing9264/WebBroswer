@@ -8,20 +8,21 @@ a {
 	color: grey;
 	cursor: default;
 	font-size: 10px;
+	word-wrap: break-word;
 }
 
 .flex {
 	display: flex;
 	padding: 15px;
 	flex-direction: column;
-	flex-wrap: wrap
+	flex-wrap: wrap;
 }
 
 .resultHtmlList {
 	margin:0px auto;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	width: 50%
+	width: 50%;
 }
 
 input[type="text"] {
