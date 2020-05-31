@@ -35,8 +35,8 @@ def Page(request, searchText, page):
     })
 
 def GetBatchCsv(request):
-
-    with open(r'G:\Python\WebBroswer\WebBroswer\SearchWeb\web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as fp:
+	
+    with open('web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as fp:
         all_lines = fp.readlines()
     print(all_lines)
     return HttpResponse(all_lines, content_type="text/csv")
