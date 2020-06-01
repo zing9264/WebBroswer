@@ -1,11 +1,24 @@
+/*
+var chatSocket = new WebSocket(
+    'ws://' + window.location.host + '/ws/chat/');
 
+chatSocket.onmessage = function(e) {
+    var data = JSON.parse(e.data);
+    var message = data['message'];
+    console.log(message);
+  };
+
+chatSocket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly');
+  };
+*/
 console.log("test")
 
 //URL = "http://172.16.217.132:9200/sitedb/instance/_search"
 URL = "http://127.0.0.1:9200/sitedb/_search"
 
 page = 1
-pageSize = 5;
+pageSize = 10;
 var searchTextValue = ''
 
 document.getElementById("id_of_textbox")
@@ -47,6 +60,10 @@ function searchFn(){
 	document.querySelector('.NonDisplay').textContent = '';
 	searchTextValue = searchText.value
 	fetchData(searchText.value)
+
+	//chatSocket.send(JSON.stringify({
+        //'message': ""
+    //}));
 }
 
 
@@ -159,14 +176,22 @@ function _onJsonReady(json) {
     	var br = document.createElement("br");
 
     	var link = document.createElement("a");
-    	var node = document.createTextNode(result[i]['_source']['URL']);
+    	if(result[i]['_source']['URL'].length > 65)
+    		RESULTURL = result[i]['_source']['URL'].slice(0, 65) + ' ...'
+    	else
+    		RESULTURL = result[i]['_source']['URL']
+    	var node = document.createTextNode(RESULTURL);
     	link.appendChild(node);
     	link.href = result[i]['_source']['URL'];
     	para.appendChild(link);
     	para.appendChild(br);
 
     	var p = document.createElement("p");
-    	node = document.createTextNode(result[i]['_source']['title']);
+    	if(result[i]['_source']['title'].length > 78)
+    		RESULTTITLE = result[i]['_source']['title'].slice(0, 78) + ' ...'
+    	else
+    		RESULTTITLE = result[i]['_source']['title']
+    	node = document.createTextNode(RESULTTITLE);
     	link = document.createElement("a");
     	link.href = result[i]['_source']['URL'];
     	link.classList.add("titleStyle");
@@ -176,10 +201,20 @@ function _onJsonReady(json) {
 
 		//console.log(result[i]['highlight']['content'][0])
 		p = document.createElement("p");
-		if(typeof(result[i]['highlight']['content']) == 'undefined')
-			p.innerHTML = (result[i]['_source']['content']);
-		else
-			p.innerHTML = result[i]['highlight']['content'][0];
+		if(typeof(result[i]['highlight']['content']) == 'undefined'){
+			if(result[i]['_source']['content'].length > 125)
+	    		RESULTCONTENT = result[i]['_source']['content'].slice(0, 125) + ' ...'
+	    	else
+	    		RESULTCONTENT = result[i]['_source']['content']
+			p.innerHTML = RESULTCONTENT;
+		}
+		else{
+			if(result[i]['highlight']['content'][0].length > 125)
+	    		RESULTCONTENT = result[i]['highlight']['content'][0].slice(0, 125) + ' ...'
+	    	else
+	    		RESULTCONTENT = result[i]['highlight']['content'][0]
+			p.innerHTML = RESULTCONTENT;
+		}
 
 		para.appendChild(p);
 

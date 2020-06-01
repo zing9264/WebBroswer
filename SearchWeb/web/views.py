@@ -23,7 +23,7 @@ def Dashboard(request):
         print("num:" + request.POST['newthread-num'])
         print("state:" + request.POST['newthread-state'])
         datas = [request.POST['newthread-num'], request.POST['newthread-state'], request.POST['newthread-URL'], request.POST['newthread-URL'], request.POST['newthread-level'], request.POST['newthread-wait']]
-        mutual_stateDBinsert(datas)
+        #mutual_stateDBinsert(datas)
         return render(request, 'dashboard.html')
     else:
         return render(request, 'dashboard.html')

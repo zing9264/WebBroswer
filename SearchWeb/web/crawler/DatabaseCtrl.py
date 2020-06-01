@@ -47,7 +47,7 @@ def mutual_stateDBinsert(datas):
             
 
 def currentBatchGet():
-    with open('web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
+    with open('currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         print(reader)
@@ -55,12 +55,12 @@ def currentBatchGet():
     return rows[1]
 
 def currentBatchInsert(datas):
-    with open('web\crawler\currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
+    with open('currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         print(reader)
         rows = [row for row in reader]
-    with open('web\crawler\currentBatch.csv', 'w', newline='',encoding="utf-8") as csvfile:
+    with open('currentBatch.csv', 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print(rows)
         print(datas)

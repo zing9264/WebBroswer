@@ -1,5 +1,7 @@
-treadNum,operatingStatus,seedUrl,lastUrl,level,waittime
-1,run,https://tw.news.yahoo.com/,https://tw.news.yahoo.com/,6,0.5
+threadNum,operatingStatus,seedUrl,lastUrl,level,waittime
+1,delete,https://tw.news.yahoo.com/,https://tw.news.yahoo.com/,6,0.5
 2,delete,https://tw.news.yahoo.com/,https://tw.news.yahoo.com/,6,0.5
 3,pause,https://tw.news.yoo.com/,https://tw.news.yoo.com/,5,3
-4,run,https://tw.news.yahoo.com/,https://tw.news.yahoo.com/,6,0.5
+4,delete,https://tw.news.yahoo.com/,https://tw.news.yahoo.com/,6,0.5
+0,UseForDetermineWhetherThreadIsRunning
+

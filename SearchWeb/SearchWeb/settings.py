@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web.apps.WebConfig',
-    'crawler'
+    'crawler',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ASGI_APPLICATION = 'SearchWeb.routing.application'
+
+# logging
+'''
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'normal': {
+            'format': '%(levelname)s | %(asctime)s | app: %(module)s pid: %(process)d th: %(thread)d | %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',  # Default logs to stderr
+            'formatter': 'normal',  # use the above "normal" formatter
+        }
+    },
+    'loggers': {
+        'django': {  # Modify logger in some modules
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+'''

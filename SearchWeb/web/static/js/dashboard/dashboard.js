@@ -35,11 +35,11 @@ function ajax(url, success, fail){
     xhr.send(null);
 // 4. ????
     xhr.onload = function () {
-        console.log(xhr.responseText);
+        //console.log(xhr.responseText);
         var allRows = xhr.responseText.split(/\r?\n|\r/);
-        console.log(allRows)
+        //console.log(allRows)
         data = allRows[1].split(',');
-        console.log(data)
+        //console.log(data)
         let i;
         for (i = 0; i < threadDate1.length; i++) {
             threadDate1[i].innerHTML=data[i]
