@@ -2,11 +2,15 @@ import pandas as pd
 import numpy as np
 import hashlib
 import csv
+import os
 
 maxarray = 1000000
-def urlqueueDBget():
+def urlqueueDBget(threadnum):
+        
+    urlqueueDBPath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum) + '.csv')
+    
     urlqueueDB=[]
-    with open('urlqueueDB.csv','r', newline='',encoding="utf-8") as csvfile:
+    with open(urlqueueDBPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         for row in reader:
@@ -14,8 +18,10 @@ def urlqueueDBget():
     return urlqueueDB
 
 
-def urlqueueDBinsert(datas):
-    with open('urlqueueDB.csv', 'w', newline='',encoding="utf-8") as csvfile:
+def urlqueueDBinsert(datas,threadnum):
+    
+    urlqueueDBPath = os.path.join(os.path.dirname(__file__),  'urlqueueDB_'+str(threadnum)+'.csv')
+    with open(urlqueueDBPath, 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         for row in datas:
             writer.writerow(row)
@@ -46,21 +52,25 @@ def mutual_stateDBinsert(datas):
     return
             
 
-def currentBatchGet():
-    with open('currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
+def currentBatchGet(threadnum):
+    currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+threadnum+'.csv')
+
+    with open(currentBatchPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         print(reader)
         rows = [row for row in reader]
     return rows[1]
 
-def currentBatchInsert(datas):
-    with open('currentBatch.csv','r', newline='',encoding="utf-8") as csvfile:
+def currentBatchInsert(datas,threadnum):
+    currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+threadnum+'.csv')
+
+    with open(currentBatchPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         print(reader)
         rows = [row for row in reader]
-    with open('currentBatch.csv', 'w', newline='',encoding="utf-8") as csvfile:
+    with open(currentBatchPath, 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print(rows)
         print(datas)
@@ -69,6 +79,19 @@ def currentBatchInsert(datas):
         writer.writerows(rows)
     return
 
+def blackListGet():
+    with open('black_list.csv', 'r', newline='', encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        print(reader)
+        rows = [row for row in reader]
+    return rows
+
+def blackListInsert(data):
+    with open('black_list.csv', 'a', newline='', encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(data)
+    return data
 
 '''
 

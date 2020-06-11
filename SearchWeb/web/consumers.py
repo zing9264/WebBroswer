@@ -24,24 +24,22 @@ class Consumer(WebsocketConsumer):
 		text = "activate"
 		#time.sleep(1)
 		#logger.debug('send')
-		#print(os.path.dirname(__file__))
-
-		data = json.loads(text_data);
-		#print(data['URL'])
-		#print(data['Level'])
-		#print(data['Wait'])
-		#print(data['Num'])
-		#print(data['State'])
-
-		with open(os.path.join(os.path.dirname(__file__), 'crawler', 'mutual_state.csv'), newline='') as csvfile:
+		print(os.path.dirname(__file__))
+		data = json.loads(text_data)
+		print(data['URL'])
+		print(data['Level'])
+		print(data['Wait'])
+		print(data['Num'])
+		print(data['State'])
+		Mu_path = os.path.join(os.path.dirname(__file__), 'crawler', 'mutual_state.csv')
+		print(Mu_path)
+		with open(Mu_path,'r', newline='') as csvfile:
 			
 			reader = csv.reader(csvfile)
 			rows = [row for row in reader]
-			
+			print(rows)
 			if rows[5][0]=="0":
-			
 				rows[5][0] = "1"
-				
 				i = 1
 				count = 1
 				while i<=4 and count<=int(data['Num']) and int(data['Num'])<=4 :
@@ -55,14 +53,18 @@ class Consumer(WebsocketConsumer):
 						count = count + 1
 					i = i + 1
 					
-				writer = csv.writer(open(os.path.join(os.path.dirname(__file__), 'crawler', 'mutual_state.csv'), 'w', newline=''))
+				writer = csv.writer(open(Mu_path, 'w', newline=''))
 				writer.writerows(rows)
 
 				path = os.path.join(os.path.dirname(__file__), 'crawler', 'thread.py')
-				path = "workon django && python " + path
+				#path = "workon django && python " + path
+				print(path)
+				path = "conda activate py38 && python " + path
+
 				p = subprocess.Popen(path, shell=True, cwd=os.path.join(os.path.dirname(__file__), 'crawler'))
 				
 			else:
+				
 				text = "running"
 		
 		self.send(text_data=json.dumps({

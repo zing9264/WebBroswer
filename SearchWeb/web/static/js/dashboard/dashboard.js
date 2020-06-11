@@ -25,7 +25,7 @@ threadFailcnt1 = document.querySelector('#thread-failcnt-1');
 threadRedundancyURLcnt1 = document.querySelector('#thread-redundancyURLcnt-1');
 var threadDate1 = [threadIp1,threadURL1,threadLevel1,threadTotalfetchcnt1,threadQueuecnt1,threadFailcnt1,threadSuccesscnt1,threadRedundancyURLcnt1,threadSpeed1,threadPasstime1]
 
-function ajax(url, success, fail){
+function getbatchcsv_ajax(url, success, fail){
 // 1. ????
     var xhr = null;
     xhr = new XMLHttpRequest()
@@ -39,7 +39,7 @@ function ajax(url, success, fail){
         var allRows = xhr.responseText.split(/\r?\n|\r/);
         //console.log(allRows)
         data = allRows[1].split(',');
-        //console.log(data)
+        console.log(data)
         let i;
         for (i = 0; i < threadDate1.length; i++) {
             threadDate1[i].innerHTML=data[i]
@@ -52,9 +52,47 @@ function ajax(url, success, fail){
     }
 }
 
+operatingStatuses = document.querySelectorAll('.operating-status');
+seedUrls = document.querySelectorAll('.seed-url');
+lastUrls = document.querySelectorAll('.last-url');
+levels = document.querySelectorAll('.level');
+waitTimes = document.querySelectorAll('.wait-time');
+
+function MU_csv_ajax(url, success, fail){
+    // 1. ????
+        var xhr = null;
+        xhr = new XMLHttpRequest()
+    // 2. ?????
+        xhr.open('get', url, true)
+    // 3. ????
+        xhr.send(null);
+    // 4. ????
+        xhr.onload = function () {
+            //console.log(xhr.responseText);
+            var allRows = xhr.responseText.split(/\r?\n|\r/);
+            console.log(allRows)
+            for (i = 0; i < 4; i++) {
+                data = allRows[i+1].split(',');
+                operatingStatuses[i].innerHTML = data[1]
+                seedUrls[i].innerHTML=data[2]
+                lastUrls[i].innerHTML=data[3]
+                levels[i].innerHTML=data[4]
+                waitTimes[i].innerHTML=data[5]
+            }
+
+            if(xhr.status == 200){
+            }else{
+                console.log("????");
+            }
+        }
+    }
+    
+
+
 function doUpdate()   
 {
-    ajax('getbatchcsv/');
+    getbatchcsv_ajax('getbatchcsv/');
+    MU_csv_ajax('getMutualState/')
     window.setTimeout("doUpdate()", 4000);
 }
 doUpdate();

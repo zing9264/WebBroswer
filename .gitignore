@@ -6,7 +6,7 @@ crawlerS/FORUMGAMER/crawler.py
 crawlerS/ithome/crawler.py
 crawlerS/udn/error.log
 crawlerS/yahoo/crawler.py
-SearchWeb/web/queue/urlqueueDB.csv
+SearchWeb/web/queue/
 *.pyc
 SearchWeb/web/crawler/error.log
 SearchWeb/web/error.log

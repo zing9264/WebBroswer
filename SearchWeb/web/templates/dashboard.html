@@ -28,7 +28,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <form action="/dashboard/" method="post">
+                <form action="" method="">
                     <div class="modal-body">
                             <div class="form-row">
                             <div class="form-group col-md-12">
@@ -55,7 +55,7 @@
                                     <label for="newthread-state">運行狀態</label>
                                     <select id="newthread-state" name="newthread-state" class="form-control">
                                         <option selected>run</option>
-                                        <option>pause</option>
+                                        <option>delete</option>
                                     </select>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id='addwork'>新增工作</button>
+                    <button type="button" class="btn btn-primary" id='addwork'>新增工作</button>
                     </div>
                 </form>
             </div>
@@ -116,7 +116,7 @@
                                     </label>
                                     <label class="btn btn-sm btn-primary btn-simple">
                                         <input type="radio" name="options" id="option2" value="2" autocomplete="off">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">黑名單</span>
                                         <span class="d-block d-sm-none">
                                     </label>
                                     <label class="btn btn-sm btn-primary btn-simple">
@@ -130,9 +130,59 @@
                         </div>
                         <div class="card-body main-ctrl " id="main-console-screen">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-3">
                                     <button class="btn btn-outline-primary btn-lg " data-toggle="modal" data-target="#addNewthread" >管理排程工作</button>
                                 </div>
+                                <div class="col-9">
+                                    <table class="table table-bordered table-dark" style='word-break:break-all'>
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">thread#</th>
+                                            <th scope="col">operatingStatus</th>
+                                            <th scope="col">seedUrl</th>
+                                            <th scope="col">lastUrl</th>
+                                            <th scope="col">level</th>
+                                            <th scope="col">waitTime</th>
+
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td class='operating-status' id='operating-status-1'></td>
+                                            <td class='seed-url' id='seed-url-1'></td>
+                                            <td class='last-url' id='last-url-1'></td>
+                                            <td class='level' id='level-1'></td>
+                                            <td class='wait-time' id='wait-time-1'></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">2</th>
+                                            <td class='operating-status' id='operating-status-2'></td>
+                                            <td class='seed-url' id='seed-url-2'></td>
+                                            <td class='last-url' id='last-url-2'></td>
+                                            <td class='level' id='level-2'></td>
+                                            <td class='wait-time' id='wait-time-2'></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">3</th>
+                                            <td class='operating-status' id='operating-status-3'></td>
+                                            <td class='seed-url' id='seed-url-3'></td>
+                                            <td class='last-url' id='last-url-3'></td>
+                                            <td class='level' id='level-3'></td>
+                                            <td class='wait-time' id='wait-time-3'></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">4</th>
+                                            <td class='operating-status' id='operating-status-4'></td>
+                                            <td class='seed-url' id='seed-url-4'></td>
+                                            <td class='last-url' id='last-url-4'></td>
+                                            <td class='level' id='level-4'></td>
+                                            <td class='wait-time' id='wait-time-4'></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card-body main-ctrl inactive" id="schedule-screen" >
@@ -182,6 +232,11 @@
                                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
                                         <span class="d-block d-sm-none">
                                     </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="threadcon1" id="threadcon-1" value="3" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
                                 </div>
                             </div>
                           </div>
@@ -222,9 +277,7 @@
                                         </div>
                                         <div class="col-12" >
                                             <button type="button" class="thread-btn btn btn-outline-success">開始</button>
-                                            <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
-                                            <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
-                                            <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                            <button type="button" class="thread-btn btn btn-outline-danger">結束</button>
                                         </div>
                                     </div>
                                 </div>

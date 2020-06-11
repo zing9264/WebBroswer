@@ -24,6 +24,7 @@ from web.views import ReadDB
 from web.views import Dashboard
 from web.views import get_csrf
 from web.views import GetBatchCsv
+from web.views import GetMutualState
 
 from django.views.generic import RedirectView
 
@@ -33,6 +34,8 @@ urlpatterns = [
     path('readDB/', ReadDB),
     path('dashboard/', Dashboard),
     path('getcsrf/', get_csrf),
-    path('dashboard/getbatchcsv/',GetBatchCsv),
+    path('dashboard/getbatchcsv/', GetBatchCsv),
+    path('dashboard/getMutualState/', GetMutualState),
+    
     path('', RedirectView.as_view(url='/search/'))
 ]

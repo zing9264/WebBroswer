@@ -10,6 +10,8 @@ from queue import Queue
 from functools import cmp_to_key
 import time
 import socket
+import sys
+
 from urllib.parse import urlparse
 from urllib.parse import urljoin
 from urllib.parse import urldefrag
@@ -115,24 +117,24 @@ def insertDB(url,data):
         siteDB.insertDataToDB(data)
     return 0
 
-def saveQueue():
+def saveQueue(inputthread):
     tmpqueue = Queue(maxarray)
     urlqueueDB = []
     while (Urlqueue.empty() == False):
         item = Urlqueue.get()
         urlqueueDB.append(item)
         tmpqueue.put(item)
-    DBCtrl.urlqueueDBinsert(urlqueueDB)
+    DBCtrl.urlqueueDBinsert(urlqueueDB,inputthread)
 
-def loadQueue():
-    urlqueueDB =DBCtrl.urlqueueDBget()
+def loadQueue(inputthread):
+    urlqueueDB =DBCtrl.urlqueueDBget(inputthread)
     for i in urlqueueDB:
         Urlqueue.put(i)
 
 
-def currentBatchInit(inputurl,inputspeed):
+def currentBatchInit(inputurl,inputspeed,inputthread):
 #IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
-    tmpBatch = DBCtrl.currentBatchGet()
+    tmpBatch = DBCtrl.currentBatchGet(inputthread)
     ip = DomaintoIp(inputurl)
     currentBatch = DataStruct.currentBatch(ip, inputurl, tmpBatch[2], tmpBatch[3], tmpBatch[4], tmpBatch[5], tmpBatch[6], tmpBatch[7], inputspeed, tmpBatch[9])
     time.sleep(5)
@@ -141,11 +143,11 @@ def currentBatchInit(inputurl,inputspeed):
     
 def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,inputthread=1):
 
-    currentBatch = currentBatchInit(inputurl,inputspeed)
+    currentBatch = currentBatchInit(inputurl,inputspeed,inputthread)
     startTime = time.time()
     saveTime=0
     passTime=currentBatch.passedTime
-    loadQueue()                 #讀取佇列
+    loadQueue(inputthread)                 #讀取佇列
     if (Urlqueue.empty() == True):#若空則由種子網站開始
         Urlqueue.put([inputurl, 0])
     fetchCnt =currentBatch.totalFetchCnt 
@@ -188,12 +190,12 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
         if (saveTime >= 4):  #對網頁要顯示的資料進行更新
             saveTime=0
             currentBatchData = [fetchData.ip,fetchData.url,currentLevel,fetchCnt,Urlqueue.qsize(),currentBatch.failCnt,currentBatch.successCnt,currentBatch.redundancyUrlCnt,currentBatch.speed,passTime] #IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
-            DBCtrl.currentBatchInsert(currentBatchData)
+            DBCtrl.currentBatchInsert(currentBatchData,inputthread)
 
         if (fetchCnt % 1000 == 0): #自動存檔功能
             print('----------SaveData--------')
-            saveQueue()
-            loadQueue()
+            saveQueue(inputthread)
+            loadQueue(inputthread)
 
 if __name__ == "__main__":
-    startFetch(inputurl='https://udn.com/news/story/120884/4588528?from=udn-category&utm_source=udnnews&utm_medium=fb&fbclid=IwAR3KXxtepATrREnRYnv8FF2O4rZlnxuTMXJtDrfReYAt6BgoXVSXfKveTbE',inputLevel=5)
+    startFetch(inputurl=sys.argv[1],inputLevel=5,inputthread=sys.argv[2])
