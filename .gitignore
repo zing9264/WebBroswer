@@ -13,4 +13,8 @@ SearchWeb/web/error.log
 SearchWeb/crawler/error.log
 SearchWeb/error.log
 SearchWeb/web/crawler/urlqueueDB.csv
-SearchWeb/web/crawler/urlqueueDB.csv
+SearchWeb/web/crawler/urlqueueDB_2.csv
+SearchWeb/web/crawler/urlqueueDB_1.csv
+SearchWeb/web/crawler/urlqueueDB_3.csv
+SearchWeb/web/crawler/urlqueueDB_4.csv
+
