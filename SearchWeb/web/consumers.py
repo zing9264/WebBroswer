@@ -40,19 +40,12 @@ class Consumer(WebsocketConsumer):
 			print(rows)
 			if rows[5][0]=="0":
 				rows[5][0] = "1"
-				i = 1
-				count = 1
-				while i<=4 and count<=int(data['Num']) and int(data['Num'])<=4 :
-					
-					if rows[i][1] == "delete":
-						rows[i][1] = data['State']
-						rows[i][2] = data['URL']
-						rows[i][3] = data['URL']
-						rows[i][4] = data['Level']
-						rows[i][5] = data['Wait']
-						count = count + 1
-					i = i + 1
-					
+				i = int(data['Num'])
+				if rows[i][1] == "delete":
+					rows[i][1] = data['State']
+					rows[i][2] = data['URL']
+					rows[i][3] = data['Level']
+					rows[i][4] = data['Wait']
 				writer = csv.writer(open(Mu_path, 'w', newline=''))
 				writer.writerows(rows)
 
@@ -60,11 +53,14 @@ class Consumer(WebsocketConsumer):
 				#path = "workon django && python " + path
 				print(path)
 				path = "conda activate py38 && python " + path
-
 				p = subprocess.Popen(path, shell=True, cwd=os.path.join(os.path.dirname(__file__), 'crawler'))
-				
+
+			elif ((data['URL'] == '') & (data['Level'] == '') & (data['Wait'] == '')):
+				print('modify'+Mu_path)
+				rows[int(data['Num'])][1]=data['State']
+				writer = csv.writer(open(Mu_path, 'w', newline=''))
+				writer.writerows(rows)
 			else:
-				
 				text = "running"
 		
 		self.send(text_data=json.dumps({

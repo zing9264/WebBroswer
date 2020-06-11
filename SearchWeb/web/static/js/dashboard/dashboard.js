@@ -13,17 +13,17 @@ fetch('http://127.0.0.1:8000/getcsrf/', {}).then((response) => {
 
 
 
-threadIp1 = document.querySelector('#thread-ip-1');
-threadURL1 = document.querySelector('#thread-URL-1');
-threadLevel1 = document.querySelector('#thread-level-1');
-threadSpeed1 = document.querySelector('#thread-speed-1');
-threadPasstime1 = document.querySelector('#thread-passtime-1');
-threadTotalfetchcnt1 = document.querySelector('#thread-totalfetchcnt-1');
-threadQueuecnt1 = document.querySelector('#thread-queuecnt-1');
-threadSuccesscnt1 = document.querySelector('#thread-successcnt-1');
-threadFailcnt1 = document.querySelector('#thread-failcnt-1');
-threadRedundancyURLcnt1 = document.querySelector('#thread-redundancyURLcnt-1');
-var threadDate1 = [threadIp1,threadURL1,threadLevel1,threadTotalfetchcnt1,threadQueuecnt1,threadFailcnt1,threadSuccesscnt1,threadRedundancyURLcnt1,threadSpeed1,threadPasstime1]
+
+threadIps = document.querySelectorAll('.thread-ip');
+threadURLs = document.querySelectorAll('.thread-URL');
+threadLevels = document.querySelectorAll('.thread-level');
+threadSpeeds = document.querySelectorAll('.thread-speed');
+threadPasstimes = document.querySelectorAll('.thread-passtime');
+threadTotalfetchcnts = document.querySelectorAll('.thread-totalfetchcnt');
+threadQueuecnts = document.querySelectorAll('.thread-queuecnt');
+threadSuccesscnts = document.querySelectorAll('.thread-successcnt');
+threadFailcnts = document.querySelectorAll('.thread-failcnt');
+threadRedundancyURLcnts = document.querySelectorAll('.thread-redundancyURLcnt');
 
 function getbatchcsv_ajax(url, success, fail){
 // 1. ????
@@ -38,13 +38,22 @@ function getbatchcsv_ajax(url, success, fail){
         //console.log(xhr.responseText);
         var allRows = xhr.responseText.split(/\r?\n|\r/);
         //console.log(allRows)
-        data = allRows[1].split(',');
-        console.log(data)
-        let i;
-        for (i = 0; i < threadDate1.length; i++) {
-            threadDate1[i].innerHTML=data[i]
+        let i=0
+        for (i = 0; i < 4; i++) {
+            data = allRows[i].split(',');
+            threadIps[i].innerHTML = data[0]
+            threadURLs[i].herf = data[1]
+            threadURLs[i].innerHTML=data[1]
+            threadLevels[i].innerHTML=data[2]
+            threadSpeeds[i].innerHTML=data[3]
+            threadPasstimes[i].innerHTML = data[4]
+            threadTotalfetchcnts[i].innerHTML = data[5]
+            threadQueuecnts[i].innerHTML=data[6]
+            threadSuccesscnts[i].innerHTML=data[7]
+            threadFailcnts[i].innerHTML=data[8]
+            threadRedundancyURLcnts[i].innerHTML = data[9]
         }
-        threadDate1[1].herf=data[1]
+        console.log(data)
         if(xhr.status == 200){
         }else{
             console.log("????");
@@ -54,7 +63,6 @@ function getbatchcsv_ajax(url, success, fail){
 
 operatingStatuses = document.querySelectorAll('.operating-status');
 seedUrls = document.querySelectorAll('.seed-url');
-lastUrls = document.querySelectorAll('.last-url');
 levels = document.querySelectorAll('.level');
 waitTimes = document.querySelectorAll('.wait-time');
 
@@ -71,14 +79,18 @@ function MU_csv_ajax(url, success, fail){
             //console.log(xhr.responseText);
             var allRows = xhr.responseText.split(/\r?\n|\r/);
             console.log(allRows)
+            let i=0
             for (i = 0; i < 4; i++) {
                 data = allRows[i+1].split(',');
                 operatingStatuses[i].innerHTML = data[1]
                 seedUrls[i].innerHTML=data[2]
-                lastUrls[i].innerHTML=data[3]
-                levels[i].innerHTML=data[4]
-                waitTimes[i].innerHTML=data[5]
+                levels[i].innerHTML=data[3]
+                waitTimes[i].innerHTML=data[4]
             }
+            document.querySelector('#thread-operating-status-1').innerHTML=operatingStatuses[0].innerHTML;
+            document.querySelector('#thread-operating-status-2').innerHTML=operatingStatuses[1].innerHTML;
+            document.querySelector('#thread-operating-status-3').innerHTML=operatingStatuses[2].innerHTML;
+            document.querySelector('#thread-operating-status-4').innerHTML=operatingStatuses[3].innerHTML;
 
             if(xhr.status == 200){
             }else{

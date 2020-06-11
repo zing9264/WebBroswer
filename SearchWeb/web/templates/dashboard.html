@@ -140,7 +140,6 @@
                                             <th scope="col">thread#</th>
                                             <th scope="col">operatingStatus</th>
                                             <th scope="col">seedUrl</th>
-                                            <th scope="col">lastUrl</th>
                                             <th scope="col">level</th>
                                             <th scope="col">waitTime</th>
 
@@ -151,7 +150,6 @@
                                             <th scope="row">1</th>
                                             <td class='operating-status' id='operating-status-1'></td>
                                             <td class='seed-url' id='seed-url-1'></td>
-                                            <td class='last-url' id='last-url-1'></td>
                                             <td class='level' id='level-1'></td>
                                             <td class='wait-time' id='wait-time-1'></td>
                                           </tr>
@@ -159,7 +157,6 @@
                                             <th scope="row">2</th>
                                             <td class='operating-status' id='operating-status-2'></td>
                                             <td class='seed-url' id='seed-url-2'></td>
-                                            <td class='last-url' id='last-url-2'></td>
                                             <td class='level' id='level-2'></td>
                                             <td class='wait-time' id='wait-time-2'></td>
                                           </tr>
@@ -167,7 +164,6 @@
                                             <th scope="row">3</th>
                                             <td class='operating-status' id='operating-status-3'></td>
                                             <td class='seed-url' id='seed-url-3'></td>
-                                            <td class='last-url' id='last-url-3'></td>
                                             <td class='level' id='level-3'></td>
                                             <td class='wait-time' id='wait-time-3'></td>
                                           </tr>
@@ -175,7 +171,6 @@
                                             <th scope="row">4</th>
                                             <td class='operating-status' id='operating-status-4'></td>
                                             <td class='seed-url' id='seed-url-4'></td>
-                                            <td class='last-url' id='last-url-4'></td>
                                             <td class='level' id='level-4'></td>
                                             <td class='wait-time' id='wait-time-4'></td>
                                           </tr>
@@ -229,11 +224,6 @@
                                     </label>
                                     <label class="btn btn-sm btn-primary btn-simple">
                                         <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
-                                        <span class="d-block d-sm-none">
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="3" autocomplete="off">
                                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
                                         <span class="d-block d-sm-none">
                                     </label>
@@ -247,68 +237,47 @@
                                     <div class="row" >
                                         <div class="col-12 " >
                                             <!--  未開始 暫停中 執行中 無排程 -->   
-                                            <span>執行狀態:執行中</span>
+                                            <span>執行狀態:<span id='thread-operating-status-1'></span></span>
                                             <br>
-                                            <span>當前URL: <a href="" id=thread-URL-1></a>
+                                            <span>當前URL: <a class='thread-URL' href="" id=thread-URL-1></a>
                                             </span>
                                             <br>
                                         </div>
                                         <div class="col-6" >
-                                            <span>當前IP:<span id='thread-ip-1'></span></span>
+                                            <span>當前IP:<span class='thread-ip'  id='thread-ip-1'></span></span>
                                             <br>
-                                            <span>當前深度:<span id='thread-level-1'></span></span>
+                                            <span>當前深度:<span class='thread-level' id='thread-level-1'></span></span>
                                             <br>
-                                            <span>當前速率:<span id='thread-speed-1'></span></span>
+                                            <span>當前速率:<span class='thread-speed' id='thread-speed-1'></span></span>
                                             <br>
-                                            <span>經過時間:<span id='thread-passtime-1'></span></span>
+                                            <span>經過時間:<span class='thread-passtime' id='thread-passtime-1'></span></span>
                                             <br>
                                         </div>
                                         <div class="col-6 " >
-                                            <span>已爬取:<span id='thread-totalfetchcnt-1'></span></span>
+                                            <span>已爬取:<span class='thread-totalfetchcnt' id='thread-totalfetchcnt-1'></span></span>
                                             <br>                                        
-                                            <span>佇列剩餘:<span id='thread-queuecnt-1'></span></span>
+                                            <span>佇列剩餘:<span class='thread-queuecnt' id='thread-queuecnt-1'></span></span>
                                             <br>                                    
-                                            <span>成功數:<span id='thread-successcnt-1'></span></span>
+                                            <span>成功數:<span class='thread-successcnt' id='thread-successcnt-1'></span></span>
                                             <br>
-                                            <span>失敗數:<span id='thread-failcnt-1'></span></span>
+                                            <span>失敗數:<span class='thread-failcnt' id='thread-failcnt-1'></span></span>
                                             <br>
-                                            <span>重複URL數:<span id='thread-redundancyURLcnt-1'></span></span>
+                                            <span>重複URL數:<span class='thread-redundancyURLcnt' id='thread-redundancyURLcnt-1'></span></span>
                                             <br>
                                         </div>
                                         <div class="col-12" >
-                                            <button type="button" class="thread-btn btn btn-outline-success">開始</button>
-                                            <button type="button" class="thread-btn btn btn-outline-danger">結束</button>
+
+                                            <button type="button" class="thread-btn btn btn-outline-success threadrun">開始</button>
+                                            <button type="button" class="thread-btn btn btn-outline-danger threaddelete">結束</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 inactive" id=thread-1-2>
-                                    <table class="table table-dark">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">treadNum</th>
-                                            <th scope="col">operatingStatus</th>
-                                            <th scope="col">seedUrl</th>
-                                            <th scope="col">lastUrl</th>
-                                            <th scope="col">level</th>
-                                            <th scope="col">waittime</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <th scope="row">1</th>
-                                            <td>run</td>
-                                            <td>https://tw.news.yahoo.com/</td>
-                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
-                                            <td>5</td>
-                                            <td>0.3</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
-            </div>
             </div>
 
             <div class="row">
@@ -318,91 +287,173 @@
                           <div class="row">
                             <div class="col-sm-6 text-left">
                                 <h7 class="card-category">工作檢視</h5>
-                                <h4 class="card-title">執行續1</h2>
+                                <h4 class="card-title">執行續2</h2>
                             </div>
                             <div class="col-sm-6">
                                 <script>
                                     $(function(){
-                                        $("input[name='threadcon1']").change(function(){
-                                            var s = $("input[name='threadcon1']:checked").val();
+                                        $("input[name='threadcon2']").change(function(){
+                                            var s = $("input[name='threadcon2']:checked").val();
                                             if(s==1){
-                                                document.querySelector('#thread-1-1').classList.remove('inactive');
-                                                document.querySelector('#thread-1-2').classList.add('inactive');
+                                                document.querySelector('#thread-2-1').classList.remove('inactive');
+                                                document.querySelector('#thread-2-2').classList.add('inactive');
                                             }
                                             else if(s==2){
-                                                document.querySelector('#thread-1-1').classList.add('inactive');
-                                                document.querySelector('#thread-1-2').classList.remove('inactive');
+                                                document.querySelector('#thread-2-1').classList.add('inactive');
+                                                document.querySelector('#thread-2-2').classList.remove('inactive');
                                             }
                                         });
                                     })
                                 </script>
                                 <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                                     <label class="btn btn-sm btn-primary btn-simple active">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
+                                        <input type="radio" name="threadcon2"  value="1" autocomplete="off" checked>
                                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
                                         <span class="d-block d-sm-none">
                                     </label>
                                     <label class="btn btn-sm btn-primary btn-simple">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
+                                        <input type="radio" name="threadcon2"  value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
                                         <span class="d-block d-sm-none">
                                     </label>
                                 </div>
                             </div>
                           </div>
                         </div>
-                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
+                        <div class="card-body main-ctrl " id="thread-2-screen" style=" overflow-x:auto;">
                             <div class="row" >
-                                <div class="col-12 " id=thread-1-1>
-                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
-                                    <br>
-                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
-                                    </span>
-                                    <br>
-                                    <span>當前IP:98.138.219.232</span>
-                                    <br>
-                                    <span>當前速率:0.3</span>
-                                    <br>
-                                    <span>已爬取:81235</span>
-                                    <br>                                        
-                                    <span>佇列剩餘:123254</span>
-                                    <br>                                    
-                                    <br>
-                                    <br>
-                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
-                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
-                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
-                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                <div class="col-12 " id=thread-2-1>
+                                    <div class="row" >
+                                        <div class="col-12 " >
+                                            <!--  未開始 暫停中 執行中 無排程 -->   
+                                            <span>執行狀態:<span id='thread-operating-status-2'></span></span>
+                                            <br>
+                                            <span>當前URL: <a class='thread-URL' href="" ></a>
+                                            </span>
+                                            <br>
+                                        </div>
+                                        <div class="col-6" >
+                                            <span>當前IP:<span class='thread-ip'  ></span></span>
+                                            <br>
+                                            <span>當前深度:<span class='thread-level' ></span></span>
+                                            <br>
+                                            <span>當前速率:<span class='thread-speed' ></span></span>
+                                            <br>
+                                            <span>經過時間:<span class='thread-passtime'></span></span>
+                                            <br>
+                                        </div>
+                                        <div class="col-6 " >
+                                            <span>已爬取:<span class='thread-totalfetchcnt' ></span></span>
+                                            <br>                                        
+                                            <span>佇列剩餘:<span class='thread-queuecnt'></span></span>
+                                            <br>                                    
+                                            <span>成功數:<span class='thread-successcnt' ></span></span>
+                                            <br>
+                                            <span>失敗數:<span class='thread-failcnt' ></span></span>
+                                            <br>
+                                            <span>重複URL數:<span class='thread-redundancyURLcnt' ></span></span>
+                                            <br>
+                                        </div>
+                                        <div class="col-12" >
+                                            <button type="button" class="thread-btn btn btn-outline-success threadrun">開始</button>
+                                            <button type="button" class="thread-btn btn btn-outline-danger threaddelete">結束</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-12 inactive" id=thread-1-2>
-                                    <table class="table table-dark">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">treadNum</th>
-                                            <th scope="col">operatingStatus</th>
-                                            <th scope="col">seedUrl</th>
-                                            <th scope="col">lastUrl</th>
-                                            <th scope="col">level</th>
-                                            <th scope="col">waittime</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <th scope="row">1</th>
-                                            <td>run</td>
-                                            <td>https://tw.news.yahoo.com/</td>
-                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
-                                            <td>5</td>
-                                            <td>0.3</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="col-12 inactive" id=thread-2-2>
                                 </div>
-
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12" id="thread-console-3" >
+                    <div class="card card-chart">
+                        <div class="card-header ">
+                          <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h7 class="card-category">工作檢視</h5>
+                                <h4 class="card-title">執行續3</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <script>
+                                    $(function(){
+                                        $("input[name='threadcon3']").change(function(){
+                                            var s = $("input[name='threadcon3']:checked").val();
+                                            if(s==1){
+                                                document.querySelector('#thread-3-1').classList.remove('inactive');
+                                                document.querySelector('#thread-3-2').classList.add('inactive');
+                                            }
+                                            else if(s==2){
+                                                document.querySelector('#thread-3-1').classList.add('inactive');
+                                                document.querySelector('#thread-3-2').classList.remove('inactive');
+                                            }
+                                        });
+                                    })
+                                </script>
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active">
+                                        <input type="radio" name="threadcon3"  value="1" autocomplete="off" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple">
+                                        <input type="radio" name="threadcon3"  value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
+                                        <span class="d-block d-sm-none">
+                                    </label>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body main-ctrl " id="thread-3-screen" style=" overflow-x:auto;">
+                            <div class="row" >
+                                <div class="col-12 " id=thread-3-1>
+                                    <div class="row" >
+                                        <div class="col-12 " >
+                                            <!--  未開始 暫停中 執行中 無排程 -->   
+                                            <span>執行狀態:<span id='thread-operating-status-3'></span></span>
+                                            <br>
+                                            <span>當前URL: <a class='thread-URL' href="" ></a>
+                                            </span>
+                                            <br>
+                                        </div>
+                                        <div class="col-6" >
+                                            <span>當前IP:<span class='thread-ip'  ></span></span>
+                                            <br>
+                                            <span>當前深度:<span class='thread-level' ></span></span>
+                                            <br>
+                                            <span>當前速率:<span class='thread-speed' ></span></span>
+                                            <br>
+                                            <span>經過時間:<span class='thread-passtime'></span></span>
+                                            <br>
+                                        </div>
+                                        <div class="col-6 " >
+                                            <span>已爬取:<span class='thread-totalfetchcnt' ></span></span>
+                                            <br>                                        
+                                            <span>佇列剩餘:<span class='thread-queuecnt'></span></span>
+                                            <br>                                    
+                                            <span>成功數:<span class='thread-successcnt' ></span></span>
+                                            <br>
+                                            <span>失敗數:<span class='thread-failcnt' ></span></span>
+                                            <br>
+                                            <span>重複URL數:<span class='thread-redundancyURLcnt' ></span></span>
+                                            <br>
+                                        </div>
+                                        <div class="col-12" >
+                                            <button type="button" class="thread-btn btn btn-outline-success threadrun">開始</button>
+                                            <button type="button" class="thread-btn btn btn-outline-danger threaddelete">結束</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 inactive" id=thread-3-2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -412,194 +463,168 @@
                           <div class="row">
                             <div class="col-sm-6 text-left">
                                 <h7 class="card-category">工作檢視</h5>
-                                <h4 class="card-title">執行續1</h2>
+                                <h4 class="card-title">執行續4</h2>
                             </div>
                             <div class="col-sm-6">
                                 <script>
                                     $(function(){
-                                        $("input[name='threadcon1']").change(function(){
-                                            var s = $("input[name='threadcon1']:checked").val();
+                                        $("input[name='threadcon4']").change(function(){
+                                            var s = $("input[name='threadcon4']:checked").val();
                                             if(s==1){
-                                                document.querySelector('#thread-1-1').classList.remove('inactive');
-                                                document.querySelector('#thread-1-2').classList.add('inactive');
+                                                document.querySelector('#thread-4-1').classList.remove('inactive');
+                                                document.querySelector('#thread-4-2').classList.add('inactive');
                                             }
                                             else if(s==2){
-                                                document.querySelector('#thread-1-1').classList.add('inactive');
-                                                document.querySelector('#thread-1-2').classList.remove('inactive');
+                                                document.querySelector('#thread-4-1').classList.add('inactive');
+                                                document.querySelector('#thread-4-2').classList.remove('inactive');
                                             }
                                         });
                                     })
                                 </script>
                                 <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                                     <label class="btn btn-sm btn-primary btn-simple active">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
+                                        <input type="radio" name="threadcon4"  value="1" autocomplete="off" checked>
                                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
                                         <span class="d-block d-sm-none">
                                     </label>
                                     <label class="btn btn-sm btn-primary btn-simple">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
+                                        <input type="radio" name="threadcon4"  value="2" autocomplete="off">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">排程</span>
                                         <span class="d-block d-sm-none">
                                     </label>
                                 </div>
                             </div>
                           </div>
                         </div>
-                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
+                        <div class="card-body main-ctrl " id="thread-4-screen" style=" overflow-x:auto;">
                             <div class="row" >
-                                <div class="col-12 " id=thread-1-1>
-                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
-                                    <br>
-                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
-                                    </span>
-                                    <br>
-                                    <span>當前IP:98.138.219.232</span>
-                                    <br>
-                                    <span>當前速率:0.3</span>
-                                    <br>
-                                    <span>已爬取:81235</span>
-                                    <br>                                        
-                                    <span>佇列剩餘:123254</span>
-                                    <br>                                    
-                                    <br>
-                                    <br>
-                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
-                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
-                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
-                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
+                                <div class="col-12 " id=thread-2-1>
+                                    <div class="row" >
+                                        <div class="col-12 " >
+                                            <!--  未開始 暫停中 執行中 無排程 -->   
+                                            <span>執行狀態:<span id='thread-operating-status-4'></span></span>
+                                            <br>
+                                            <span>當前URL: <a class='thread-URL' href="" ></a>
+                                            </span>
+                                            <br>
+                                        </div>
+                                        <div class="col-6" >
+                                            <span>當前IP:<span class='thread-ip'  ></span></span>
+                                            <br>
+                                            <span>當前深度:<span class='thread-level' ></span></span>
+                                            <br>
+                                            <span>當前速率:<span class='thread-speed' ></span></span>
+                                            <br>
+                                            <span>經過時間:<span class='thread-passtime'></span></span>
+                                            <br>
+                                        </div>
+                                        <div class="col-6 " >
+                                            <span>已爬取:<span class='thread-totalfetchcnt' ></span></span>
+                                            <br>                                        
+                                            <span>佇列剩餘:<span class='thread-queuecnt'></span></span>
+                                            <br>                                    
+                                            <span>成功數:<span class='thread-successcnt' ></span></span>
+                                            <br>
+                                            <span>失敗數:<span class='thread-failcnt' ></span></span>
+                                            <br>
+                                            <span>重複URL數:<span class='thread-redundancyURLcnt' ></span></span>
+                                            <br>
+                                        </div>
+                                        <div class="col-12" >
+                                            <button type="button" class="thread-btn btn btn-outline-success threadrun">開始</button>
+                                            <button type="button" class="thread-btn btn btn-outline-danger threaddelete">結束</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-12 inactive" id=thread-1-2>
-                                    <table class="table table-dark">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">treadNum</th>
-                                            <th scope="col">operatingStatus</th>
-                                            <th scope="col">seedUrl</th>
-                                            <th scope="col">lastUrl</th>
-                                            <th scope="col">level</th>
-                                            <th scope="col">waittime</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <th scope="row">1</th>
-                                            <td>run</td>
-                                            <td>https://tw.news.yahoo.com/</td>
-                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
-                                            <td>5</td>
-                                            <td>0.3</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="col-12 inactive" id=thread-4-2>
                                 </div>
-
                             </div>
                         </div>
+                    </div>
                 </div>
-            </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12" id="thread-console-1" >
-                    <div class="card card-chart">
-                        <div class="card-header ">
-                          <div class="row">
-                            <div class="col-sm-6 text-left">
-                                <h7 class="card-category">工作檢視</h5>
-                                <h4 class="card-title">執行續1</h2>
-                            </div>
-                            <div class="col-sm-6">
-                                <script>
-                                    $(function(){
-                                        $("input[name='threadcon1']").change(function(){
-                                            var s = $("input[name='threadcon1']:checked").val();
-                                            if(s==1){
-                                                document.querySelector('#thread-1-1').classList.remove('inactive');
-                                                document.querySelector('#thread-1-2').classList.add('inactive');
-                                            }
-                                            else if(s==2){
-                                                document.querySelector('#thread-1-1').classList.add('inactive');
-                                                document.querySelector('#thread-1-2').classList.remove('inactive');
-                                            }
-                                        });
-                                    })
-                                </script>
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                    <label class="btn btn-sm btn-primary btn-simple active">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="1" autocomplete="off" checked>
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">狀態</span>
-                                        <span class="d-block d-sm-none">
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple">
-                                        <input type="radio" name="threadcon1" id="threadcon-1" value="2" autocomplete="off">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">初始資料</span>
-                                        <span class="d-block d-sm-none">
-                                    </label>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-body main-ctrl " id="thread-1-screen" style=" overflow-x:auto;">
-                            <div class="row" >
-                                <div class="col-12 " id=thread-1-1>
-                                    <span>執行狀態:未開始 暫停中 執行中 無排程</span>
-                                    <br>
-                                    <span>當前URL: <a href="https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html">https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</a>
-                                    </span>
-                                    <br>
-                                    <span>當前IP:98.138.219.232</span>
-                                    <br>
-                                    <span>當前速率:0.3</span>
-                                    <br>
-                                    <span>已爬取:81235</span>
-                                    <br>                                        
-                                    <span>佇列剩餘:123254</span>
-                                    <br>                                    
-                                    <br>
-                                    <br>
-                                    <button type="button" class="thread-btn btn btn-outline-success">開始</button>
-                                    <button type="button" class="thread-btn btn btn-outline-danger">暫停</button>
-                                    <button type="button" class="thread-btn btn btn-outline-success">繼續</button>
-                                    <button type="button" class="thread-btn btn btn-outline-danger">關閉</button>
-                                </div>
-                                <div class="col-12 inactive" id=thread-1-2>
-                                    <table class="table table-dark">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">treadNum</th>
-                                            <th scope="col">operatingStatus</th>
-                                            <th scope="col">seedUrl</th>
-                                            <th scope="col">lastUrl</th>
-                                            <th scope="col">level</th>
-                                            <th scope="col">waittime</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <th scope="row">1</th>
-                                            <td>run</td>
-                                            <td>https://tw.news.yahoo.com/</td>
-                                            <td>https://tw.news.yahoo.com/%E6%9C%AC%E6%97%A5-yahoo%E7%84%A6%E9%BB%9E%E6%B0%91%E9%80%B2%E9%BB%A8%E7%AB%8B%E5%A7%94%E8%BB%8A%E7%A6%8D-%E5%B0%8D%E6%92%9E%E9%A7%95%E9%A7%9B%E8%BA%AB%E4%BA%A1-103919173.html</td>
-                                            <td>5</td>
-                                            <td>0.3</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                </div>
-            </div>
             </div>
 
 
         </div>
     </body>
     <script type="text/javascript">
-        var chatSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/chat/');
+        var chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/')
+        var threadruns=document.querySelectorAll('.threadrun')
+        var threaddeletes=document.querySelectorAll('.threaddelete')
 
+        threadruns[0].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 1,
+                'State' : 'run'
+            }));        
+        })
+        threadruns[1].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 2,
+                'State' : 'run'
+            }));        
+        })
+        threadruns[2].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 3,
+                'State' : 'run'
+            }));        
+        })
+        threadruns[3].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 4,
+                'State' : 'run'
+            }));        
+        })
+
+        threaddeletes[0].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 1,
+                'State' : 'delete'
+            }));        
+        })
+        threaddeletes[1].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 2,
+                'State' : 'delete'
+            }));        
+        })
+        threaddeletes[2].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 3,
+                'State' : 'delete'
+            }));        
+        })
+        threaddeletes[3].addEventListener("click", function(event){
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : 4,
+                'State' : 'delete'
+            }));        
+        })
         chatSocket.onmessage = function(e) {
             var data = JSON.parse(e.data);
             var message = data['message'];

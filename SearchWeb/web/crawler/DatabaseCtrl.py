@@ -53,7 +53,7 @@ def mutual_stateDBinsert(datas):
             
 
 def currentBatchGet(threadnum):
-    currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+threadnum+'.csv')
+    currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+str(threadnum)+'.csv')
 
     with open(currentBatchPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
@@ -63,7 +63,7 @@ def currentBatchGet(threadnum):
     return rows[1]
 
 def currentBatchInsert(datas,threadnum):
-    currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+threadnum+'.csv')
+    currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+str(threadnum)+'.csv')
 
     with open(currentBatchPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容

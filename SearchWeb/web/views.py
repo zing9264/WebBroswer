@@ -35,15 +35,10 @@ def Page(request, searchText, page):
     })
 
 def GetBatchCsv(request):
-    all_lines=[]
-    with open('web\crawler\currentBatch_1.csv','r', newline='',encoding="utf-8") as fp1:
-        all_lines = all_lines + fp1.readlines()
-    with open('web\crawler\currentBatch_2.csv','r', newline='',encoding="utf-8") as fp2:
-        all_lines = all_lines + fp2.readlines()
-    with open('web\crawler\currentBatch_3.csv','r', newline='',encoding="utf-8") as fp3:
-        all_lines = all_lines + fp3.readlines()
-    with open('web\crawler\currentBatch_4.csv','r', newline='',encoding="utf-8") as fp4:
-        all_lines = all_lines + fp4.readlines()
+    all_lines = ''
+    for i in range(1, 5):
+        
+        all_lines=all_lines+','.join(currentBatchGet(i))+'\n'
     print(all_lines)
     return HttpResponse(all_lines, content_type="text/csv")
 

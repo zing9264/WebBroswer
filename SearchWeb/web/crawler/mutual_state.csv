@@ -1,7 +1,7 @@
-threadNum,operatingStatus,seedUrl,lastUrl,level,waittime
-1,delete,https://tw.news.yahoo.com/,https://tw.news.yahoo.com/,6,0.5
-2,delete,https://www.gamer.com.tw/,https://www.gamer.com.tw/,4,0.5
-3,delete,https://udn.com/news/breaknews/1,https://udn.com/news/breaknews/1,5,3
-4,delete,https://www.msn.com/zh-tw/news,https://www.msn.com/zh-tw/news,6,0.5
+threadNum,operatingStatus,seedUrl,level,waittime
+1,delete,https://www.msn.com/zh-tw/news,4,0.8
+2,delete,https://www.msn.com/zh-tw/news,4,0.8
+3,delete,https://udn.com/news/breaknews/1,5,3
+4,delete,https://www.msn.com/zh-tw/news,3,0.2
 0,UseForDetermineWhetherThreadIsRunning
 

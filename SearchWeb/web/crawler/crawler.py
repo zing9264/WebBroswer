@@ -157,7 +157,7 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
         currentLevel = item[1]
         print("currentUrl=" + str(currentUrl))
         print("currentLevel=" + str(currentLevel))
-        if (int(currentLevel) >= inputLevel):# 超過預定深度就不爬取
+        if (int(currentLevel) >= int(inputLevel)):# 超過預定深度就不爬取
             continue
         urlIDcheck = siteDB.CheckDBUrl(currentUrl)# 檢查是否存在資料庫
         if (urlIDcheck == 'NotInDB'):  # 若不存在則進行爬取
@@ -198,4 +198,4 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
             loadQueue(inputthread)
 
 if __name__ == "__main__":
-    startFetch(inputurl=sys.argv[1],inputLevel=5,inputthread=sys.argv[2])
+    startFetch(inputurl=sys.argv[1],inputLevel=sys.argv[2],inputthread=sys.argv[3],inputspeed=sys.argv[4])

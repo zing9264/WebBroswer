@@ -37,16 +37,16 @@ while 1:
 		
 		if set[0]==0 and rows[1][1]=="run":
 			#p.terminate()
-			p = subprocess.Popen(path+ ' '+rows[1][2] +' 1', shell=True)
+			p = subprocess.Popen(path+ ' '+rows[1][2]+' '+rows[1][3] +' 1 '+rows[1][4], shell=True)
 			set[0] = 1
 		if set[1]==0 and rows[2][1]=="run":
-			p2 = subprocess.Popen(path+' '+rows[2][2] +' 2', shell=True)
+			p2 = subprocess.Popen(path+' '+rows[2][2]+' '+rows[2][3] +' 2 '+rows[2][4], shell=True)
 			set[1] = 1
 		if set[2]==0 and rows[3][1]=="run":
-			p3 = subprocess.Popen(path+' '+rows[3][2] +' 3', shell=True)
+			p3 = subprocess.Popen(path+' '+rows[3][2]+' '+rows[3][3] +' 3 '+rows[3][4], shell=True)
 			set[2] = 1
 		if set[3]==0 and rows[4][1]=="run":
-			p4 = subprocess.Popen(path+' '+rows[4][2] +' 4', shell=True)
+			p4 = subprocess.Popen(path+' '+rows[4][2]+' '+rows[4][3] +' 4 '+rows[4][4], shell=True)
 			set[3] = 1
 		
 		if set[0] and rows[1][1]=="delete":
