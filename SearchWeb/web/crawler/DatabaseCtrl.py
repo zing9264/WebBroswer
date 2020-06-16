@@ -3,29 +3,46 @@ import numpy as np
 import hashlib
 import csv
 import os
+import glob
 
-maxarray = 1000000
+Seenmaxarray = 10000000
 def urlqueueDBget(threadnum):
         
-    urlqueueDBPath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum) + '.csv')
-    
-    urlqueueDB=[]
-    with open(urlqueueDBPath,'r', newline='',encoding="utf-8") as csvfile:
+    urlqueueDBPath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum))
+    urlqueueDB = []
+    with open(glob.glob(urlqueueDBPath+'/*')[0],'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         for row in reader:
             urlqueueDB.append(row)
     return urlqueueDB
 
-
-def urlqueueDBinsert(datas,threadnum):
-    
-    urlqueueDBPath = os.path.join(os.path.dirname(__file__),  'urlqueueDB_'+str(threadnum)+'.csv')
+def urlqueueDBinsert(datas, threadnum):
+    urlqueueDBPath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum))
+    f = os.listdir(urlqueueDBPath)
+    name = sorted(f, reverse=True)
+    newName = 'Q' + str(threadnum) + '_' + str(int(name[0].replace('Q' + str(threadnum) + '_', '').replace('.csv', ''))+1) + '.csv'
+    urlqueueDBPath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum) ,newName)
     with open(urlqueueDBPath, 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         for row in datas:
             writer.writerow(row)
-            
+
+def urlqueueDBdelete(threadnum):
+    path = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum))
+    # 獲取該目錄下所有檔案，存入列表中
+    f = os.listdir(path)
+    # print(len(f))
+    # print(f)
+    deletepath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum),f[0])
+    os.remove(deletepath)
+    for i in range(len(f)-1):
+        # 用os模組中的rename方法對檔案改名
+        leftpath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum),f[i])
+        rigthpath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum),f[i+1])
+        os.rename(rigthpath,leftpath)
+    
+
 def mutual_stateDBget(threadnum):
     urlqueueDB=[]
     with open('mutual_state.csv','r', newline='',encoding="utf-8") as csvfile:
@@ -40,17 +57,12 @@ def mutual_stateDBinsert(datas):
     with open('web\crawler\mutual_state.csv','r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
-        print(reader)
         rows = [row for row in reader]
     with open('web\crawler\mutual_state.csv', 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
-        print(rows)
-        print(datas)
         rows[int(datas[0])] = datas
-        print(rows)
         writer.writerows(rows)
     return
-            
 
 def currentBatchGet(threadnum):
     currentBatchPath = os.path.join(os.path.dirname(__file__), 'currentBatch_'+str(threadnum)+'.csv')
@@ -58,7 +70,6 @@ def currentBatchGet(threadnum):
     with open(currentBatchPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
-        print(reader)
         rows = [row for row in reader]
     return rows[1]
 
@@ -68,24 +79,16 @@ def currentBatchInsert(datas,threadnum):
     with open(currentBatchPath,'r', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
-        print(reader)
+        # print(reader)
         rows = [row for row in reader]
     with open(currentBatchPath, 'w', newline='',encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
-        print(rows)
-        print(datas)
+        # print(rows)
+        # print(datas)
         rows[1] = datas
-        print(rows)
+        # print(rows)
         writer.writerows(rows)
     return
-
-def blackListGet():
-    with open('black_list.csv', 'r', newline='', encoding="utf-8") as csvfile:
-    # 讀取 CSV 檔案內容
-        reader = csv.reader(csvfile)
-        print(reader)
-        rows = [row for row in reader]
-    return rows
 
 def blackListInsert(data):
     with open('black_list.csv', 'a', newline='', encoding="utf-8") as csvfile:
@@ -93,10 +96,15 @@ def blackListInsert(data):
         writer.writerows(data)
     return data
 
-'''
+def filterArrGet():
+    with open('filter_list.csv', 'r', newline='', encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        print(reader)
+        rows = [row for row in reader]
+    return rows
 
-
-def checkinSeenDB(content):
+def loadSeenDB():
     print("init--------")
     SeenDB=[]
     with open('SeenDB.csv', newline='') as csvfile:
@@ -105,17 +113,20 @@ def checkinSeenDB(content):
         for row in reader:
             SeenDB.extend(row)
     print("init--------fin")
+    return SeenDB
 
+def checkinSeenDB(fetchURL, SeenDB):
+    global Seenmaxarray
     md5hash = hashlib.md5()
     md5hash.update(fetchURL.encode("utf-8"))
     md5hash.hexdigest()
     ten = int(md5hash.hexdigest(), 16)
-    idx=ten % maxarray
-    print("check-----------------")
+    idx=ten % Seenmaxarray
+    # print("check-----------------")
     if (SeenDB[idx] == '0'):
         SeenDB[idx] = fetchURL
-        print("insert the new URL at "+ str(idx))
-        return 1,SeenDB,str(idx)
+        # print("insert the new URL at "+ str(idx))
+        return 0,SeenDB,str(idx)
     k=idx
     while SeenDB[k] != fetchURL:
         if (k == idx - 1):
@@ -123,58 +134,29 @@ def checkinSeenDB(content):
             return -1,SeenDB,str(k)
         if (SeenDB[k] == '0'):
             SeenDB[k] = fetchURL
-            print("insert the new URL at "+ str(k))
-            return 1,SeenDB,str(k)
+            # print("insert the new URL at "+ str(k))
+            return 0,SeenDB,str(k)
         k = k + 1
-        print("collision at "+k)
-    print(fetchURL + "  collision at " + str(ten % maxarray))
-    print("already exists")
-    return 0,SeenDB,str(k)
-
-def contentDBget():
-    contentDB = pd.read_csv('contentDB.csv',index_col=0)
-    print("---get---\n")
-    print(contentDB)  
-    return contentDB
-
-def contentDBinsert(URL,content,title):
-    contentDB = contentDBget()
-        # 先創建一個DataFrame，用來增加進數據框的最後一行
-    new = pd.DataFrame({'URL': URL,'content':content,'title':title},index=[1])
-    print(new)
-    print("-------最後一行新增一行------")
-    contentDB=contentDB.append(new,ignore_index=True) 
-    print(contentDB)
-    contentDB.to_csv('contentDB.csv') 
-
-def resetcontentDB():
-    global maxarray
-    contentDB = ['0'] * maxarray
-    contentDB=pd.DataFrame(columns = ["URL", "content",'title'])
-    print(contentDB)
-    contentDB.to_csv('contentDB.csv') 
+        if k == Seenmaxarray:
+            k = 0
+        # print("collision at "+str(k))
+    # print(fetchURL + "  collision at " + str(ten % Seenmaxarray))
+    # print("already exists")
+    return 1,SeenDB,str(k)
 
 
 def updateSeenDB(SeenDB):
-    with open('SeenDB.csv', 'w', newline='') as csvfile:
+    with open('SeenDB.csv', 'w', newline='', encoding="utf-8") as csvfile:
   # 以空白分隔欄位，建立 CSV 檔寫入器
         writer = csv.writer(csvfile, delimiter=',')
         print("w:")
         writer.writerow(SeenDB)
 
 def resetSeenDB():
-    global maxarray
-    with open('SeenDB.csv', 'w', newline='') as csvfile:
-        seenDB=['0']*maxarray
-
+    global Seenmaxarray
+    with open('SeenDB.csv', 'w', newline='', encoding="utf-8") as csvfile:
+        seenDB=['0']*Seenmaxarray
         writer = csv.writer(csvfile, delimiter=',')
         print("reset")
         writer.writerow(seenDB)
 
-def resetALLDB():
-    resetSeenDB()
-    resetcontentDB()
-if __name__ == "__main__":
-    resetALLDB()
-    pass
-'''

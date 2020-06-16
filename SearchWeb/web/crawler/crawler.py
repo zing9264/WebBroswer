@@ -26,6 +26,7 @@ import logging
 import DataStruct
 import ElasticSearchDB_ctrl as dbc
 siteDB = dbc.Elasticsearch_siteDB()
+ipDB = dbc.Elasticsearch_IPDB()
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
@@ -92,16 +93,20 @@ def fetcher(url="https://www.ccu.edu.tw/", speed=0.3):
     resultData = DataStruct.fetchData(time=theTime, status_code=response.status_code, url=response.url, ip=ip, content=response.text)
 
     return resultData
-    
-def UrlQueueFilter(url, currentUrl):
 
-    if ('mailto:'in url):
+SeenDB = DBCtrl.loadSeenDB()
+
+def UrlQueueFilter(url, currentUrl, filterArr):
+    newlist = sum(filterArr, [])
+    global SeenDB
+    isseen, SeenDB, k = DBCtrl.checkinSeenDB(url, SeenDB)
+    if (isseen==1):
         return False
-    elif ('None'in url):
-        return False
-    elif ('.pdf'in url):
-        return False
-    elif ('https://' in url):
+
+    for filterItem in newlist:
+        if (filterItem in url):
+            return False
+    if ('https://' in url):
         pass
     else:
         url = urljoin(currentUrl, url)
@@ -118,19 +123,29 @@ def insertDB(url,data):
     return 0
 
 def saveQueue(inputthread):
+    global SeenDB
     tmpqueue = Queue(maxarray)
     urlqueueDB = []
+    i=0
     while (Urlqueue.empty() == False):
+        i=i+1
         item = Urlqueue.get()
         urlqueueDB.append(item)
         tmpqueue.put(item)
+        if (i % 25000 == 0):
+            DBCtrl.urlqueueDBinsert(urlqueueDB, inputthread)
+            urlqueueDB = []
     DBCtrl.urlqueueDBinsert(urlqueueDB,inputthread)
+    DBCtrl.urlqueueDBdelete(inputthread)
+    DBCtrl.updateSeenDB(SeenDB)
+
+
+
 
 def loadQueue(inputthread):
     urlqueueDB =DBCtrl.urlqueueDBget(inputthread)
     for i in urlqueueDB:
         Urlqueue.put(i)
-
 
 def currentBatchInit(inputurl,inputspeed,inputthread):
 #IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
@@ -140,13 +155,27 @@ def currentBatchInit(inputurl,inputspeed,inputthread):
     time.sleep(5)
     #ip='0.0.0.0',url='',level=0,totalFetchCnt=0,queueCnt=0,failCnt=0,successCnt=0,redundancyUrlCnt=0,speed=0.05,passedTime=0
     return currentBatch
-    
+
+def isBan(inputurl):
+    ip = DomaintoIp(inputurl)
+    IDcheck = ipDB.CheckIPinDB(ip)
+    if (IDcheck == "NotInIPDB"):
+        return False
+    else:
+        if (int(ipDB.getIDdata(IDcheck).isban) == 0):
+            return False
+        else:
+            return True
+
+
+
 def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,inputthread=1):
 
     currentBatch = currentBatchInit(inputurl,inputspeed,inputthread)
     startTime = time.time()
     saveTime=0
-    passTime=currentBatch.passedTime
+    passTime = currentBatch.passedTime
+    filterArr=DBCtrl.filterArrGet()
     loadQueue(inputthread)                 #讀取佇列
     if (Urlqueue.empty() == True):#若空則由種子網站開始
         Urlqueue.put([inputurl, 0])
@@ -158,6 +187,8 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
         print("currentUrl=" + str(currentUrl))
         print("currentLevel=" + str(currentLevel))
         if (int(currentLevel) >= int(inputLevel)):# 超過預定深度就不爬取
+            continue
+        if isBan(currentUrl):
             continue
         urlIDcheck = siteDB.CheckDBUrl(currentUrl)# 檢查是否存在資料庫
         if (urlIDcheck == 'NotInDB'):  # 若不存在則進行爬取
@@ -174,10 +205,18 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
             links.sort()
             #print(links)
             for i in links:  #將連結加到QUEUE
-                tmpUrl = UrlQueueFilter(i,currentUrl)
+                tmpUrl = UrlQueueFilter(i,currentUrl,filterArr)
                 if (tmpUrl == False):
                     continue
                 Urlqueue.put([tmpUrl, str(int(currentLevel) + 1)])
+
+            IPData = DataStruct.IPData(ip=fetchData.ip, url=currentUrl, fetchCount=1, isban=0, speed=inputspeed)
+            ipID = ipDB.CheckIPinDB(IPData.ip)
+            if (ipID != 'NotInIPDB'):
+                ipDB.updateDB(ipID, IPData)
+            else:
+                ipDB.insertDataToDB(IPData)
+
         else: #若該筆連結已存在資料庫中，更新他被爬取過的次數(記錄被多少網站連過)，這裡沒有對內容更新，若要更新內容，需要再寫一個針對資料庫已有資料進行更新的程式。
             print('indb')
             fetchData = siteDB.getIDdata(urlIDcheck)
@@ -190,12 +229,18 @@ def startFetch(inputurl='https://www.ccu.edu.tw/', inputLevel=6,inputspeed=0.05,
         if (saveTime >= 4):  #對網頁要顯示的資料進行更新
             saveTime=0
             currentBatchData = [fetchData.ip,fetchData.url,currentLevel,fetchCnt,Urlqueue.qsize(),currentBatch.failCnt,currentBatch.successCnt,currentBatch.redundancyUrlCnt,currentBatch.speed,passTime] #IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
-            DBCtrl.currentBatchInsert(currentBatchData,inputthread)
+            DBCtrl.currentBatchInsert(currentBatchData, inputthread)
+            filterArr=DBCtrl.filterArrGet()
 
-        if (fetchCnt % 1000 == 0): #自動存檔功能
+        if (fetchCnt % 250 == 0): #自動存檔功能
             print('----------SaveData--------')
             saveQueue(inputthread)
             loadQueue(inputthread)
+
+
+    print('----------finish--------')
+    saveQueue(inputthread)
+    
 
 if __name__ == "__main__":
     startFetch(inputurl=sys.argv[1],inputLevel=sys.argv[2],inputthread=sys.argv[3],inputspeed=sys.argv[4])

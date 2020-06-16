@@ -11,7 +11,8 @@ import json
 from .crawlermanage import crawlermanage
 from .crawler.DatabaseCtrl import mutual_stateDBinsert
 from .crawler.DatabaseCtrl import currentBatchGet
-
+from .crawler.ElasticSearchDB_ctrl import Elasticsearch_IPDB
+from .crawler.DataStruct import IPData
 def Search(request):
     return render(request, 'index.html')
 
@@ -76,3 +77,64 @@ def get_csrf(request):
         'csrf_token': str(csrf_token),
     }
     return JsonResponse(data)
+
+def GetBanInDB(request):
+    b = Elasticsearch_IPDB()
+    banArr = b.banInDB()
+    result=''
+    for i in range(len(banArr)):
+        result=result+banArr[i]+'\n'
+    return HttpResponse(result, content_type="text/csv")
+
+def isIpV4AddrLegal(ipStr):
+    # 切割IP地址为一个列表
+    ip_split_list = ipStr.strip().split('.')
+    # 切割后列表必须有4个元素
+    if 4 != len(ip_split_list):
+        return False
+    for i in range(4):
+        try:
+            # 每个元素必须为数字
+            ip_split_list[i] = int(ip_split_list[i])
+        except:
+            print("IP invalid:" + ipStr)
+            return False
+    for i in range(4):
+        # 每个元素值必须在0-255之间
+        if ip_split_list[i] <= 255 and ip_split_list[i] >= 0:
+            pass
+        else:
+            print("IP invalid:" + ipStr)
+            return False
+    return True
+
+def insertBanInDB(request):
+    ip=request.GET['insertBanIp']
+    b = Elasticsearch_IPDB()
+    result = ''
+    if (isIpV4AddrLegal(ip)):
+        ipID = b.CheckIPinDB(ip)
+        print(ipID)
+        if (ipID != 'NotInIPDB'):
+            Bdata=IPData(ip=ip,isban=1)
+            b.updateDBisban(ipID, Bdata)
+    return HttpResponse(result, content_type="text/csv")
+
+def deleteBanInDB(request):
+    ip=request.GET['deleteBanIp']
+    b = Elasticsearch_IPDB()
+    print('--------------')
+    print(ip)
+    print(isIpV4AddrLegal(ip))
+    print('--------------')
+    result = ''
+    if (isIpV4AddrLegal(ip)):
+        ipID = b.CheckIPinDB(ip)
+        print('--------------')
+        print(ipID)
+        print('--------------')
+
+        if (ipID != 'NotInIPDB'):
+            Bdata=IPData(ip=ip,isban=0)
+            b.updateDBisban(ipID, Bdata)
+    return HttpResponse(result, content_type="text/csv")

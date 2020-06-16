@@ -92,17 +92,17 @@
                                             var s = $("input[name='options']:checked").val();
                                             if(s==1){
                                                 document.querySelector('#main-console-screen').classList.remove('inactive');
-                                                document.querySelector('#schedule-screen').classList.add('inactive');
+                                                document.querySelector('#black-list-screen').classList.add('inactive');
                                                 document.querySelector('#IP-control-screen').classList.add('inactive');
                                             }
                                             else if(s==2){
                                                 document.querySelector('#main-console-screen').classList.add('inactive');
-                                                document.querySelector('#schedule-screen').classList.remove('inactive');
+                                                document.querySelector('#black-list-screen').classList.remove('inactive');
                                                 document.querySelector('#IP-control-screen').classList.add('inactive');
                                             }
                                             else if(s==3){
                                                 document.querySelector('#main-console-screen').classList.add('inactive');
-                                                document.querySelector('#schedule-screen').classList.add('inactive');
+                                                document.querySelector('#black-list-screen').classList.add('inactive');
                                                 document.querySelector('#IP-control-screen').classList.remove('inactive');
                                             } 
                                         });
@@ -131,7 +131,18 @@
                         <div class="card-body main-ctrl " id="main-console-screen">
                             <div class="row">
                                 <div class="col-3">
+                                    <button class="btn btn-outline-success btn-lg ">狀態:<span id='is-thread-running'></span></button>
+                                    <br>
+                                    <br>
+
                                     <button class="btn btn-outline-primary btn-lg " data-toggle="modal" data-target="#addNewthread" >管理排程工作</button>
+                                    <br>
+                                    <br>
+
+                                    <button class="btn btn-outline-danger btn-lg " id='close_crawler'>關閉爬蟲</button>
+                                    <br>
+                                    <br>
+
                                 </div>
                                 <div class="col-9">
                                     <table class="table table-bordered table-dark" style='word-break:break-all'>
@@ -180,8 +191,23 @@
 
                             </div>
                         </div>
-                        <div class="card-body main-ctrl inactive" id="schedule-screen" >
-                            2
+                        <div class="card-body main-ctrl inactive" id="black-list-screen" >
+                            <div class="row">
+                            <div class="col-6">
+                                <h5>新增黑名單: <input id='insert-ban-ip'><button onclick="insertBanIp()">送出</button>
+                                </h5>
+                            </div>
+                            <div class="col-6">
+                                <h5>刪除IP: <input id='delete-ban-ip'><button onclick="deleteBanIp()">送出</button></h5>
+                            </div>
+                            </div>
+                            <div class="row" id='ban-ip-screen'>
+                                
+                                <div class="col-3" >123.123.145</div>
+                                <div class="col-3">123.123.145</div>
+                                <div class="col-3">123.123.145</div>
+
+                            </div>
                         </div>
                         <div class="card-body main-ctrl inactive" id="IP-control-screen">
                             3
@@ -651,5 +677,17 @@
                 'State' : e.options[e.selectedIndex].value
             }));
         });
+
+        document.getElementById("close_crawler")
+            .addEventListener("click", function(event) {
+            chatSocket.send(JSON.stringify({
+                'URL' : '',
+                'Level' : '',
+                'Wait' : '',
+                'Num' : '',
+                'State' : 'close_crawler'
+            }));
+        });
+        
     </script>
 </html>

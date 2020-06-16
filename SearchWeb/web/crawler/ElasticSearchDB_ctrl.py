@@ -41,7 +41,7 @@ class Elasticsearch_siteDB():
             }
         }
         x = requests.put(url, headers=headers, data=json.dumps(db))
-        print(x)
+        #print(x)
         return (x)
 
     def insertDataToDB(self, data):
@@ -56,7 +56,7 @@ class Elasticsearch_siteDB():
             "fetchCount": 1
             }
         x = requests.post(url, headers=headers, data=json.dumps(db))
-        print(x.text)
+        #print(x.text)
         return (x)
 
 
@@ -80,7 +80,7 @@ class Elasticsearch_siteDB():
             }
         }
         x = requests.get(url, headers=headers, data=json.dumps(db))
-        print(x.text)
+        #print(x.text)
         return (x)
 
     def CheckDBUrl(self, querystr):
@@ -101,7 +101,7 @@ class Elasticsearch_siteDB():
     def getIDdata(self, ID):
         url = 'http://' + self.serverIP + '/sitedb/_doc/'+ID
         headers = {'Content-Type': 'application/json'}
-        print(url)
+        #print(url)
         x = requests.get(url, headers=headers)
         a = x.json()
         res = DataStruct.fetchData(a['_source']['lastFetchTime'],000,
@@ -125,4 +125,148 @@ class Elasticsearch_siteDB():
             "lastFetchTime": data.time,
         }
         x = requests.post(url, headers=headers, data=json.dumps(db))
+        return x
+
+
+class Elasticsearch_IPDB():
+    def __init__(self, serverIP='127.0.0.1:9200'):
+        self.serverIP = serverIP
+    def deleteDB(self):
+        url = 'http://'+self.serverIP+'/ipdb'
+        x = requests.delete(url)
+        print(x)
+        return (x)
+
+    def newIPDB(self):
+        url = 'http://' + self.serverIP + '/ipdb'
+        headers = {'Content-Type': 'application/json'}
+        db = {
+            "mappings": {
+                "properties": {
+                    "ip_addr": {
+                        "type": "keyword"
+                    },
+                    "URL": {
+                        "type": "text"
+                    },
+                    "fetchCount": {
+                        "type": "integer"
+                    },
+                    "isban": {
+                        "type": "integer"
+                    },
+                    "speed":{
+                        "type": "float"
+                    }
+                }
+            }
+        }
+        x = requests.put(url, headers=headers, data=json.dumps(db))
+        #print(x)
+        return (x)
+
+    def insertDataToDB(self, data):
+        url = 'http://' + self.serverIP + '/ipdb/_doc/'
+        headers = {'Content-Type': 'application/json'}
+        db = {
+            "ip_addr": data.ip,
+            "URL": data.url,
+            "speed": data.speed,
+            "isban": data.isban,
+            "fetchCount": 1
+            }
+        x = requests.post(url, headers=headers, data=json.dumps(db))
+        #print(x.text)
+        return (x)
+
+    def CheckIPinDB(self, querystr):
+        url = 'http://' + self.serverIP + '/ipdb/_search'
+        headers = {'Content-Type': 'application/json'}
+        db = {
+            "query": {
+                "term": {"ip_addr": querystr}
+                }
+            }
+        x = requests.get(url, headers=headers, data=json.dumps(db))
+        
+        a = x.json()
+        #print(a)
+        if (a['hits']['total']['value'] == 0):
+            return "NotInIPDB"
+        else:
+            return a['hits']['hits'][0]['_id']
+    
+    def getIDdata(self, ID):
+        url = 'http://' + self.serverIP + '/ipdb/_doc/'+ID
+        headers = {'Content-Type': 'application/json'}
+        x = requests.get(url, headers=headers)
+        a = x.json()
+        res = DataStruct.IPData(ip=a['_source']['ip_addr'],
+        url=a['_source']['URL'],
+        speed=a['_source']['speed'],
+        isban=a['_source']['isban'],
+        fetchCount=a['_source']['fetchCount'])
+        return res
+
+    def updateDB(self, ID,data):
+        url = 'http://' + self.serverIP + '/ipdb/_update/' + ID
+        #print(url)
+        headers = {'Content-Type': 'application/json'}
+        db1 = {
+            "script": {"source": "ctx._source.fetchCount += 1"},
+        }
+        db2 = {
+            'doc': {
+            "speed": data.speed,
+            "ip_addr": data.ip,
+            "isban": data.isban,
+            }
+        }
+        db3 = {
+            "script": {"source": "ctx._source.URL += ','+(params.URL)",
+            "params" : {
+            "URL" : data.url}},
+        }
+        #print(db2)
+        x = requests.post(url, headers=headers, data=json.dumps(db1))
+        x = requests.post(url, headers=headers, data=json.dumps(db2))
+        x = requests.post(url, headers=headers, data=json.dumps(db3))
+        #print(x.json())
+        return x
+
+    def banInDB(self):
+        url = 'http://' + self.serverIP + '/ipdb/_search'
+        headers = {'Content-Type': 'application/json'}
+        db = {
+            "query": {
+                "match": {
+                    "isban": 1
+                }
+            }
+        }
+        x = requests.get(url, headers=headers, data=json.dumps(db))
+        
+        a = x.json()
+        #print(a)
+        if (a['hits']['total']['value'] == 0):
+            return "noBan"
+        else:
+            banIPSet=[]
+            for i in range(int(len(a['hits']['hits']))):
+                #print(i)
+                banIPSet.append(a['hits']['hits'][i]['_source']['ip_addr'])
+            return banIPSet
+
+    def updateDBisban(self, ID,data):
+        url = 'http://' + self.serverIP + '/ipdb/_update/' + ID
+        #print(url)
+        headers = {'Content-Type': 'application/json'}
+        db2 = {
+            'doc': {
+            "isban": data.isban,
+            }
+        }
+        #print(db2)
+        x = requests.post(url, headers=headers, data=json.dumps(db2))
+        #print(x.json())
         return x

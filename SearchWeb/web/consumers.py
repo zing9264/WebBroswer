@@ -37,10 +37,10 @@ class Consumer(WebsocketConsumer):
 			
 			reader = csv.reader(csvfile)
 			rows = [row for row in reader]
+			i = int(data['Num'])
 			print(rows)
 			if rows[5][0]=="0":
 				rows[5][0] = "1"
-				i = int(data['Num'])
 				if rows[i][1] == "delete":
 					rows[i][1] = data['State']
 					rows[i][2] = data['URL']
@@ -55,14 +55,19 @@ class Consumer(WebsocketConsumer):
 				path = "conda activate py38 && python " + path
 				p = subprocess.Popen(path, shell=True, cwd=os.path.join(os.path.dirname(__file__), 'crawler'))
 
-			elif ((data['URL'] == '') & (data['Level'] == '') & (data['Wait'] == '')):
+			elif ( (rows[5][0] == "1")& (data['State'] == "close_crawler")):
+				print('detect-rows[5][0] == 1')
+				rows[5][0] = "0"
+				writer = csv.writer(open(Mu_path, 'w', newline=''))
+				writer.writerows(rows)
+
+			else:
 				print('modify'+Mu_path)
 				rows[int(data['Num'])][1]=data['State']
 				writer = csv.writer(open(Mu_path, 'w', newline=''))
 				writer.writerows(rows)
-			else:
-				text = "running"
-		
+			
+
 		self.send(text_data=json.dumps({
 			'message': text
 		}))

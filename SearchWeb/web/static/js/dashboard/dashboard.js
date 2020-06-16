@@ -37,21 +37,21 @@ function getbatchcsv_ajax(url, success, fail){
     xhr.onload = function () {
         //console.log(xhr.responseText);
         var allRows = xhr.responseText.split(/\r?\n|\r/);
-        //console.log(allRows)
+        //console.log(allRows)IP,????,????,???,????,???,???,??URL?,??,????
         let i=0
         for (i = 0; i < 4; i++) {
             data = allRows[i].split(',');
             threadIps[i].innerHTML = data[0]
-            threadURLs[i].herf = data[1]
+            threadURLs[i].href = data[1]
             threadURLs[i].innerHTML=data[1]
             threadLevels[i].innerHTML=data[2]
-            threadSpeeds[i].innerHTML=data[3]
-            threadPasstimes[i].innerHTML = data[4]
-            threadTotalfetchcnts[i].innerHTML = data[5]
-            threadQueuecnts[i].innerHTML=data[6]
-            threadSuccesscnts[i].innerHTML=data[7]
-            threadFailcnts[i].innerHTML=data[8]
-            threadRedundancyURLcnts[i].innerHTML = data[9]
+            threadTotalfetchcnts[i].innerHTML=data[3]
+            threadQueuecnts[i].innerHTML = data[4]
+            threadFailcnts[i].innerHTML = data[5]
+            threadSuccesscnts[i].innerHTML=data[6]
+            threadRedundancyURLcnts[i].innerHTML=data[7]
+            threadSpeeds[i].innerHTML=data[8]
+            threadPasstimes[i].innerHTML = data[9]
         }
         console.log(data)
         if(xhr.status == 200){
@@ -65,7 +65,7 @@ operatingStatuses = document.querySelectorAll('.operating-status');
 seedUrls = document.querySelectorAll('.seed-url');
 levels = document.querySelectorAll('.level');
 waitTimes = document.querySelectorAll('.wait-time');
-
+isThreadRunning=document.querySelector('#is-thread-running')
 function MU_csv_ajax(url, success, fail){
     // 1. ????
         var xhr = null;
@@ -87,6 +87,7 @@ function MU_csv_ajax(url, success, fail){
                 levels[i].innerHTML=data[3]
                 waitTimes[i].innerHTML=data[4]
             }
+            isThreadRunning.innerHTML=allRows[5][0]
             document.querySelector('#thread-operating-status-1').innerHTML=operatingStatuses[0].innerHTML;
             document.querySelector('#thread-operating-status-2').innerHTML=operatingStatuses[1].innerHTML;
             document.querySelector('#thread-operating-status-3').innerHTML=operatingStatuses[2].innerHTML;
@@ -97,15 +98,82 @@ function MU_csv_ajax(url, success, fail){
                 console.log("????");
             }
         }
-    }
-    
+}
 
+function BanDB_ajax(url, success, fail){
+        // 1. ????
+            var xhr = null;
+            xhr = new XMLHttpRequest()
+        // 2. ?????
+            xhr.open('get', url, true)
+        // 3. ????
+            xhr.send(null);
+        // 4. ????
+            xhr.onload = function () {
+                //console.log(xhr.responseText);
+                var allRows = xhr.responseText.split(/\r?\n|\r/);
+                console.log(allRows)
+                screen = '<div class="row" id="ban-ip-screen">'
+                for (i = 0; i < allRows.length; i++){
+                    screen+= '<div class="col-3" >'+allRows[i]+'</div>'
+                }
+                screen+= '</div>'
+                document.getElementById('ban-ip-screen').outerHTML = screen
+                
+                if(xhr.status == 200){
+                }else{
+                    console.log("????");
+                }
+            }
+}
 
+function insertBanIp(url, success, fail){
+    // 1. ????
+    var xhr = null;
+    k=document.getElementById('insert-ban-ip').value
+    console.log(k);
+        xhr = new XMLHttpRequest()
+    // 2. ?????
+        xhr.open('get', 'insertbanindb/?insertBanIp='+k, true)
+    // 3. ????
+
+        xhr.send(null);
+    // 4. ????
+        xhr.onload = function () {
+            //console.log(xhr.responseText);
+            if(xhr.status == 200){
+            }else{
+                console.log("????");
+            }
+        }
+}
+function deleteBanIp(url, success, fail){
+    // 1. ????
+    var xhr = null;
+    k=document.getElementById('delete-ban-ip').value
+    console.log(k);
+        xhr = new XMLHttpRequest()
+    // 2. ?????
+        xhr.open('get', 'deletebanindb/?deleteBanIp='+k, true)
+    // 3. ????
+
+        xhr.send(null);
+    // 4. ????
+        xhr.onload = function () {
+            //console.log(xhr.responseText);
+            if(xhr.status == 200){
+            }else{
+                console.log("????");
+            }
+        }
+}
+        
 function doUpdate()   
 {
     getbatchcsv_ajax('getbatchcsv/');
-    MU_csv_ajax('getMutualState/')
-    window.setTimeout("doUpdate()", 4000);
+    MU_csv_ajax('getMutualState/');
+    BanDB_ajax('getbanindb/')
+    window.setTimeout("doUpdate()", 5000);
 }
 doUpdate();
 
