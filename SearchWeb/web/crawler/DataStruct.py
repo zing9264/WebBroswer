@@ -25,9 +25,11 @@ class currentBatch():
 
 #IP,當前網址,當前深度,已爬取,剩餘佇列,失敗數,成功數,重複URL數,速率,經過時間
 class IPData():
-    def __init__(self,ip='0.0.0.0',url='test',fetchCount=1,isban=0,speed=0.05):
+    def __init__(self,ip='0.0.0.0',url='test',fetchCount=1,isban=0,speed=0.05,parentUrl='',beConnectedCount=1):
         self.ip = ip
         self.url = url
+        self.parentUrl = parentUrl
+        self.beConnectedCount=beConnectedCount
         self.fetchCount = int(fetchCount)
         self.isban=int(isban)
         self.speed = float(speed)

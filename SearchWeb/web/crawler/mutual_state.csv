@@ -1,7 +1,6 @@
 threadNum,operatingStatus,seedUrl,level,waittime
-1,delete,https://tw.news.yahoo.com/,6,0.5
+1,run,https://tw.news.yahoo.com/,6,0
 2,delete,https://user.gamer.com.tw/help/detail.php?sn=389,6,0.27
 3,delete,https://www.ptt.cc/bbs/index.html,4,0.32
 4,delete,https://www.msn.com/zh-tw/news,3,0.2
-0,UseForDetermineWhetherThreadIsRunning
-
+1,UseForDetermineWhetherThreadIsRunning

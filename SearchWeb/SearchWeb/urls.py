@@ -28,6 +28,12 @@ from web.views import GetMutualState
 from web.views import GetBanInDB
 from web.views import insertBanInDB
 from web.views import deleteBanInDB
+from web.views import getURLQueue
+from web.views import deleteBanInDB
+from web.views import getFailURL
+from web.views import getFilter
+from web.views import deleteFilter
+from web.views import insertFilter
 from django.views.generic import RedirectView
 
 urlpatterns = [
@@ -41,7 +47,11 @@ urlpatterns = [
     path('dashboard/getbanindb/', GetBanInDB),
     path('dashboard/insertbanindb/', insertBanInDB),
     path('dashboard/deletebanindb/', deleteBanInDB),
-
+    path('dashboard/geturlqueue/', getURLQueue),
+    path('dashboard/getfailurl/', getFailURL),
+    path('dashboard/getfilter/', getFilter),
+    path('dashboard/deletefilter/', deleteFilter),
+    path('dashboard/insertfilter/', insertFilter),
 
     
     path('', RedirectView.as_view(url='/search/'))

@@ -8,10 +8,8 @@ fetch('http://127.0.0.1:8000/getcsrf/', {}).then((response) => {
       console.log(data);
       csrf_token.value =data['csrf_token'];
   }).catch((err) => {
-    console.log('錯誤:', err);
+    console.log('éŒ¯èª¤:', err);
 });
-
-
 
 
 threadIps = document.querySelectorAll('.thread-ip');
@@ -147,6 +145,7 @@ function insertBanIp(url, success, fail){
             }
         }
 }
+
 function deleteBanIp(url, success, fail){
     // 1. ????
     var xhr = null;
@@ -167,12 +166,273 @@ function deleteBanIp(url, success, fail){
             }
         }
 }
+
+function getURLQueue(thread, success, fail){
+    // 1. ????
+        var xhr = null;
+        xhr = new XMLHttpRequest()
+    // 2. ?????
+        console.log('getURLQueue');
+
+        xhr.open('get', 'geturlqueue/?thread=' + thread, true)
+    // 3. ????
+        xhr.send(null);
+    // 4. ????
+        xhr.onload = function () {
+            //console.log(xhr.responseText);
+            var allRows = xhr.responseText.split(/\r?\n|\r/);
+            //console.log(allRows)IP,????,????,???,????,???,???,??URL?,??,????
+            let i = 0
+            screen = '<div class="row" id="url-queue"' + thread + ' >'
+            screen+='<table class="table table-bordered table-dark" style="word-break:break-all"><thead><tr><th scope="col">#</th><th scope="col">URL</th><th scope="col">Level</th><th scope="col">ParentUrl</th></tr></thead><tbody>'
+            for (i = 0; i < allRows.length-1; i++){
+                data = allRows[i].split(',');
+                console.log(data)
+                screen += '<tr><th scope="row">' + i + '</th>'
+                screen += '<td class="queue-URL">' + data[0] + '</td>'
+                screen += '<td class="queue-Level">' + data[1] + '</td>'
+                screen += '<td class="queue-ParentURL">' + data[2] + '</td></tr>'
+            }
+            screen += '</tbody></table></div>'
+            document.getElementById('url-queue-'+thread).outerHTML = screen
+
+            if(xhr.status == 200){
+            }else{
+                console.log("????");
+            }
+        }
+    }
+
+    function getFailURL(thread, success, fail){
+        // 1. ????
+            var xhr = null;
+            xhr = new XMLHttpRequest()
+        // 2. ?????
+    
+            xhr.open('get', 'getfailurl/?thread=' + thread, true)
+        // 3. ????
+            xhr.send(null);
+        // 4. ????
+            xhr.onload = function () {
+                //console.log(xhr.responseText);
+                var allRows = xhr.responseText.split(/\r?\n|\r/);
+                //console.log(allRows)IP,????,????,???,????,???,???,??URL?,??,????
+                let i = 0
+
+                screen = '<div class="row" id="fail-url-1"'+thread+' >'
+                screen+='<table class="table table-bordered table-dark" style="word-break:break-all"><thead><tr><th scope="col">#</th><th scope="col">URL</th><th scope="col">ParentURL</th><th scope="col">Errorcode</th></tr></thead><tbody>'
+                for (i = allRows.length-2; i > 0; i--){
+                    data = allRows[i].split(',');
+                    console.log(data)
+                    screen += '<tr><th scope="row">' + i + '</th>'
+                    screen += '<td class="fail-URL">' + data[0] + '</td>'
+                    screen += '<td class="fail-ParentURL">' + data[1] + '</td>'
+                    screen += '<td class="fail-Errorcode">' + data[2] + '</td></tr>'
+                }
+                screen += '</tbody></table></div>'
+                document.getElementById('fail-url-'+thread).outerHTML = screen
+    
+                if(xhr.status == 200){
+                }else{
+                    console.log("????");
+                }
+            }
+        }
+    
+    function getFilter( success, fail){
+            // 1. ????
+                var xhr = null;
+                xhr = new XMLHttpRequest()
+            // 2. ?????
         
+                xhr.open('get', 'getfilter/' , true)
+            // 3. ????
+                xhr.send(null);
+            // 4. ????
+                xhr.onload = function () {
+                    //console.log(xhr.responseText);
+                    var allRows = xhr.responseText.split(/\r?\n|\r/);
+                    //console.log(allRows)IP,????,????,???,????,???,???,??URL?,??,????
+                    let i = 0
+    
+                    screen = '<div class="row" id="filt-string-screen" >'
+                    for (i = 0; i < allRows.length-1; i++){
+                        data = allRows[i].split(',');
+                        console.log(data)
+                        screen += '<div class="col-4">' + data[0] + '</div>'
+                    }
+                    screen += '</div>'
+                    document.getElementById('filt-string-screen').outerHTML = screen
+                    if(xhr.status == 200){
+                    }else{
+                        console.log("????");
+                    }
+                }
+            }
+            function deleteFilter( success, fail){
+                // 1. ????
+                    var xhr = null;
+                    xhr = new XMLHttpRequest()
+                // 2. ?????
+                data = document.getElementById('delete-filt-string').value 
+                console.log(data)
+                    xhr.open('get', 'deletefilter/?data='+data , true)
+                // 3. ????
+                    xhr.send(null);
+                // 4. ????
+                    xhr.onload = function () {
+                        //console.log(xhr.responseText);
+                        if (xhr.status == 200) {
+                            
+                        }else{
+                            console.log("????");
+                        }
+                    }
+            }
+    function insertFilter( success, fail){
+        // 1. ????
+        var xhr = null;
+        xhr = new XMLHttpRequest()
+    // 2. ?????
+        data = document.getElementById('insert-filt-string').value 
+
+        xhr.open('get', 'insertfilter/?data='+data , true)
+    // 3. ????
+        xhr.send(null);
+    // 4. ????
+        xhr.onload = function () {
+            //console.log(xhr.responseText);
+            if (xhr.status == 200) {
+                
+            }else{
+                console.log("????");
+            }
+        }
+    }
+
+    function getAllIPData(searchText){
+
+        data = {
+            "sort" : [
+                {
+                    "beConnectedCount": { "order": "desc" },
+                    'fetchCount':{ "order": "desc" },
+                }
+                
+            ],
+            'size':5000,
+            "query": {
+                "match": {
+                    "for_fetch": "1"
+                }
+            }
+        }
+        //console.log(data)
+        url = 'http://127.0.0.1:9200/ipdb/_search'
+
+        fetch(url, {
+                headers: {
+                  'content-type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+                })
+                .then(_onAllIPDataResponse)
+                .then(_onAllIPDataJsonReady);
+    
+    }
+    
+    function _onAllIPDataResponse(response) {
+        console.log(response)
+        return response.json();
+    }
+    
+    function _onAllIPDataJsonReady(json) {
+        console.log(json);
+        data = json['hits']['hits']
+
+        let i = 0
+        screen = '<div class="card-body main-ctrl " id="IP-control-screen">'
+        screen+='<table class="table table-bordered table-dark" style="word-break:break-all"><thead><tr><th scope="col">#</th><th scope="col">ip</th><th scope="col">被連結數量</th><th scope="col">此IP下網頁數量</th></tr></thead><tbody>'
+        for (i = 0; i < data.length-1; i++){
+            console.log(data)   
+            screen += '<tr><th scope="row">' + i + '</th>'
+            screen += '<td class="ipData-ip_addr">' + data[i]['_source']['ip_addr'] + '</td>'
+            screen += '<td class="ipData-beConnectedCount">' + data[i]['_source']['beConnectedCount'] + '</td>'
+            screen += '<td class="ipData-fetchCount">' + data[i]['_source']['fetchCount'] + '</td></tr>'
+        }
+        screen += '</tbody></table></div>'
+        document.getElementById('IP-control-screen').outerHTML = screen
+    
+    }
+
+
+    function getAllredundancyUrlData(searchText){
+
+        data = {
+            "sort" : [
+                {
+                    "fetchCount": { "order": "desc" },
+                }
+                
+            ],
+            'size':5000,
+            "query" : {
+                "range" : {
+                    "fetchCount" : {
+                        "gt" :1,
+                    }
+                }
+            }
+        }
+        //console.log(data)
+        url = 'http://127.0.0.1:9200/sitedb/_search'
+
+        fetch(url, {
+                headers: {
+                  'content-type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+                })
+                .then(_onAllRedundancyUrlDataResponse)
+                .then(_onAllRedundancyUrlDataJsonReady);
+    
+    }
+    
+    function _onAllRedundancyUrlDataResponse(response) {
+        console.log(response)
+        return response.json();
+    }
+    
+    function _onAllRedundancyUrlDataJsonReady(json) {
+        console.log(json);
+        data = json['hits']['hits']
+
+        let i = 0
+        screen = '<div class="card-body main-ctrl " id="redundancyUrl-screen">'
+        screen+='<table class="table table-bordered table-dark" style="word-break:break-all"><thead><tr><th scope="col">#</th><th scope="col">URL</th><th scope="col">重複次數</th><th scope="col">ip_addr</th><th scope="col">title</th><th scope="col">lastFetchTime</th><th scope="col">content</th></tr></thead><tbody>'
+        for (i = 0; i < data.length-1; i++){
+            console.log(data)   
+            screen += '<tr><th scope="row">' + i + '</th>'
+            screen += '<td class="redundancyUrl-URL">' + data[i]['_source']['URL'] + '</td>'
+            screen += '<td class="redundancyUrl-fetchCount">' + data[i]['_source']['fetchCount'] + '</td>'
+            screen += '<td class="redundancyUrl-ip_addr">' + data[i]['_source']['ip_addr'] + '</td>'
+            screen += '<td class="redundancyUrl-title">' + data[i]['_source']['title'] + '</td>'
+            screen += '<td class="redundancyUrl-lastFetchTime">' + data[i]['_source']['lastFetchTime'] + '</td>'
+            screen += '<td class="redundancyUrl-content">' + data[i]['_source']['content'].substr(0,25) + '</td></tr>'
+        }
+        screen += '</tbody></table></div>'
+        document.getElementById('redundancyUrl-screen').outerHTML = screen
+}
+    
 function doUpdate()   
 {
     getbatchcsv_ajax('getbatchcsv/');
     MU_csv_ajax('getMutualState/');
     BanDB_ajax('getbanindb/')
+    //getFailURL('getfailurl/')
+
     window.setTimeout("doUpdate()", 5000);
 }
 doUpdate();

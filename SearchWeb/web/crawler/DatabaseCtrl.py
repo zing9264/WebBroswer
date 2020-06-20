@@ -4,8 +4,8 @@ import hashlib
 import csv
 import os
 import glob
-
-Seenmaxarray = 10000000
+import time
+Seenmaxarray = 1000000
 def urlqueueDBget(threadnum):
         
     urlqueueDBPath = os.path.join(os.path.dirname(__file__), 'urlqueueDB_' + str(threadnum))
@@ -97,17 +97,40 @@ def blackListInsert(data):
     return data
 
 def filterArrGet():
-    with open('filter_list.csv', 'r', newline='', encoding="utf-8") as csvfile:
+    filter_list_Path = os.path.join(os.path.dirname(__file__), 'filter_list.csv')
+    with open(filter_list_Path, 'r', newline='', encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         print(reader)
         rows = [row for row in reader]
     return rows
 
-def loadSeenDB():
+def filterArrInsert(data):
+    filter_list_Path = os.path.join(os.path.dirname(__file__), 'filter_list.csv')
+    with open(filter_list_Path, 'a', newline='', encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(data)
+    return data
+
+def filterArrDelete(data):
+    arr = filterArrGet()
+    print(arr)
+    for i in range(len(arr)):
+        if (arr[i] == data):
+            print('find')
+            newarr = arr[0:i] +arr[i+1 :]
+            print(newarr)
+            filter_list_Path = os.path.join(os.path.dirname(__file__), 'filter_list.csv')
+            with open(filter_list_Path, 'w', newline='', encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerows(newarr)
+            return 0
+    return 1
+
+def loadSeenDB(thread):
     print("init--------")
     SeenDB=[]
-    with open('SeenDB.csv', newline='') as csvfile:
+    with open('SeenDB_'+str(thread)+'.csv', newline='',encoding="utf-8") as csvfile:
     # 讀取 CSV 檔案內容
         reader = csv.reader(csvfile)
         for row in reader:
@@ -144,19 +167,44 @@ def checkinSeenDB(fetchURL, SeenDB):
     # print("already exists")
     return 1,SeenDB,str(k)
 
-
-def updateSeenDB(SeenDB):
-    with open('SeenDB.csv', 'w', newline='', encoding="utf-8") as csvfile:
-  # 以空白分隔欄位，建立 CSV 檔寫入器
+def updateSeenDB(SeenDB,thread):
+    with open('SeenDB_'+str(thread)+'.csv', 'w', newline='', encoding="utf-8") as csvfile:
+        # 以空白分隔欄位，建立 CSV 檔寫入器
         writer = csv.writer(csvfile, delimiter=',')
         print("w:")
         writer.writerow(SeenDB)
 
-def resetSeenDB():
+            
+
+def resetSeenDB(thread):
     global Seenmaxarray
-    with open('SeenDB.csv', 'w', newline='', encoding="utf-8") as csvfile:
+    with open('SeenDB_'+str(thread)+'.csv', 'w', newline='', encoding="utf-8") as csvfile:
         seenDB=['0']*Seenmaxarray
         writer = csv.writer(csvfile, delimiter=',')
         print("reset")
         writer.writerow(seenDB)
+
+
+
+
+def failURLDBget(threadnum):
+    failURLDBPath = os.path.join(os.path.dirname(__file__), 'failURLDB_' + str(threadnum)+ '.csv')
+    failURLDB = []
+    with open(failURLDBPath,'r', newline='',encoding="utf-8") as csvfile:
+    # 讀取 CSV 檔案內容
+        reader = csv.reader(csvfile)
+        for row in reader:
+            failURLDB.append(row)
+    return failURLDB
+
+def failURLDBinsert(datas, threadnum):
+    failURLDBPath = os.path.join(os.path.dirname(__file__), 'failURLDB_' + str(threadnum)+ '.csv')
+    with open(failURLDBPath, 'a', newline='',encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(datas)
+
+def resetFailURLDB(threadnum):
+    failURLDBPath = os.path.join(os.path.dirname(__file__), 'failURLDB_' + str(threadnum)+ '.csv')
+    f=open(failURLDBPath, 'w')
+    f.write('')
 

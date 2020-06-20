@@ -12,6 +12,12 @@ from .crawlermanage import crawlermanage
 from .crawler.DatabaseCtrl import mutual_stateDBinsert
 from .crawler.DatabaseCtrl import currentBatchGet
 from .crawler.ElasticSearchDB_ctrl import Elasticsearch_IPDB
+from .crawler.DatabaseCtrl import urlqueueDBget
+from .crawler.DatabaseCtrl import failURLDBget
+from .crawler.DatabaseCtrl import filterArrGet
+from .crawler.DatabaseCtrl import filterArrDelete
+from .crawler.DatabaseCtrl import filterArrInsert
+
 from .crawler.DataStruct import IPData
 def Search(request):
     return render(request, 'index.html')
@@ -38,7 +44,6 @@ def Page(request, searchText, page):
 def GetBatchCsv(request):
     all_lines = ''
     for i in range(1, 5):
-        
         all_lines=all_lines+','.join(currentBatchGet(i))+'\n'
     print(all_lines)
     return HttpResponse(all_lines, content_type="text/csv")
@@ -137,4 +142,42 @@ def deleteBanInDB(request):
         if (ipID != 'NotInIPDB'):
             Bdata=IPData(ip=ip,isban=0)
             b.updateDBisban(ipID, Bdata)
+    return HttpResponse(result, content_type="text/csv")
+    
+def getURLQueue(request):
+    thread = request.GET['thread']
+    data = urlqueueDBget(int(thread))
+    result = ''
+    z=0
+    if len(data) > 100:
+        z = 100
+    else:
+        z=len(data)
+    for i in range(z):
+        result =result+ ','.join(data[i])+'\n'
+    return HttpResponse(result, content_type="text/csv")
+
+def getFailURL(request):
+    thread = request.GET['thread']
+    data = failURLDBget(thread)
+    result = ''
+    for i in range(len(data)):
+        result =result+ ','.join(data[i])+'\n'
+    return HttpResponse(result, content_type="text/csv")
+
+def getFilter(request):
+    result = ''
+    data = filterArrGet()
+    for i in range(len(data)):
+        result =result+ ','.join(data[i])+'\n'
+    return HttpResponse(result, content_type="text/csv")
+
+def deleteFilter(request):
+    data = request.GET['data']
+    result =filterArrDelete([data])
+    return HttpResponse(result, content_type="text/csv")
+
+def insertFilter(request):
+    data = request.GET['data']
+    result =filterArrInsert([data])
     return HttpResponse(result, content_type="text/csv")

@@ -87,6 +87,9 @@ class Elasticsearch_siteDB():
         url = 'http://' + self.serverIP + '/sitedb/_search'
         headers = {'Content-Type': 'application/json'}
         db = {
+            "sort" : [
+                { "fetchCount" : {"order" : "desc"}},
+            ],
             "query": {
                 "term": {"URL": querystr}
                 }
@@ -104,7 +107,7 @@ class Elasticsearch_siteDB():
         #print(url)
         x = requests.get(url, headers=headers)
         a = x.json()
-        res = DataStruct.fetchData(a['_source']['lastFetchTime'],000,
+        res = DataStruct.fetchData(a['_source']['lastFetchTime'],200,
         a['_source']['URL'],
         a['_source']['ip_addr'],
         a['_source']['title'],
@@ -113,18 +116,14 @@ class Elasticsearch_siteDB():
         return res
     
 
-    def updateDB(self, ID,data):
+    def updatefetchCountDB(self, ID):
         url = 'http://' + self.serverIP + '/sitedb/_update/'+ID
         headers = {'Content-Type': 'application/json'}
         db = {
-            "script": {"source": "ctx._source.fetchCount += 1"},
-            "title": data.title,
-            "ip_addr": data.ip,
-            "URL": data.url,
-            "content": data.content,
-            "lastFetchTime": data.time,
+            "script": {"source": "ctx._source.fetchCount += 1"}
         }
         x = requests.post(url, headers=headers, data=json.dumps(db))
+
         return x
 
 
@@ -134,7 +133,7 @@ class Elasticsearch_IPDB():
     def deleteDB(self):
         url = 'http://'+self.serverIP+'/ipdb'
         x = requests.delete(url)
-        print(x)
+        print(x.json())
         return (x)
 
     def newIPDB(self):
@@ -150,19 +149,28 @@ class Elasticsearch_IPDB():
                         "type": "text"
                     },
                     "fetchCount": {
-                        "type": "integer"
+                        "type": "integer",
+                    },
+                    "beConnectURL": {
+                        "type": "text",
+                    },
+                    "beConnectCount": {
+                        "type": "integer",
                     },
                     "isban": {
                         "type": "integer"
                     },
                     "speed":{
                         "type": "float"
+                    },
+                    "for_fetch":{
+                        "type": "text",
                     }
                 }
             }
         }
         x = requests.put(url, headers=headers, data=json.dumps(db))
-        #print(x)
+        print(x.json())
         return (x)
 
     def insertDataToDB(self, data):
@@ -173,7 +181,10 @@ class Elasticsearch_IPDB():
             "URL": data.url,
             "speed": data.speed,
             "isban": data.isban,
-            "fetchCount": 1
+            "fetchCount": 1,
+            "beConnectedURL": data.parentUrl,
+            "beConnectedCount": 1,
+            "for_fetch":'1'
             }
         x = requests.post(url, headers=headers, data=json.dumps(db))
         #print(x.text)
@@ -190,6 +201,7 @@ class Elasticsearch_IPDB():
         x = requests.get(url, headers=headers, data=json.dumps(db))
         
         a = x.json()
+
         #print(a)
         if (a['hits']['total']['value'] == 0):
             return "NotInIPDB"
@@ -205,7 +217,9 @@ class Elasticsearch_IPDB():
         url=a['_source']['URL'],
         speed=a['_source']['speed'],
         isban=a['_source']['isban'],
-        fetchCount=a['_source']['fetchCount'])
+        fetchCount=a['_source']['fetchCount'],
+        parentUrl=a['_source']['beConnectedURL'],
+        beConnectedCount=a['_source']['beConnectedCount'])
         return res
 
     def updateDB(self, ID,data):
@@ -270,3 +284,43 @@ class Elasticsearch_IPDB():
         x = requests.post(url, headers=headers, data=json.dumps(db2))
         #print(x.json())
         return x
+
+    def updateDBBeConnectedCnt(self, ID, data):
+        url = 'http://' + self.serverIP + '/ipdb/_update/' + ID
+        #print(url)
+        headers = {'Content-Type': 'application/json'}
+        db2 = {
+            "script": {"source": "ctx._source.beConnectedCount += 1"},
+        }
+        #print(db2)
+        x = requests.post(url, headers=headers, data=json.dumps(db2))
+        #print(x.json())
+        db3 = {
+            "script": {"source": "ctx._source.parentUrl += ','+(params.URL)",
+            "params" : {
+            "URL" : data.url}},
+        }
+        return x
+
+
+    def getAllData(self):
+        url = 'http://' + self.serverIP + '/ipdb/_search'
+        headers = {'Content-Type': 'application/json'}
+        db = {
+            "sort" : [
+                { "beConnectedCount" : {"order" : "desc"}},
+            ],
+            'size':100,
+            "query": {
+                "match": {
+                    "for_fetch": "1"
+                }
+            }
+        }
+        x = requests.get(url, headers=headers, data=json.dumps(db))
+        a = x.json()
+        #print(a)
+        if (a['hits']['total']['value'] == 0):
+            return "noData"
+        else:
+            return a
